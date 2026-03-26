@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aryendbumi & Co. — Strategic Communications</title>
+  <meta name="description" content="LinkedIn ghostwriting for digital transformation leaders and B2B industrial tech founders. We translate technical expertise into thought leadership.">
+  <meta property="og:title" content="Aryendbumi & Co. — Strategic Communications">
+  <meta property="og:description" content="LinkedIn ghostwriting for digital transformation leaders and B2B industrial tech founders.">
+  <meta property="og:url" content="https://fachrynuzuli.github.io/aryendbumi-co.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF6EE;
+      --cream-mid: #F2EBD9;
+      --cream-dark: #E8DFC8;
+      --navy: #1B1F3B;
+      --navy-light: #262B4A;
+      --gold: #C4983A;
+      --gold-light: #DDB96A;
+      --gold-glow: rgba(196,152,58,0.15);
+      --text: #1B1F3B;
+      --text-muted: #7A7E93;
+      --border: #D5CCB8;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Jost', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    /* ── PAPER TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+      opacity: 0.7;
+    }
+    section, nav, footer, .site-nav, #announcement-banner {
+      position: relative; z-index: 1;
+    }
+
+    /* ── SITE NAV (SHARED) ── */
+    .site-nav {
+      background: rgba(250,246,238,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(196,152,58,0.15);
+      padding: 0 64px;
+      display: flex; align-items: center; justify-content: center; gap: 2px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .site-nav a {
+      font-family: var(--font-sans); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; padding: 14px 24px;
+      color: var(--text-muted); transition: color 0.2s;
+      position: relative;
+    }
+    .site-nav a:hover { color: var(--gold); }
+    .site-nav a.active {
+      color: var(--gold);
+    }
+    .site-nav a.active::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 24px; right: 24px;
+      height: 2px; background: var(--gold);
+    }
+
+    /* ── ANNOUNCEMENT BANNER ── */
+    #announcement-banner {
+      background: var(--navy);
+      padding: 10px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      position: relative;
+    }
+    .banner-text {
+      font-family: var(--font-sans); font-size: 12px;
+      color: rgba(255,255,255,0.55); letter-spacing: 0.5px;
+    }
+    .banner-link {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+      color: var(--gold-light); text-decoration: none;
+    }
+    .banner-link:hover { text-decoration: underline; }
+    .banner-close {
+      position: absolute; right: 18px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.35); cursor: pointer; font-size: 14px;
+      min-width: 44px; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── PAGE NAV ── */
+    nav {
+      padding: 24px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 20px;
+      font-weight: 500; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--navy);
+    }
+    .nav-center {
+      font-family: var(--font-sans); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav-cta {
+      background: var(--navy); color: var(--cream);
+      padding: 11px 26px; font-family: var(--font-sans);
+      font-size: 11px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; text-decoration: none;
+      transition: all 0.25s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 44px; height: 44px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--navy); transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 64px 80px;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-sans); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 14px;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: var(--font-serif); font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 400; line-height: 1.1; color: var(--navy); margin-bottom: 28px;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 14px; color: var(--text-muted); line-height: 1.85;
+      font-weight: 300; margin-bottom: 44px; max-width: 440px;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    /* ── CREDENTIALS CARD ── */
+    .cred-card {
+      background: var(--navy); padding: 44px 40px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .cred-card:hover { transform: translateY(-4px); }
+    .cred-card::after {
+      content: '';
+      position: absolute; bottom: -10px; right: -10px;
+      width: 100%; height: 100%;
+      border: 1px solid var(--gold); z-index: -1;
+      transition: all 0.3s;
+    }
+    .cred-card:hover::after { bottom: -14px; right: -14px; }
+    .cred-label {
+      font-family: var(--font-sans); font-size: 9px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .cred-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .cred-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cred-num {
+      font-family: var(--font-serif); font-size: clamp(28px, 3vw, 34px);
+      color: var(--cream); font-weight: 300; line-height: 1;
+    }
+    .cred-desc {
+      font-size: 12px; color: rgba(255,255,255,0.42);
+      margin-top: 4px; line-height: 1.5; font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── ABOUT ── */
+    .about-section {
+      background: var(--navy); padding: 88px 64px;
+      position: relative; overflow: hidden;
+    }
+    .about-quote-mark {
+      position: absolute; right: 48px; top: -48px;
+      font-family: var(--font-serif); font-size: 320px;
+      color: rgba(196,152,58,0.04); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .about-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 280px 1fr; gap: 88px;
+      align-items: start; position: relative;
+    }
+    .section-eyebrow {
+      font-family: var(--font-sans); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+    }
+    .about-left h2 {
+      font-family: var(--font-serif); font-size: clamp(32px, 4vw, 40px);
+      color: var(--cream); font-weight: 300; line-height: 1.25;
+    }
+    .about-right p {
+      font-size: 15px; color: rgba(250,246,238,0.6);
+      line-height: 1.95; font-weight: 300; margin-bottom: 20px;
+    }
+    .about-right p:last-child { margin-bottom: 0; }
+    .about-right strong { color: var(--cream); font-weight: 500; }
+
+    /* ── SERVICES ── */
+    .services-section {
+      padding: 88px 64px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .services-header { margin-bottom: 52px; }
+    .section-title-serif {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 400; color: var(--navy);
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border);
+    }
+    .service-card {
+      background: var(--cream); padding: 40px 32px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover { background: var(--cream-mid); transform: translateY(-2px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-num {
+      font-family: var(--font-serif); font-size: 56px;
+      color: var(--cream-dark); font-weight: 300; line-height: 1; margin-bottom: 20px;
+    }
+    .service-badge {
+      display: inline-block; font-family: var(--font-sans); font-size: 9px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold); padding: 3px 9px; margin-bottom: 16px;
+    }
+    .service-name {
+      font-family: var(--font-serif); font-size: clamp(22px, 2.5vw, 26px);
+      font-weight: 500; color: var(--navy);
+      margin-bottom: 14px; line-height: 1.25;
+    }
+    .service-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.85;
+      font-weight: 300; margin-bottom: 28px;
+    }
+    .service-price {
+      font-family: var(--font-serif); font-size: 24px;
+      color: var(--navy); font-weight: 500;
+    }
+    .service-detail {
+      font-size: 11px; color: var(--text-muted); margin-top: 5px;
+      line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process-section {
+      background: var(--cream-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 88px 64px;
+    }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 56px; margin-top: 52px;
+    }
+    .step-num {
+      font-family: var(--font-serif); font-size: clamp(48px, 5vw, 72px);
+      color: var(--cream-dark); font-weight: 300; line-height: 1; margin-bottom: 18px;
+    }
+    .step-title {
+      font-family: var(--font-serif); font-size: 24px;
+      color: var(--navy); font-weight: 500; margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.85; font-weight: 300;
+    }
+
+    /* ── FOR WHO ── */
+    .forwho-section {
+      padding: 88px 64px;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    }
+    .forwho-col h3 {
+      font-family: var(--font-serif); font-size: clamp(24px, 3vw, 30px);
+      color: var(--navy); font-weight: 500;
+      margin-bottom: 28px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .forwho-list { list-style: none; }
+    .forwho-list li {
+      font-size: 13px; color: var(--text-muted);
+      padding: 11px 0; border-bottom: 1px solid var(--cream-mid);
+      display: flex; gap: 14px; line-height: 1.6; font-weight: 300;
+      transition: color 0.2s;
+    }
+    .forwho-list li:hover { color: var(--navy); }
+    .forwho-list li::before {
+      content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--navy); padding: 96px 64px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-bg-text {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      top: -30px; font-family: var(--font-serif); font-size: clamp(120px, 18vw, 240px);
+      color: rgba(255,255,255,0.025); white-space: nowrap;
+      pointer-events: none; user-select: none;
+    }
+    /* Animated gradient behind CTA */
+    .cta-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(196,152,58,0.08), transparent 60%);
+      pointer-events: none;
+    }
+    .cta-block h2 {
+      font-family: var(--font-serif); font-size: clamp(36px, 6vw, 72px);
+      font-weight: 300; color: var(--cream); margin-bottom: 18px;
+      position: relative;
+    }
+    .cta-block h2 em { font-style: italic; color: var(--gold); }
+    .cta-block p {
+      font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 44px;
+      font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.8; position: relative;
+    }
+    .btn-gold {
+      background: var(--gold); color: var(--navy);
+      padding: 16px 44px; font-family: var(--font-sans);
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; text-decoration: none; display: inline-block;
+      transition: all 0.25s; position: relative;
+      min-height: 44px;
+    }
+    .btn-gold:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 8px 24px var(--gold-glow); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 64px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-serif); font-size: 18px;
+      letter-spacing: 4px; text-transform: uppercase; color: var(--navy);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 11px; color: var(--text-muted); text-decoration: none;
+      letter-spacing: 1px; min-height: 44px;
+      display: inline-flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-note {
+      font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .site-nav { padding: 0 24px; }
+      .site-nav a { padding: 12px 16px; font-size: 10px; }
+      nav { padding: 18px 24px; }
+      .nav-center { display: none; }
+      .nav-cta { display: none; }
+      .nav-cta-mobile { display: inline-flex !important; }
+      .hamburger { display: flex; }
+      .nav-mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); flex-direction: column; z-index: 50; }
+      .nav-mobile-menu.open { display: flex; }
+      .nav-mobile-menu a { padding: 16px 24px; border-bottom: 1px solid var(--cream-mid); font-size: 12px; color: var(--text-muted); text-decoration: none; min-height: 48px; display: flex; align-items: center; }
+      .hero { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 48px; }
+      .cred-card::after { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-section { padding: 64px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-section { padding: 64px 24px; }
+      .process-steps { grid-template-columns: 1fr; gap: 36px; }
+      .process-section { padding: 64px 24px; }
+      .forwho-section { grid-template-columns: 1fr; padding: 64px 24px; }
+      .cta-block { padding: 64px 24px; }
+      footer { flex-direction: column; gap: 14px; padding: 24px; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 36px; }
+      .site-nav a { font-size: 9px; letter-spacing: 1px; padding: 12px 10px; }
+    }
+    .nav-cta-mobile {
+      display: none;
+      background: var(--navy); color: var(--cream);
+      padding: 11px 20px; font-family: var(--font-sans);
+      font-size: 10px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; text-decoration: none;
+      min-height: 44px; align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE NAV (SHARED) -->
+  <header class="site-nav">
+    <a href="index.html">Freebuilder</a>
+    <a href="aryendbumi-co.html" class="active">Aryendbumi & Co.</a>
+  </header>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="announcement-banner">
+    <span class="banner-text">Building something with AI?</span>
+    <a href="index.html" class="banner-link">→ Visit Freebuilder Studio</a>
+    <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close banner">✕</button>
+  </div>
+
+  <!-- PAGE NAV -->
+  <nav>
+    <div class="nav-logo">Aryendbumi & Co.</div>
+    <div class="nav-center">Strategic Communications</div>
+    <a href="#contact" class="nav-cta" data-link="links.bookCall">Book a Call</a>
+    <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile-menu" id="mobile-menu">
+      <a href="#contact" data-link="links.bookCall">Book a Call</a>
+      <a href="#" data-link="links.linkedin">LinkedIn</a>
+      <a href="#" data-link="links.email">Email</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section>
+      <div class="hero">
+        <div class="hero-left">
+          <p class="hero-eyebrow">B2B Strategic Communications</p>
+          <h1>You run the<br>transformation.<br><em>We write<br>the story.</em></h1>
+          <p class="hero-sub">LinkedIn ghostwriting for digital transformation leaders and B2B industrial tech & supply chain SaaS founders. We don't just write — we translate technical expertise into thought leadership that earns trust before the sales conversation starts.</p>
+          <a href="#contact" class="nav-cta" style="display:inline-flex;" data-link="links.bookCall">Book Discovery Call →</a>
+        </div>
+        <div class="hero-right">
+          <div class="cred-card reveal">
+            <p class="cred-label">// Founder Credentials</p>
+            <div class="cred-item">
+              <div class="cred-num">$1.5M+</div>
+              <div class="cred-desc">Digital transformation initiatives managed at multinational scale</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-num">5+ Yrs</div>
+              <div class="cred-desc">Industrial operations — wood/fiber logistics, heavy transport, supply chain</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-num">PM × PO</div>
+              <div class="cred-desc">Product Owner & Manager across fleet, logistics & infrastructure systems</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-num">IDX</div>
+              <div class="cred-desc">Former equity research analyst — buy-side reports on listed industrial companies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ABOUT -->
+    <section>
+      <div class="about-section">
+        <span class="about-quote-mark">"</span>
+        <div class="about-inner">
+          <div class="about-left reveal">
+            <p class="section-eyebrow">Why It Works</p>
+            <h2>We speak your industry's language.</h2>
+          </div>
+          <div class="about-right reveal">
+            <p>Most ghostwriters interview you, write generic leadership content, and call it a strategy. The problem: they've never managed a digital transformation. They've never made a capex distribution decision. They've never built systems for people whose jobs involve physical constraints — not just software.</p>
+            <p><strong>Aryendbumi & Co. is different.</strong> Our founder spent years inside multinational industrial operations before becoming a product builder. He understands the specific thinking of people who manage complex, asset-heavy, operationally constrained environments.</p>
+            <p>When he writes for you, he's not translating your expertise into generic thought leadership. He's writing from a position of <strong>genuine domain fluency</strong> — the same fluency that helped build a Fleet Management System from zero into a $1.5M+ infrastructure suite spanning mobile apps, GPS integration, and field operations across millions of tons of logistics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section>
+      <div class="services-section">
+        <div class="services-header reveal">
+          <p class="section-eyebrow">What We Offer</p>
+          <h2 class="section-title-serif">Three Engagements</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-num">01</div>
+            <span class="service-badge">Monthly Retainer</span>
+            <h3 class="service-name">LinkedIn Authority Program</h3>
+            <p class="service-desc">For digital transformation executives, operations directors, and industrial tech leaders. We turn your internal knowledge — the kind that lives in boardrooms, site visits, and hard deployment decisions — into consistent LinkedIn presence that attracts peers, clients, and speaking opportunities.</p>
+            <div class="service-price">From $1,500 / mo</div>
+            <div class="service-detail">4 posts/week · Monthly strategy session · Full content ownership</div>
+          </div>
+          <div class="service-card reveal reveal-d1">
+            <div class="service-num">02</div>
+            <span class="service-badge">Monthly Retainer</span>
+            <h3 class="service-name">Founder Voice Program</h3>
+            <p class="service-desc">For B2B industrial tech and supply chain SaaS founders. Your product solves a real operational problem. Your potential customers just don't know you exist yet. We build your founder voice on LinkedIn — technical authority that converts before the sales conversation starts.</p>
+            <div class="service-price">From $1,200 / mo</div>
+            <div class="service-detail">3 posts/week · Positioning workshop · Full content ownership</div>
+          </div>
+          <div class="service-card reveal reveal-d2">
+            <div class="service-num">03</div>
+            <span class="service-badge">Per Engagement</span>
+            <h3 class="service-name">Corporate Workshop</h3>
+            <p class="service-desc">AI Foundation for leadership teams, Vibe Coding for product teams, or Digital Transformation strategy sessions. Built from real $1.5M+ transformation experience — not slides borrowed from a consultant who's never deployed a system in the field.</p>
+            <div class="service-price">Inquire for Pricing</div>
+            <div class="service-detail">Half-day from $800 · Full-day available · Customised curriculum</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section>
+      <div class="process-section">
+        <div class="process-inner">
+          <div class="reveal">
+            <p class="section-eyebrow">How It Works</p>
+            <h2 class="section-title-serif">Three steps to a consistent voice.</h2>
+          </div>
+          <div class="process-steps">
+            <div class="process-step reveal">
+              <div class="step-num">01</div>
+              <h3 class="step-title">Discovery</h3>
+              <p class="step-desc">One 60-minute session. We map your experience, opinions, positioning, and what you want to be known for. No questionnaire. A real conversation — the kind that surfaces the insights worth writing about.</p>
+            </div>
+            <div class="process-step reveal reveal-d1">
+              <div class="step-num">02</div>
+              <h3 class="step-title">Voice Calibration</h3>
+              <p class="step-desc">First two weeks are calibration. You review, annotate, and push back on drafts. We learn the difference between how you think and how you'd never say something. After calibration, editing rounds become minimal.</p>
+            </div>
+            <div class="process-step reveal reveal-d2">
+              <div class="step-num">03</div>
+              <h3 class="step-title">Consistent Output</h3>
+              <p class="step-desc">Posts delivered to a shared workspace every week. You approve, schedule, or push back. Monthly strategy review to assess what's working and adjust positioning based on performance data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR WHO -->
+    <section>
+      <div class="forwho-section">
+        <div class="forwho-col reveal">
+          <h3>This is for you if —</h3>
+          <ul class="forwho-list">
+            <li>You're a DT leader with real opinions but no time to write them consistently</li>
+            <li>You're a B2B founder whose product is better than your online presence suggests</li>
+            <li>You've tried writing on LinkedIn and dropped it within three weeks</li>
+            <li>You understand thought leadership matters but hate performative content noise</li>
+            <li>You want content that sounds like you — not a polished press release</li>
+            <li>You operate in industrial tech, supply chain, logistics, or manufacturing</li>
+          </ul>
+        </div>
+        <div class="forwho-col reveal reveal-d1">
+          <h3>This is not for you if —</h3>
+          <ul class="forwho-list">
+            <li>You want daily motivational posts with no technical substance</li>
+            <li>You're not willing to share genuine professional opinions publicly</li>
+            <li>You want to micromanage every sentence after calibration</li>
+            <li>You're in a consumer brand, lifestyle, or entertainment category</li>
+            <li>You're looking for the cheapest ghostwriter available</li>
+            <li>You haven't thought about what you want to be known for in your industry</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact">
+      <div class="cta-block">
+        <span class="cta-bg-text">Aryendbumi</span>
+        <h2>Ready to own<br>your <em>narrative?</em></h2>
+        <p>One discovery call. No commitment. We'll tell you exactly what your LinkedIn presence should look like — and whether we're the right fit to build it together.</p>
+        <a href="#" class="btn-gold" data-link="links.bookCall">Book Discovery Call →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Aryendbumi & Co.</div>
+    <div class="footer-links">
+      <a href="#" data-link="links.linkedin">LinkedIn</a>
+      <a href="#" data-link="links.email">Email</a>
+    </div>
+    <div class="footer-note">Strategic Communications · <span data-meta="meta.location"></span> · © <span data-meta="meta.year"></span></div>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
