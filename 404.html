@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0E0F;
+    --accent: #C8A96E;
+    --muted: #666666;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: #FFFFFF;
+    font-family: var(--mono);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .site-nav {
+    background: rgba(14,14,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(200,169,110,0.12);
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+  }
+  .site-nav a {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 20px;
+    color: var(--muted);
+    transition: color 0.15s;
+    position: relative;
+  }
+  .site-nav a:hover { color: var(--accent); }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .error-code {
+    font-size: 120px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+  .terminal-msg {
+    max-width: 500px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .btn-home {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+  }
+  .btn-home:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: var(--accent);
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="index.html">Hub</a>
+  <a href="freebuilder-co.html">Freebuilder</a>
+  <a href="aryendbumi-co.html">Aryendbumi &amp; Co.</a>
+</header>
+
+<div class="content">
+  <div class="error-code">404</div>
+  <div class="terminal-msg">
+    <p>> FATAL ERROR: PATH_NOT_FOUND</p>
+    <p>> System could not locate the requested resource.</p>
+    <p>> The build you're looking for might have been moved, deleted, or never existed in this branch.<span class="cursor"></span></p>
+  </div>
+  <a href="index.html" class="btn-home">Return to Hub</a>
+</div>
+
+</body>
+</html>

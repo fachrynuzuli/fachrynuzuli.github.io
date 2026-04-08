@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fachrynuzuli — builder portfolio</title>
+<meta name="description" content="Fachry Nuzuli Kamal — Digital Transformation Lead, AI builder, product manager. Real projects, real clients, real code. Riau, Indonesia.">
+<meta property="og:title" content="Fachry Nuzuli — Builder Portfolio">
+<meta property="og:description" content="Digital Transformation Lead, AI builder, product manager. Running 3 active operations on the side — real clients, real code, real builds.">
+<meta property="og:url" content="https://fachrynuzuli.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0f;
+    --bg2: #141415;
+    --bg3: #1a1a1b;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e6e0;
+    --muted: #6b6960;
+    --muted2: #9a9790;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #e07a5f;
+    --green: #6aad8e;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Fraunces', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* SCANLINE EFFECT */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOPBAR */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,15,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .topbar-path {
+    color: var(--muted);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .topbar-path .sep { color: var(--border2); }
+  .topbar-path .current { color: var(--accent); }
+
+  .topbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  .topbar-links a {
+    color: var(--muted2);
+    text-decoration: none;
+    font-size: 11px;
+    transition: color 0.15s;
+  }
+  .topbar-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt-line {
+    color: var(--green);
+    font-size: 11px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prompt-line::before {
+    content: '$';
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-handle {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    color: var(--muted2);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 3px 10px;
+    border: 1px solid var(--border2);
+    color: var(--muted2);
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .tag.accent { border-color: var(--accent); color: var(--accent); }
+  .tag.green { border-color: var(--green); color: var(--green); }
+  .tag.coral { border-color: var(--accent3); color: var(--accent3); }
+
+  /* SECTION */
+  .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* FILE TREE */
+  .tree { margin-left: 0; }
+  .tree-root {
+    color: var(--accent);
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tree-item {
+    padding: 2px 0 2px 20px;
+    position: relative;
+    color: var(--muted2);
+    font-size: 12px;
+    cursor: default;
+  }
+  .tree-item::before {
+    content: '├──';
+    position: absolute;
+    left: 0;
+    color: var(--border2);
+  }
+  .tree-item:last-child::before { content: '└──'; }
+
+  .tree-item .fname { color: var(--text); }
+  .tree-item .ftype { color: var(--accent2); }
+  .tree-item .fcomment { color: var(--muted); }
+
+  /* PROJECT CARDS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 24px;
+    transition: background 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card:hover { background: var(--bg3); }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--accent);
+    transition: height 0.2s;
+  }
+  .project-card:hover::before { height: 100%; }
+
+  .project-number {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .project-status {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .status-live { background: rgba(106,173,142,0.15); color: var(--green); border: 1px solid rgba(106,173,142,0.3); }
+  .status-wip { background: rgba(200,169,110,0.12); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
+  .status-internal { background: rgba(156,156,156,0.1); color: var(--muted2); border: 1px solid var(--border2); }
+
+  .project-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 11.5px;
+    color: var(--muted2);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 16px;
+  }
+
+  .stack-badge {
+    font-size: 9.5px;
+    padding: 2px 7px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    border-radius: 2px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .project-link {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+  }
+  .project-link:hover { color: var(--accent); }
+  .project-link .arrow { transition: transform 0.15s; }
+  .project-link:hover .arrow { transform: translateX(2px); }
+
+  /* STACK SECTION */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+
+  .stack-group {
+    background: var(--bg2);
+    padding: 20px;
+  }
+
+  .stack-group-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .stack-items { display: flex; flex-direction: column; gap: 6px; }
+  .stack-item {
+    font-size: 11.5px;
+    color: var(--muted2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stack-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border2);
+    flex-shrink: 0;
+  }
+  .stack-item.active::before { background: var(--green); }
+
+  /* ABOUT / README */
+  .readme {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .readme-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .readme-header .file { color: var(--accent2); }
+
+  .readme-body p {
+    font-size: 12.5px;
+    color: var(--muted2);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .readme-body strong { color: var(--text); font-weight: 500; }
+
+  .readme-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    border: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .stat-cell {
+    background: var(--bg3);
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+
+  .contact-item {
+    background: var(--bg2);
+    padding: 16px 24px;
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .contact-item:hover { background: var(--bg3); }
+
+  .contact-platform {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .contact-handle {
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left { font-size: 11px; color: var(--muted); }
+  .footer-right { font-size: 11px; color: var(--muted); }
+  .footer-right a { color: var(--accent); text-decoration: none; }
+
+  /* CURSOR BLINK */
+  .cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(2) { animation: fadeUp 0.5s 0.1s ease both; }
+  .section:nth-child(3) { animation: fadeUp 0.5s 0.2s ease both; }
+  .section:nth-child(4) { animation: fadeUp 0.5s 0.3s ease both; }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .readme-stats { grid-template-columns: repeat(2, 1fr); }
+    .topbar-links { display: none; }
+    .hero-name { font-size: 40px; }
+  }
+
+  /* SITE NAV (SHARED) */
+  .site-nav {
+    background: rgba(14,14,15,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(200,169,110,0.12);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .site-nav a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 20px;
+    color: var(--muted);
+    transition: color 0.15s;
+    position: relative;
+  }
+  .site-nav a:hover { color: var(--accent); }
+  .site-nav a.active { color: var(--accent); }
+  .site-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="index.html" class="active">Hub</a>
+  <a href="freebuilder-co.html">Freebuilder</a>
+  <a href="aryendbumi-co.html">Aryendbumi &amp; Co.</a>
+</header>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-path">
+        <span>~</span>
+        <span class="sep">/</span>
+        <span>fachrynuzuli</span>
+        <span class="sep">/</span>
+        <span class="current">portfolio</span>
+      </div>
+      <div class="topbar-links">
+        <a href="#projects">projects</a>
+        <a href="#stack">stack</a>
+        <a href="#about">readme</a>
+        <a href="#contact">contact</a>
+        <a href="https://fachrynuzuli.com" target="_blank">→ main site</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="hero" id="top">
+    <div class="prompt-line">whoami — I build things so I have something worth teaching</div>
+    <h1 class="hero-name">Fachry <em>Nuzuli</em><br>Kamal<span class="cursor"></span></h1>
+    <div class="hero-handle">@fachrynuzuli · Riau, Indonesia · github.com/fachrynuzuli</div>
+    <p class="hero-desc">
+      Digital Transformation Lead at a multinational. Running 3 active operations on the side — real clients, real code, real builds.
+      500+ users helped. Everything I ship starts as a working link, not a pitch deck.
+    </p>
+    <div class="hero-tags">
+      <span class="tag accent">prompt engineering</span>
+      <span class="tag accent">vibe coding</span>
+      <span class="tag green">product management</span>
+      <span class="tag green">AI-first builds</span>
+      <span class="tag coral">freeware.lab</span>
+      <span class="tag coral">freebuilder</span>
+      <span class="tag">Riau → everywhere</span>
+    </div>
+  </div>
+
+  <!-- FILE TREE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">/ repository</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="tree">
+      <div class="tree-root">📁 fachrynuzuli/</div>
+      <div style="padding-left: 12px;">
+        <div class="tree-item"><span class="fname">freeware-lab/</span> <span class="fcomment">— done-for-you MVP sprints · $497–997/sprint</span></div>
+        <div class="tree-item"><span class="fname">freebuilder/</span> <span class="fcomment">— AI education brand · prompt files · playbooks</span></div>
+        <div class="tree-item"><span class="fname">freewriter-co/</span> <span class="fcomment">— ghostwriting · LinkedIn personal brand</span></div>
+        <div class="tree-item"><span class="fname">corporate-builds/</span> <span class="fcomment">— FMS suite, GPS tracking, logistics tools</span></div>
+        <div class="tree-item"><span class="fname">prompt-files/</span> <span class="fcomment">— packaged AI workflows · $15–49</span></div>
+        <div class="tree-item"><span class="fname">README.md</span> <span class="ftype">.md</span> <span class="fcomment">— you are here</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-header">
+      <span class="section-label">/ projects</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>001</span>
+          <span class="project-status status-live">live</span>
+        </div>
+        <div class="project-name">FMS Suite</div>
+        <div class="project-desc">Fleet Management System with mobile app, web dashboard, GPS tracking, and Wi-Fi infrastructure. Built for 400+ contractors across 11 departments at a multinational pulp & paper corp.</div>
+        <div class="project-desc" style="color: var(--green); font-size: 10.5px; margin-top: -8px;">3 system audits passed. 400+ contractors onboarded.</div>
+        <div class="project-stack">
+          <span class="stack-badge">Lovable</span>
+          <span class="stack-badge">Supabase</span>
+          <span class="stack-badge">GPS Integration</span>
+          <span class="stack-badge">Mobile App</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link" style="color: var(--muted); cursor: default;">internal deployment</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>002</span>
+          <span class="project-status status-live">live</span>
+        </div>
+        <div class="project-name">Rapid MVP Sprint</div>
+        <div class="project-desc">Done-for-you MVP service. Brief to working app in 48–72 hours using AI-first tools. Client owns the code. No agency markup, no monthly fees. Built 3+ MVPs delivered to real clients.</div>
+        <div class="project-stack">
+          <span class="stack-badge">Lovable</span>
+          <span class="stack-badge">v0</span>
+          <span class="stack-badge">Supabase</span>
+          <span class="stack-badge">Vercel</span>
+          <span class="stack-badge">Netlify</span>
+        </div>
+        <div class="project-links">
+          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">freeware.lab <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>003</span>
+          <span class="project-status status-wip">in progress</span>
+        </div>
+        <div class="project-name">Prompt Files</div>
+        <div class="project-desc">Packaged AI workflow packs. Each is a complete A-to-Z system — context management, JSON profiling, LLM mastery, vibe coding workflows. Built for non-developers who want to move like power users.</div>
+        <div class="project-stack">
+          <span class="stack-badge">Whop</span>
+          <span class="stack-badge">Claude</span>
+          <span class="stack-badge">JSON Profiles</span>
+          <span class="stack-badge">Prompt Systems</span>
+        </div>
+        <div class="project-links">
+          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">freebuilder <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>004</span>
+          <span class="project-status status-live">live</span>
+        </div>
+        <div class="project-name">freewriter.co</div>
+        <div class="project-desc">Personal brand and ghostwriting service for B2B and digital transformation leaders. AI-assisted profiling, LinkedIn content strategy, voice extraction. Real clients, real personal brands.</div>
+        <div class="project-stack">
+          <span class="stack-badge">Claude</span>
+          <span class="stack-badge">LinkedIn</span>
+          <span class="stack-badge">Content Strategy</span>
+          <span class="stack-badge">AI Profiling</span>
+        </div>
+        <div class="project-links">
+          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">view agency <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>005</span>
+          <span class="project-status status-internal">internal</span>
+        </div>
+        <div class="project-name">Transport Digitization Suite</div>
+        <div class="project-desc">Multi-system digitization covering procurement, contractor workforce management, and forestry logistics. Full-cycle PM: requirements, prototyping, stakeholder alignment, and program integration.</div>
+        <div class="project-stack">
+          <span class="stack-badge">TRMS</span>
+          <span class="stack-badge">Digifleet</span>
+          <span class="stack-badge">Orpak</span>
+          <span class="stack-badge">Vibe Coding</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link" style="color: var(--muted); cursor: default;">not public</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">
+          <span>006</span>
+          <span class="project-status status-wip">building</span>
+        </div>
+        <div class="project-name">Freebuilder Content Engine</div>
+        <div class="project-desc">1M+ impressions generated across X, Instagram, LinkedIn. Daily content system around AI education — real builds, real proof, real audience in SEA. 230 Substack subscribers. 2,700+ social following.</div>
+        <div class="project-stack">
+          <span class="stack-badge">Substack</span>
+          <span class="stack-badge">Instagram</span>
+          <span class="stack-badge">X / Twitter</span>
+          <span class="stack-badge">LinkedIn</span>
+          <span class="stack-badge">TikTok</span>
+        </div>
+        <div class="project-links">
+          <a href="https://x.com/fachrynuzuli" target="_blank" class="project-link">follow <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <div class="section" id="stack">
+    <div class="section-header">
+      <span class="section-label">/ stack</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-group">
+        <div class="stack-group-label">build tools</div>
+        <div class="stack-items">
+          <div class="stack-item active">Lovable</div>
+          <div class="stack-item active">v0</div>
+          <div class="stack-item active">Antigravity</div>
+          <div class="stack-item active">Claude Code</div>
+          <div class="stack-item active">AI Studio</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">backend / deploy</div>
+        <div class="stack-items">
+          <div class="stack-item active">Supabase</div>
+          <div class="stack-item active">Vercel</div>
+          <div class="stack-item active">Netlify</div>
+          <div class="stack-item active">GitHub Pages</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">ai models</div>
+        <div class="stack-items">
+          <div class="stack-item active">Claude (Anthropic)</div>
+          <div class="stack-item active">GPT-4o</div>
+          <div class="stack-item active">Gemini</div>
+          <div class="stack-item">Llama (local)</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">ops / content</div>
+        <div class="stack-items">
+          <div class="stack-item active">Whop</div>
+          <div class="stack-item active">Substack</div>
+          <div class="stack-item active">Cal.com</div>
+          <div class="stack-item active">CapCut</div>
+          <div class="stack-item active">Canva</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- README -->
+  <div class="section" id="about">
+    <div class="section-header">
+      <span class="section-label">/ readme.md</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="readme">
+      <div class="readme-header">
+        <span>📄</span>
+        <span class="file">README.md</span>
+        <span style="margin-left: auto;">last updated: <span data-meta="meta.lastUpdated">April 2026</span></span>
+      </div>
+      <div class="readme-body">
+        <p>
+          <strong>Digital Transformation Lead</strong> at a multinational pulp & paper corporation.
+          Building FMS suites, procurement systems, and logistics tools for 400+ contractors across 11 departments.
+          On weekends, I run three side operations under the same philosophy:
+          <strong>visible proof beats theory.</strong>
+        </p>
+        <p>
+          <strong>freeware.lab</strong> — two-person web dev agency. Brief to working app in 48–72 hours.
+          Clients own the source code outright. No agency markup.<br>
+          <strong>freebuilder</strong> — AI education brand for Southeast Asia. Every lesson is backed by a real build.<br>
+          <strong>freewriter.co</strong> — ghostwriting and personal brand strategy for B2B leaders.
+        </p>
+        <p>
+          Every role has been the same job with a different name: walk into a broken system, understand it faster than anyone expects, then rebuild it. Financial analysis, equity research, logistics operations, digital transformation. The tools changed. The problem didn't.
+        </p>
+        <p>
+          The methodology is always the same: <strong>vibe-code the prototype, validate with real users, hand off clean code.</strong>
+          Don't build what nobody asked for. Ship broken. Fix live.
+        </p>
+        <div class="readme-stats">
+          <div class="stat-cell">
+            <span class="stat-value">500+</span>
+            <span class="stat-label">users helped</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-value">1M+</span>
+            <span class="stat-label">impressions</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-value">48h</span>
+            <span class="stat-label">MVP delivery</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-value">3</span>
+            <span class="stat-label">active divisions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="section-header">
+      <span class="section-label">/ contact</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-row">
+      <a href="#" data-link="socials.x" target="_blank" class="contact-item">
+        <div>
+          <span class="contact-platform">X / Twitter</span>
+          <span class="contact-handle">@fachrynuzuli</span>
+        </div>
+      </a>
+      <a href="#" data-link="socials.instagram" target="_blank" class="contact-item">
+        <div>
+          <span class="contact-platform">Instagram</span>
+          <span class="contact-handle">@fachrynuzuli</span>
+        </div>
+      </a>
+      <a href="#" data-link="socials.linkedin" target="_blank" class="contact-item">
+        <div>
+          <span class="contact-platform">LinkedIn</span>
+          <span class="contact-handle">Fachry Nuzuli Kamal</span>
+        </div>
+      </a>
+      <a href="#" data-link="socials.substack" target="_blank" class="contact-item">
+        <div>
+          <span class="contact-platform">Substack</span>
+          <span class="contact-handle">fachrynuzuli</span>
+        </div>
+      </a>
+      <a href="https://fachrynuzuli.com" target="_blank" class="contact-item">
+        <div>
+          <span class="contact-platform">main site</span>
+          <span class="contact-handle">fachrynuzuli.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+      <div class="footer-left">© <span data-meta="meta.year">2026</span> Fachry Nuzuli Kamal · Riau, Indonesia</div>
+    <div class="footer-right">built with AI, shipped with intent · <a href="https://fachrynuzuli.com">fachrynuzuli.com →</a></div>
+  </div>
+
+</div>
+  <script src="site-config.js"></script>
+</body>
+</html>

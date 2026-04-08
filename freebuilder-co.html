@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freebuilder Studio — Fachry Nuzuli | AI Builder & MVP Sprint</title>
+  <meta name="description" content="Ship MVPs in 48 hours with $0 AI tools. Prompt packs, vibe coding, and rapid MVP sprints by Fachry Nuzuli — Product Manager turned AI builder.">
+  <meta property="og:title" content="Freebuilder Studio — Fachry Nuzuli">
+  <meta property="og:description" content="Ship MVPs in 48 hours with $0 AI tools. Prompt packs, vibe coding, and rapid MVP sprints.">
+  <meta property="og:url" content="https://fachrynuzuli.github.io/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #111111;
+      --bg3: #181818;
+      --green: #00E87A;
+      --green-dim: #00994d;
+      --green-glow: rgba(0,232,122,0.12);
+      --green-subtle: rgba(0,232,122,0.06);
+      --text: #E8E8E8;
+      --text-muted: #707070;
+      --border: #222222;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+      opacity: 0.5;
+    }
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,232,122,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,232,122,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 0;
+    }
+    section, nav, footer, .ticker-wrap, .stats-bar, .site-nav {
+      position: relative; z-index: 1;
+    }
+
+    /* ── SITE NAV (SHARED) ── */
+    .site-nav {
+      background: rgba(8,8,8,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,232,122,0.1);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: center; gap: 2px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .site-nav a {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; padding: 14px 24px;
+      color: var(--text-muted); transition: color 0.2s;
+      position: relative;
+    }
+    .site-nav a:hover { color: var(--green); }
+    .site-nav a.active {
+      color: var(--green);
+    }
+    .site-nav a.active::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 24px; right: 24px;
+      height: 2px; background: var(--green);
+    }
+
+    /* ── ANNOUNCEMENT BANNER ── */
+    #announcement-banner {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      position: relative;
+    }
+    .banner-dot {
+      width: 6px; height: 6px;
+      background: var(--green); border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .banner-text {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+    .banner-link {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--green); text-decoration: none; font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .banner-link:hover { text-decoration: underline; }
+    .banner-close {
+      position: absolute; right: 16px;
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; font-size: 14px; line-height: 1;
+      min-width: 44px; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── PAGE NAV ── */
+    nav {
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 26px; letter-spacing: 4px;
+    }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 1px; transition: color 0.2s;
+      min-height: 44px; display: flex; align-items: center;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 48px 64px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-tag {
+      font-family: var(--font-mono); font-size: 11px; color: var(--green);
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 11vw, 136px);
+      line-height: 0.92; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 28px;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--green), #00ffa0, var(--green));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero-sub {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 500px; line-height: 1.75; margin-bottom: 40px; font-weight: 300;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+    .hero-btns {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+    .btn-primary {
+      background: var(--green); color: #000;
+      padding: 14px 28px; font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700; text-decoration: none;
+      letter-spacing: 1.5px; display: inline-block;
+      transition: all 0.25s ease;
+      min-height: 44px;
+    }
+    .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,232,122,0.2); }
+    .btn-secondary {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 14px 28px; font-family: var(--font-mono);
+      font-size: 12px; text-decoration: none; letter-spacing: 1.5px;
+      display: inline-block; transition: all 0.25s ease;
+      min-height: 44px;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+    /* ── STATS ── */
+    .stats-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 28px 20px; text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-item:hover { background: var(--bg2); }
+    .stat-item + .stat-item { border-left: 1px solid var(--border); }
+    .stat-num {
+      font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px);
+      color: var(--green); letter-spacing: 2px;
+    }
+    .stat-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-muted); letter-spacing: 2px;
+      text-transform: uppercase; margin-top: 6px;
+    }
+    .stat-context { font-size: 11px; color: #444; margin-top: 4px; }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden; border-bottom: 1px solid var(--border);
+      padding: 13px 0; background: var(--bg2);
+    }
+    .ticker {
+      display: flex; gap: 64px; white-space: nowrap;
+      animation: ticker-scroll 30s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase;
+    }
+    .ticker-item em { color: var(--green); font-style: normal; margin-right: 8px; }
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    .section-head { padding: 60px 48px 28px; max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-family: var(--font-mono); font-size: 10px; color: var(--green);
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 54px);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* ── MVP SPRINT ── */
+    .sprint-card {
+      max-width: 1100px; margin: 0 auto 0;
+      padding: 0 48px 60px;
+    }
+    .sprint-inner {
+      border: 1px solid var(--green-dim);
+      background: var(--bg2); padding: 44px;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+      position: relative; overflow: hidden;
+    }
+    .sprint-inner::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: var(--green);
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+    .sprint-inner::after {
+      content: 'MVP';
+      position: absolute; right: -10px; top: 30px;
+      font-family: var(--font-display); font-size: 180px;
+      color: rgba(0,232,122,0.03); line-height: 1;
+      pointer-events: none;
+    }
+    .sprint-badge {
+      display: inline-block;
+      background: var(--green); color: #000;
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; padding: 4px 12px; margin-bottom: 20px;
+    }
+    .sprint-name {
+      font-family: var(--font-display); font-size: clamp(32px, 4vw, 46px);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .sprint-desc {
+      color: var(--text-muted); font-size: 14px; line-height: 1.8;
+      margin-bottom: 28px; font-weight: 300;
+    }
+    .sprint-features { list-style: none; margin-bottom: 36px; }
+    .sprint-features li {
+      font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+      padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5;
+      transition: color 0.2s;
+    }
+    .sprint-features li:hover { color: var(--green); }
+    .sprint-features li::before { content: '> '; color: var(--green); }
+    .sprint-price {
+      font-family: var(--font-display); font-size: clamp(48px, 5vw, 64px);
+      color: var(--green); letter-spacing: 2px; line-height: 1;
+    }
+    .sprint-price-note {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); margin-bottom: 28px; margin-top: 4px;
+    }
+    .sprint-cta { margin-bottom: 28px; }
+    .sprint-proof {
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 22px; font-family: var(--font-mono);
+      font-size: 11px; color: var(--text-muted); line-height: 2;
+    }
+    .sprint-proof .proof-label {
+      color: var(--green); display: block; margin-bottom: 10px; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* ── PRODUCT CARDS ── */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .product-card {
+      background: var(--bg); padding: 36px 32px;
+      cursor: pointer; transition: all 0.3s ease;
+      position: relative;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, var(--green-subtle), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .product-card:hover { background: var(--bg2); transform: translateY(-2px); }
+    .product-card:hover::before { opacity: 1; }
+    .product-icon { font-size: 32px; margin-bottom: 18px; }
+    .product-name {
+      font-family: var(--font-display); font-size: 24px;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .product-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.7;
+      margin-bottom: 24px; font-weight: 300;
+    }
+    .product-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .product-price {
+      font-family: var(--font-mono); font-size: 22px; color: var(--green);
+    }
+    .product-cta {
+      font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 1px; border: 1px solid var(--border);
+      padding: 7px 14px; transition: all 0.2s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .product-cta:hover { color: var(--green); border-color: var(--green); box-shadow: 0 0 12px var(--green-glow); }
+
+    /* ── BUNDLE ── */
+    .bundle-wrap { padding: 1px 48px 0; max-width: 1100px; margin: 0 auto; }
+    .bundle-inner {
+      border: 1px solid var(--border); background: var(--bg2);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+      transition: border-color 0.3s;
+    }
+    .bundle-inner:hover { border-color: var(--green-dim); }
+    .bundle-info h3 {
+      font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .bundle-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .bundle-tag {
+      font-family: var(--font-mono); font-size: 10px;
+      border: 1px solid var(--border); padding: 3px 9px; color: var(--text-muted);
+    }
+    .bundle-right { text-align: right; flex-shrink: 0; }
+    .bundle-price {
+      font-family: var(--font-display); font-size: clamp(36px, 4vw, 48px);
+      color: var(--green); letter-spacing: 2px;
+    }
+    .bundle-was {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); text-decoration: line-through; margin-bottom: 12px;
+    }
+
+    /* ── FREE RUNBOOK ── */
+    .runbook-inner {
+      border: 1px dashed var(--border); padding: 44px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+      transition: border-color 0.3s;
+    }
+    .runbook-inner:hover { border-color: var(--green-dim); }
+    .runbook-inner h3 {
+      font-family: var(--font-display); font-size: clamp(28px, 3vw, 34px);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .runbook-inner p {
+      font-size: 14px; color: var(--text-muted); line-height: 1.7;
+      max-width: 500px; font-weight: 300;
+    }
+    .runbook-right { flex-shrink: 0; text-align: right; }
+    .runbook-note {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-muted); letter-spacing: 2px; margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-left {
+      font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    }
+    .footer-left span { color: var(--green); }
+    .footer-right {
+      font-family: var(--font-display); font-size: 16px;
+      letter-spacing: 2px; color: var(--text-muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 44px; height: 44px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .site-nav { padding: 0 20px; }
+      .site-nav a { padding: 12px 16px; font-size: 10px; }
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); flex-direction: column; padding: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 16px 20px; border-bottom: 1px solid var(--border); min-height: 48px; }
+      .hamburger { display: flex; }
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 80px); }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(3) { border-left: none; }
+      .sprint-inner { grid-template-columns: 1fr; padding: 28px; }
+      .sprint-inner::after { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .bundle-inner { flex-direction: column; }
+      .bundle-right { text-align: left; }
+      .section-head, .sprint-card, .bundle-wrap { padding-left: 20px; padding-right: 20px; }
+      .section-wrap { padding-left: 20px; padding-right: 20px; }
+      .runbook-inner { flex-direction: column; padding: 28px; }
+      .runbook-right { text-align: left; }
+      footer { flex-direction: column; gap: 10px; padding: 24px 20px; text-align: center; }
+    }
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 44px; }
+      .hero-btns { flex-direction: column; }
+      .site-nav a { font-size: 9px; letter-spacing: 1px; padding: 12px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- SITE NAV (SHARED) -->
+  <header class="site-nav">
+    <a href="index.html" class="active">Freebuilder</a>
+    <a href="aryendbumi-co.html">Aryendbumi & Co.</a>
+  </header>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="announcement-banner">
+    <span class="banner-dot"></span>
+    <span class="banner-text">B2B content strategy for industrial leaders?</span>
+    <a href="aryendbumi-co.html" class="banner-link">→ Aryendbumi & Co.</a>
+    <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close banner">✕</button>
+  </div>
+
+  <!-- PAGE NAV -->
+  <nav>
+    <div class="nav-logo">FREE<span>BUILDER</span></div>
+    <button class="hamburger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#" data-link="socials.x">𝕏 Twitter</a>
+      <a href="#" data-link="socials.instagram">Instagram</a>
+      <a href="#" data-link="socials.linkedin">LinkedIn</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section>
+      <div class="hero">
+        <p class="hero-tag">// Fachry Nuzuli · AI Builder · Product Manager @MNC</p>
+        <h1>I SHIP.<br><span class="accent">THEREFORE</span><br>I AM.</h1>
+        <p class="hero-sub">Product Manager di MNC. Tiap weekend ngeship startup baru pake AI tools gratis. 500+ users helped. Gue buktiin dulu, baru ngajarin.</p>
+        <div class="hero-btns">
+          <a href="#sprint" class="btn-primary">RAPID MVP SPRINT →</a>
+          <a href="#runbook" class="btn-secondary">GRAB FREE RUNBOOK</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-item reveal">
+        <div class="stat-num">48H</div>
+        <div class="stat-label">Delivery Time</div>
+        <div class="stat-context">From brief to working app</div>
+      </div>
+      <div class="stat-item reveal reveal-d1">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Tools Cost</div>
+        <div class="stat-context">Lovable, Bolt, v0 — all free tier</div>
+      </div>
+      <div class="stat-item reveal reveal-d2">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Users Helped</div>
+        <div class="stat-context">Via free products & builds</div>
+      </div>
+      <div class="stat-item reveal reveal-d3">
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">Impressions</div>
+        <div class="stat-context">Across X, Instagram, LinkedIn</div>
+      </div>
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span class="ticker-item"><em>⚡</em>SHIP IT · DON'T TALK ABOUT IT</span>
+        <span class="ticker-item"><em>🔨</em>DONE > PERFECT</span>
+        <span class="ticker-item"><em>💸</em>TRUST IS THE CURRENCY</span>
+        <span class="ticker-item"><em>🤖</em>PROMPT IT TILL YOU MAKE IT</span>
+        <span class="ticker-item"><em>🆓</em>BUILT WITH $0 AI TOOLS</span>
+        <span class="ticker-item"><em>📦</em>VISIBLE PROOF BEATS THEORY</span>
+        <span class="ticker-item"><em>⚡</em>SHIP IT · DON'T TALK ABOUT IT</span>
+        <span class="ticker-item"><em>🔨</em>DONE > PERFECT</span>
+        <span class="ticker-item"><em>💸</em>TRUST IS THE CURRENCY</span>
+        <span class="ticker-item"><em>🤖</em>PROMPT IT TILL YOU MAKE IT</span>
+        <span class="ticker-item"><em>🆓</em>BUILT WITH $0 AI TOOLS</span>
+        <span class="ticker-item"><em>📦</em>VISIBLE PROOF BEATS THEORY</span>
+      </div>
+    </div>
+
+    <!-- MVP SPRINT -->
+    <section id="sprint">
+      <div class="section-head">
+        <p class="section-tag">// Done For You · Service</p>
+        <h2 class="section-title">BUILD IN 48 HOURS</h2>
+      </div>
+      <div class="sprint-card">
+        <div class="sprint-inner reveal">
+          <div>
+            <span class="sprint-badge">🚀 FLAGSHIP SERVICE</span>
+            <h3 class="sprint-name">RAPID MVP SPRINT</h3>
+            <p class="sprint-desc">Gue build MVP kamu dalam 48 jam pake AI tools gratis. Kamu nerima working app + full source code. No monthly fees. No dev agency BS. Same methodology yang gue pake buat ship $1.5M+ digital transformation initiatives — compressed jadi dua hari buat bisnis kamu.</p>
+            <ul class="sprint-features">
+              <li>Working app — bukan wireframe, bukan mockup Figma</li>
+              <li>Full source code — no lock-in, kamu yang punya</li>
+              <li>Built with Lovable, Bolt, v0 + Supabase backend</li>
+              <li>No monthly fees. One payment, done.</li>
+              <li>48-hour turnaround. Dijamin atau refund.</li>
+            </ul>
+          </div>
+          <div class="sprint-right">
+            <div class="sprint-price">$497</div>
+            <p class="sprint-price-note">// One-time payment. Full ownership.</p>
+            <div class="sprint-cta">
+              <a href="#" class="btn-primary" data-link="links.sprintCTA">BOOK SPRINT NOW →</a>
+            </div>
+            <div class="sprint-proof">
+              <span class="proof-label">// Why this works</span>
+              Dev agency: $10k+ dan 3 bulan.<br>
+              Gue: 48 jam, &lt;10% dari harga itu.<br>
+              Plus kamu yang pegang code-nya.<br><br>
+              Built on the same approach gue pake<br>
+              buat bangun FMS suite — mobile app,<br>
+              web app, GPS integration, Wi-Fi infra.<br>
+              Real systems. Real scale.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMPT FILES -->
+    <section>
+      <div class="section-head">
+        <p class="section-tag">// Digital Products</p>
+        <h2 class="section-title">PROMPT FILES</h2>
+      </div>
+      <div class="section-wrap" style="padding-bottom: 0;">
+        <div class="products-grid">
+          <div class="product-card reveal">
+            <div class="product-icon">✍️</div>
+            <h3 class="product-name">Content Creation Pack</h3>
+            <p class="product-desc">JSON profiling system + 50+ post ideas + writing voice builder. Build personal brand dari nol dengan structured prompts yang actually works.</p>
+            <div class="product-footer">
+              <span class="product-price">$19</span>
+              <a href="#" class="product-cta" data-link="links.contentPack">GET PACK →</a>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d1">
+            <div class="product-icon">🧠</div>
+            <h3 class="product-name">Context Management Pack</h3>
+            <p class="product-desc">JSON context profiles, structured memory, LLM mastery workflows. Stop pake AI kayak Google. Start pake AI kayak programmable system.</p>
+            <div class="product-footer">
+              <span class="product-price">$19</span>
+              <a href="#" class="product-cta" data-link="links.contextPack">GET PACK →</a>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d2">
+            <div class="product-icon">⚡</div>
+            <h3 class="product-name">Vibe Coding Starter</h3>
+            <p class="product-desc">Prompts untuk Lovable, Bolt & v0. Build real apps dari zero coding skill. Exact prompt workflows yang gue pake buat ship MVPs tiap weekend.</p>
+            <div class="product-footer">
+              <span class="product-price">$19</span>
+              <a href="#" class="product-cta" data-link="links.vibeCoding">GET PACK →</a>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d3">
+            <div class="product-icon">🔍</div>
+            <h3 class="product-name">SEO & Automation Pack</h3>
+            <p class="product-desc">AI-powered SEO workflows + automation chain prompts. Build systems yang jalan sendiri — bukan tasks yang harus dikerjain manual terus.</p>
+            <div class="product-footer">
+              <span class="product-price">$19</span>
+              <a href="#" class="product-cta" data-link="links.seoPack">GET PACK →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUNDLE -->
+      <div class="bundle-wrap" style="padding-top: 2px; padding-bottom: 60px;">
+        <div class="bundle-inner reveal">
+          <div class="bundle-info">
+            <h3>🎁 COMPLETE BUNDLE</h3>
+            <div class="bundle-tags">
+              <span class="bundle-tag">Content Creation</span>
+              <span class="bundle-tag">Context Management</span>
+              <span class="bundle-tag">Vibe Coding</span>
+              <span class="bundle-tag">SEO & Automation</span>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-price">$49</div>
+            <div class="bundle-was">$76 kalau beli satuan</div>
+            <a href="#" class="btn-primary" data-link="links.bundleCTA">GET BUNDLE →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE RUNBOOK -->
+    <section id="runbook">
+      <div class="section-head">
+        <p class="section-tag">// Free · Start Here</p>
+        <h2 class="section-title">FREE RUNBOOK</h2>
+      </div>
+      <div class="section-wrap" style="padding-bottom: 80px;">
+        <div class="runbook-inner reveal">
+          <div>
+            <h3>📋 AI BUILDER RUNBOOK</h3>
+            <p>Live dashboard dengan semua builds gue — demo links, source code, copy-paste prompts, dan $0 tool stack. Update tiap minggu. Kalau free stuff-nya aja udah segini, imagine yang paid-nya.</p>
+          </div>
+          <div class="runbook-right">
+            <p class="runbook-note">// Email only · Free forever</p>
+            <a href="#" class="btn-primary" data-link="links.runbookCTA">GRAB IT FREE →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">FREEBUILDER <span>STUDIO</span> © <span data-meta="meta.year">2026</span> · <span data-meta="meta.location">Riau, Indonesia</span></div>
+    <div class="footer-right">I SHIP. THEREFORE I AM.</div>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script src="site-config.js"></script>
+</body>
+</html>
