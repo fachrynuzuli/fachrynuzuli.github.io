@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digifleet DA Enhancement Mockups — FLS BRD Addendum</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
+body{background:#F0F2F7;padding:16px;color:#111827;height:100vh;display:flex;flex-direction:column}
+.mh-barge{background:#F8FAFC;padding:8px 10px;text-align:center;border-bottom:1px solid #E5E7EB;cursor:pointer;transition:background 0.2s}
+.mh-barge:hover{background:#F1F5F9}
+table{border-collapse:collapse;width:100%;font-size:11px;text-align:left}
+td,th{padding:8px;border-bottom:1px solid #e5e7eb}
+th{background:#f9fafb;color:#6b7280;font-weight:600}
+button{cursor:pointer;font-family:inherit}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div id="root" style="max-width:900px;margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1"></div>
+<script>
+const NAVY="#1B2E6B",NAVY2="#243A80",TEAL="#0ABFDE",AMBER="#F59E0B",AMBERBG="#FEF3C7",DANGER="#EF4444",SUCCESS="#10B981",GRAY="#F0F2F7",BORDER="#E5E7EB",MUTED="#6B7280",TEXT="#111827";
+
+let activeScreen = 'tc';
+let activeUnitId = null;
+
+let units = [
+  { id: "MHP0025", jetty: "Jetty Futong - P1", barge: "BG. Sentosa Jaya 2308", op: "Amrojali", status: "running", queue: ["RTP0285"] },
+  { id: "MHP0026", jetty: "Jetty Futong - P2", barge: "BG. Glory Marine 7", op: "Ricardo H.", status: "idle", queue: [] },
+  { id: "MHP0027", jetty: "Jetty Futong - P3", barge: "BG. Glory Marine 3", op: "—", status: "idle", queue: [] },
+  { id: "MHP0028", jetty: "Jetty Futong - P5", barge: "BG. Capricorn 119", op: "—", status: "downtime", queue: ["BDP0057", "RTP0102"] }
+];
+
+let incomingTrucks = ["BDP0012", "RTP0344", "BDP0088", "RTP0199"];
+
+function nav(screen, unitId = null) {
+  if (unitId) activeUnitId = unitId;
+  activeScreen = screen;
+  render();
+}
+window.nav = nav; // global scope for HTML clicks
+
+function updateUnitStatus(id, newStatus, newOp = null) {
+  units = units.map(u => {
+    if(u.id === id) return { ...u, status: newStatus, op: newOp !== null ? newOp : u.op };
+    return u;
+  });
+}
+
+function assignTruck(truckStr, unitId) {
+  incomingTrucks = incomingTrucks.filter(t => t !== truckStr);
+  units = units.map(u => u.id === unitId ? { ...u, queue: [...u.queue, truckStr] } : u);
+  nav('tc');
+}
+window.assignTruck = assignTruck;
+
+function popTruckStop(id) {
+  units = units.map(u => {
+    if(u.id === id) return { ...u, status: 'idle', queue: u.queue.slice(1) };
+    return u;
+  });
+}
+window.popTruckStop = popTruckStop;
+window.updState = (id, st, op) => { updateUnitStatus(id,st,op); nav('tc'); };
+
+const SCREENS=[
+  {id:"tc", label:"TC Dashboard", info: "Redesigned TC dashboard featuring Top Summary Bar, live MH status indicators, and Truck Queuing UI mirroring the real-world flow (Barge -> MH -> Truck)."},
+  {id:"downtime", label:"Log Downtime", info: "Marks the unit as Downtime. Status pill on TC Dashboard will turn yellow."},
+  {id:"start", label:"Start Sequence", info: "Starts a loading sequence. Pops the first truck from the queue into 'Loading' state. Status turns green."},
+  {id:"stop", label:"Stop Sequence", info: "Finishes the sequence for the current truck. Truck is removed from queue. Status returns to Idle."},
+  {id:"ts", label:"Timesheet", info: "Shows historical sequences for the unit."},
+  {id:"barge", label:"Barge Operations", info: "Manage barge attachments and detachments for this unit."},
+  {id:"trucks", label:"Assign Truck", info: "Select an incoming truck to join the queue at a specific Material Handler."}
+];
+
+function hdr(user,id){return`<div style="background:${NAVY};padding:8px 14px;display:flex;align-items:center;justify-content:space-between">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="width:32px;height:32px;background:white;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1">
+      <span style="font-size:5.5px;font-weight:800;color:${NAVY}">DIGI</span><span style="font-size:5.5px;font-weight:800;color:${NAVY}">fleet</span>
+    </div>
+  </div>
+  <div style="text-align:right;color:white"><div style="font-size:12px;font-weight:600">${user}</div><div style="font-size:10px;opacity:0.65">${id}</div></div>
+</div>`}
+
+function androidNav(){return`<div style="background:#1a1a1a;padding:5px 0;display:flex;justify-content:center;gap:52px">
+  <span style="color:#888;font-size:14px;cursor:pointer" onclick="nav('tc')">|||</span>
+  <span style="color:#888;font-size:16px;cursor:pointer" onclick="nav('tc')">&#9675;</span>
+  <span style="color:#888;font-size:14px;cursor:pointer" onclick="nav('tc')">&#8249;</span>
+</div>`}
+
+function StatusPill(st) {
+  if (st === 'running') return `<span style="background:#ECFDF5;color:#065F46;border:1px solid ${SUCCESS};padding:2px 6px;border-radius:12px;font-size:9px;font-weight:700">&#9679; RUNNING</span>`;
+  if (st === 'downtime') return `<span style="background:${AMBERBG};color:#92400E;border:1px solid ${AMBER};padding:2px 6px;border-radius:12px;font-size:9px;font-weight:700">&#9679; DOWNTIME</span>`;
+  return `<span style="background:#F3F4F6;color:${MUTED};border:1px solid ${BORDER};padding:2px 6px;border-radius:12px;font-size:9px;font-weight:700">&#9675; IDLE</span>`;
+}
+
+function mhCard(u){
+  const qs = u.queue.length === 0 ? `<span style="font-size:9px;color:#9CA3AF;font-style:italic">Empty queue</span>` 
+    : u.queue.map((t,idx)=> {
+      const act = (idx===0 && u.status==='running');
+      return `<div style="background:${act?SUCCESS:'white'};color:${act?'white':TEXT};border:1px solid ${act?SUCCESS:BORDER};border-radius:3px;padding:2px 4px;font-size:9px;font-weight:600">&#128666; ${t}</div>`;
+    }).join("");
+
+  const mainBtn = u.status === 'running' 
+    ? `<button onclick="nav('stop','${u.id}')" style="width:100%;background:#FEE2E2;color:${DANGER};border:1px solid #FCA5A5;font-size:10px;font-weight:700;padding:6px 0;border-radius:4px">STOP SEQ (Loading)</button>`
+    : `<button onclick="nav('start','${u.id}')" ${u.queue.length===0?'disabled':''} style="width:100%;background:${NAVY};color:white;border:none;font-size:10px;font-weight:700;padding:6px 0;border-radius:4px;opacity:${u.queue.length===0?0.5:1}">${u.queue.length===0?'NO TRUCKS IN QUEUE':'START SEQ'}</button>`;
+
+  return`<div style="border-radius:8px;overflow:hidden;border:1px solid ${BORDER};flex:0 0 260px;min-width:260px;display:flex;flex-direction:column;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.05)">
+    <div onclick="nav('barge','${u.id}')" class="mh-barge">
+      <div style="font-size:16px">&#128674;</div><div style="font-size:10px;color:${NAVY};font-weight:600;margin-top:2px">${u.barge}</div><div style="font-size:8px;color:${MUTED}">Click to manage barge</div>
+    </div>
+    <div style="padding:10px;display:flex;flex-direction:column;flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-weight:800;font-size:14px;color:${NAVY}">${u.id}</div>
+        ${StatusPill(u.status)}
+      </div>
+      <div style="font-size:10px;color:${MUTED};margin-bottom:2px">&#8599; ${u.jetty}</div>
+      <div style="font-size:10px;color:${MUTED};margin-bottom:8px">&#128100; Operator: <strong>${u.op}</strong></div>
+      
+      <div style="display:flex;gap:5px;margin-bottom:10px">
+        <button onclick="nav('downtime','${u.id}')" style="flex:1;background:white;border:1px solid ${BORDER};color:${MUTED};font-size:9px;font-weight:600;padding:4px 0;border-radius:4px">DOWNTIME</button>
+        <button onclick="nav('ts','${u.id}')" style="flex:1;background:white;border:1px solid ${BORDER};color:${MUTED};font-size:9px;font-weight:600;padding:4px 0;border-radius:4px">TIMESHEET</button>
+      </div>
+      ${mainBtn}
+    </div>
+    <div style="background:#F8FAFC;border-top:1px solid ${BORDER};padding:8px 10px">
+      <div style="font-size:9px;font-weight:700;color:${MUTED};margin-bottom:6px;display:flex;justify-content:space-between">
+        <span>TRUCK QUEUE (${u.queue.length})</span>
+        <span onclick="nav('trucks','${u.id}')" style="color:${TEAL};cursor:pointer">+ Assign</span>
+      </div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;min-height:22px">
+        ${qs}
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenTC(){
+  const activeRunning = units.filter(u=>u.status==='running').length;
+  return`<div style="flex:1;overflow:auto;background:${GRAY};display:flex;flex-direction:column;animation:fadeIn .2s">
+    <div style="background:white;border-bottom:1px solid ${BORDER};padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;gap:16px">
+        <div><div style="font-size:9px;color:${MUTED};font-weight:600">ACTIVE UNITS</div><div style="font-size:14px;font-weight:800;color:${NAVY}">${activeRunning} <span style="font-size:10px;color:${MUTED};font-weight:500">/ ${units.length}</span></div></div>
+        <div><div style="font-size:9px;color:${MUTED};font-weight:600">BARGES</div><div style="font-size:14px;font-weight:800;color:${NAVY}">4</div></div>
+        <div><div style="font-size:9px;color:${MUTED};font-weight:600">EST. RATE</div><div style="font-size:14px;font-weight:800;color:${NAVY}">1,250 <span style="font-size:10px;color:${MUTED};font-weight:500">T/hr</span></div></div>
+      </div>
+      <button onclick="nav('trucks')" style="background:${TEAL};color:white;border:none;padding:6px 12px;border-radius:6px;font-size:10px;font-weight:700;box-shadow:0 2px 4px rgba(10,191,222,0.2)">
+        INCOMING TRUCKS (${incomingTrucks.length})
+      </button>
+    </div>
+    <div style="padding:12px;display:flex;gap:12px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;min-height:0">
+      ${units.map(mhCard).join("")}
+    </div>
+  </div>`;
+}
+
+function getActiveU() { return units.find(u=>u.id===activeUnitId) || units[0]; }
+
+function screenDowntime(){
+  const u = getActiveU();
+  return`<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden;max-width:520px;margin:0 auto">
+      <div style="background:${NAVY};padding:10px 14px;display:flex;align-items:center;gap:8px">
+        <span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span>
+        <div><div style="color:white;font-weight:700;font-size:14px">Log Downtime</div><div style="color:#aac4ff;font-size:10px">${u.id} — ${u.jetty}</div></div>
+      </div>
+      <div style="padding:14px">
+        <div style="margin-bottom:13px"><div style="font-size:10px;color:${MUTED};margin-bottom:6px">Category <span style="color:${DANGER}">*</span></div>
+          ${["Daily Maintenance","Preventive Service","Urgent Repair"].map((c,i)=>`<label style="display:flex;align-items:center;gap:10px;padding:7px 11px;border-radius:6px;border:1px solid ${i===0?NAVY:BORDER};background:${i===0?"#EFF3FF":"white"};margin-bottom:5px;cursor:pointer"><div style="width:15px;height:15px;border-radius:50%;border:2px solid ${i===0?NAVY:"#d1d5db"};background:${i===0?NAVY:"white"};display:flex;align-items:center;justify-content:center;flex-shrink:0">${i===0?`<div style="width:5px;height:5px;border-radius:50%;background:white"></div>`:""}</div><span style="font-size:12px;color:${i===0?NAVY:TEXT};font-weight:${i===0?600:400}">${c}</span></label>`).join("")}
+        </div>
+        <button onclick="updState('${u.id}', 'downtime', null)" style="width:100%;background:${NAVY};color:white;border:none;border-radius:6px;padding:12px 0;font-size:14px;font-weight:700">SAVE & SET TO DOWNTIME</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenStart(){
+  const u = getActiveU();
+  const fT = u.queue[0] || "Unknown";
+  return`<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden;max-width:520px;margin:0 auto">
+      <div style="background:${NAVY};padding:10px 14px;display:flex;align-items:center;gap:8px">
+        <span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span>
+        <div><div style="color:white;font-weight:700;font-size:14px">Start Sequence</div><div style="color:#aac4ff;font-size:10px">${u.id} — Loading Truck ${fT}</div></div>
+      </div>
+      <div style="padding:14px">
+        <div style="margin-bottom:13px"><div style="font-size:10px;color:${MUTED};margin-bottom:4px">Operator <span style="color:${DANGER}">*</span></div><div style="background:white;border:1px solid ${BORDER};border-radius:6px;padding:9px 11px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;align-items:center;gap:9px"><div style="width:28px;height:28px;border-radius:50%;background:#E5E7EB;display:flex;align-items:center;justify-content:center;font-size:12px">&#128100;</div><div><div style="font-size:13px;font-weight:600">Amrojali</div><div style="font-size:9px;color:${MUTED}">OPERATOR_MH</div></div></div><span style="color:${MUTED}">&#9660;</span></div></div>
+        <div style="margin-bottom:13px"><div style="font-size:10px;color:${MUTED};margin-bottom:4px">HM Start <span style="color:${DANGER}">*</span></div><div style="display:flex;gap:8px;align-items:center"><div style="flex:1;background:white;border:1.5px solid ${NAVY};border-radius:6px;padding:9px 11px;font-size:16px;font-weight:700;color:${NAVY}">1,205</div><span style="font-size:12px;color:${MUTED}">hours</span></div></div>
+        <button onclick="updState('${u.id}', 'running', 'Amrojali')" style="width:100%;background:${SUCCESS};color:white;border:none;border-radius:6px;padding:12px 0;font-size:14px;font-weight:700">START LOADING: ${fT}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenStop(){
+  const u = getActiveU();
+  const aT = u.queue[0] || "Unknown";
+  return`<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden;max-width:520px;margin:0 auto">
+      <div style="background:${NAVY};padding:10px 14px;display:flex;align-items:center;gap:8px">
+        <span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span>
+        <div><div style="color:white;font-weight:700;font-size:14px">Stop Sequence</div><div style="color:#aac4ff;font-size:10px">${u.id} — Loading ${aT}</div></div>
+      </div>
+      <div style="padding:14px">
+        <div style="background:#ECFDF5;border:1px solid ${SUCCESS};border-radius:6px;padding:9px 11px;margin-bottom:13px"><div style="font-size:12px;color:#065F46;font-weight:700">&#9679; Active — ${u.op}</div><div style="font-size:10px;color:#047857;margin-top:1px">Started: 08:30 &nbsp;&#183;&nbsp; Running: 45m</div></div>
+        <div style="border:1px solid ${BORDER};border-radius:6px;overflow:hidden;margin-bottom:13px">
+          <div style="display:grid;grid-template-columns:110px 1fr 1fr;background:${GRAY}"><div style="padding:7px 9px"></div><div style="padding:7px 9px;font-size:10px;color:${MUTED};font-weight:600;border-left:1px solid ${BORDER};text-align:center">START</div><div style="padding:7px 9px;font-size:10px;color:${MUTED};font-weight:600;border-left:1px solid ${BORDER};text-align:center">FINISH</div></div>
+          ${[["HM (hours)","1,205","1,206"],["FM (litres)","4,820","4,835"]].map(([lbl,s,f])=>`<div style="display:grid;grid-template-columns:110px 1fr 1fr;border-top:1px solid ${BORDER}"><div style="padding:9px;font-size:11px;font-weight:500;display:flex;align-items:center">${lbl}</div><div style="padding:9px;border-left:1px solid ${BORDER};background:#F9FAFB;display:flex;align-items:center;justify-content:center;font-weight:600;color:${MUTED}"><span style="font-size:14px">${s}</span></div><div style="padding:6px;border-left:1px solid ${BORDER};display:flex;align-items:center;justify-content:center"><div style="background:white;border:1.5px solid ${NAVY};border-radius:5px;padding:6px 10px;font-weight:700;color:${NAVY}">${f}</div></div></div>`).join("")}
+        </div>
+        <button onclick="popTruckStop('${u.id}'); nav('tc')" style="width:100%;background:${DANGER};color:white;border:none;border-radius:6px;padding:12px 0;font-size:14px;font-weight:700">STOP & DISMISS TRUCK</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenTS(){
+  const rows=[
+    {op:"Amrojali",s:"08:30",e:"10:45",hms:1205,hmf:1217,fms:4820,fmf:4965},
+    {op:"Budi S.",s:"11:00",e:"13:30",hms:1217,hmf:1229,fms:4965,fmf:5112},
+    {op:"Ricardo H.",s:"14:00",e:"16:30",hms:1229,hmf:1241,fms:5112,fmf:5258},
+  ];
+  const totalHm = rows.reduce((acc, r) => acc + (r.hmf - r.hms), 0);
+  const totalFm = rows.reduce((acc, r) => acc + (r.fmf - r.fms), 0);
+
+  const rowsHTML=rows.map((r,i)=>`<tr style="background:${i%2===0?"white":"#FAFAFA"};border-bottom:1px solid ${BORDER}"><td style="font-weight:600;color:${NAVY};padding:8px">${r.op}</td><td style="padding:8px">${r.s}</td><td style="padding:8px">${r.e}</td><td style="padding:8px">${r.hms.toLocaleString()}</td><td style="padding:8px">${r.hmf.toLocaleString()}</td><td style="font-weight:700;color:#0891B2;padding:8px">${r.hmf-r.hms}h</td><td style="padding:8px">${r.fms.toLocaleString()}</td><td style="padding:8px">${r.fmf.toLocaleString()}</td><td style="font-weight:700;color:#0891B2;padding:8px">${r.fmf-r.fms} L</td></tr>`).join("");
+  return`<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden">
+      <div style="background:${NAVY};padding:9px 14px;display:flex;align-items:center;gap:8px">
+        <span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span>
+        <div><div style="color:white;font-weight:700;font-size:13px">Timesheet — ${getActiveU().id}</div><div style="color:#aac4ff;font-size:10px">13 March 2026 &nbsp;&#183;&nbsp; ${rows.length} sequences</div></div>
+      </div>
+      <div style="overflow-x:auto"><table><thead><tr style="background:#F9FAFB;border-bottom:1px solid ${BORDER}"><th style="padding:8px">Operator</th><th style="padding:8px">Start</th><th style="padding:8px">Stop</th><th style="padding:8px">HM Start</th><th style="padding:8px">HM Finish</th><th style="padding:8px">&Delta; HM</th><th style="padding:8px">FM Start</th><th style="padding:8px">FM Finish</th><th style="padding:8px">&Delta; FM</th></tr></thead><tbody>${rowsHTML}</tbody><tfoot><tr style="background:#F0F9FF;border-top:2px solid #BAE6FD"><td colspan="5" style="padding:8px;font-weight:700;color:#0369A1;font-size:12px">TOTALS</td><td style="padding:8px;font-weight:700;color:#0369A1">${totalHm}h</td><td colspan="2"></td><td style="padding:8px;font-weight:700;color:#0369A1">${totalFm} L</td></tr></tfoot></table></div>
+    </div>
+  </div>`;
+}
+
+function screenBarge(){
+  const u = getActiveU();
+  return`<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div style="flex:1 1 240px;background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden">
+        <div style="background:${NAVY};padding:10px 14px;display:flex;align-items:center;gap:8px"><span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span><div><div style="color:white;font-weight:700;font-size:14px">Attach Barge</div><div style="color:#aac4ff;font-size:10px">${u.id} — ${u.jetty}</div></div></div>
+        <div style="padding:14px">
+          <div style="background:#f5f5f5;border-radius:6px;padding:9px 11px;margin-bottom:12px;display:flex;align-items:center;gap:10px"><span style="font-size:20px">&#128674;</span><div><div style="font-size:12px;font-weight:600">BG. Glory Marine 12 / TB. HB 9</div><div style="font-size:10px;color:${MUTED}">Jumbo</div></div></div>
+          <button onclick="nav('tc')" style="width:100%;background:${NAVY};color:white;border:none;border-radius:6px;padding:11px 0;font-size:13px;font-weight:700">ATTACH BARGE</button>
+        </div>
+      </div>
+      <div style="flex:1 1 240px;background:white;border-radius:8px;border:1px solid ${SUCCESS};overflow:hidden">
+        <div style="background:${NAVY};padding:10px 14px"><div><div style="color:white;font-weight:700;font-size:14px">Current Barge Status</div><div style="color:#aac4ff;font-size:10px">${u.id}</div></div></div>
+        <div style="padding:14px">
+          <div style="background:#ECFDF5;border:1px solid ${SUCCESS};border-radius:6px;padding:9px 11px;margin-bottom:12px"><div style="font-size:12px;color:#065F46;font-weight:700">&#9679; ATTACHED since 08:00</div><div style="font-size:11px;color:#047857;margin-top:2px">${u.barge}</div><div style="font-size:11px;color:#047857">Running duration: 2h 30m</div></div>
+          <button onclick="nav('tc')" style="width:100%;background:${DANGER};color:white;border:none;border-radius:6px;padding:11px 0;font-size:13px;font-weight:700">DETACH BARGE</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenTrucks(){
+  const tList = incomingTrucks.length === 0 
+    ? `<div style="padding:20px;text-align:center;font-size:12px;color:${MUTED};background:#F8FAFC;border-radius:6px">No incoming trucks at the moment.</div>`
+    : `<div style="display:flex;flex-direction:column;gap:8px">${incomingTrucks.map(t=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border:1px solid ${BORDER};border-radius:6px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">&#128666;</span><span style="font-size:13px;font-weight:600;color:${NAVY}">${t}</span></div>${activeUnitId?`<button onclick="assignTruck('${t}','${activeUnitId}')" style="background:${TEAL};color:white;border:none;padding:6px 12px;border-radius:4px;font-size:10px;font-weight:700">ASSIGN &#8594;</button>`:''}</div>`).join("")}</div>`;
+
+  return `<div style="flex:1;overflow:auto;background:${GRAY};padding:10px;animation:fadeIn .2s">
+    <div style="background:white;border-radius:8px;border:1px solid ${BORDER};overflow:hidden;max-width:520px;margin:0 auto">
+       <div style="background:${NAVY};padding:10px 14px;display:flex;align-items:center;gap:8px">
+        <span onclick="nav('tc')" style="color:white;font-size:16px;cursor:pointer">&#8592;</span>
+        <div><div style="color:white;font-weight:700;font-size:14px">Incoming Trucks</div><div style="color:#aac4ff;font-size:10px">${activeUnitId?`Assign to ${getActiveU().id}`:'Global Port Queue'}</div></div>
+      </div>
+      <div style="padding:14px">
+        <p style="font-size:11px;color:${MUTED};margin-bottom:12px">${activeUnitId?`Click a truck to assign it to the queue for ${getActiveU().id}.`:'These trucks are currently en route to the port.'}</p>
+        ${tList}
+      </div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const screens={"tc":screenTC,"downtime":screenDowntime,"start":screenStart,"stop":screenStop,"ts":screenTS,"barge":screenBarge,"trucks":screenTrucks};
+  const activeS = SCREENS.find(s=>s.id===activeScreen) || SCREENS[0];
+
+  document.getElementById("root").innerHTML=`
+    <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-end">
+      <div>
+        <div style="font-size:15px;font-weight:700;color:${NAVY}">Digifleet Mobile — DA Enhancement Mockups</div>
+        <div style="font-size:11px;color:${MUTED}">TC Dashboard UI Overhaul (Barge &#8594; MH &#8594; Truck Flow)</div>
+      </div>
+      <div style="font-size:10px;color:${MUTED}">March 2026</div>
+    </div>
+    
+    <div style="background:white;padding:14px;border-radius:8px;border:1px solid ${BORDER};margin-bottom:16px;box-shadow:0 2px 4px rgba(0,0,0,0.05)">
+      <div style="font-size:11px;font-weight:700;color:${NAVY};margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em">${activeS.label} Info</div>
+      <div style="font-size:13px;color:${TEXT};line-height:1.5">${activeS.info}</div>
+      ${activeScreen!=='tc'?`<button onclick="nav('tc')" style="margin-top:10px;background:#F3F4F6;border:1px solid ${BORDER};padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;color:${NAVY};cursor:pointer">&#8592; Back to TC Dashboard</button>`:''}
+    </div>
+
+    <div style="display:flex;justify-content:center;align-items:center;padding:20px 0;background:#f1f5f9;border-radius:12px;flex:1">
+      <div style="background:#2a2a2a;border-radius:32px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,0.15);width:840px;height:440px;position:relative">
+        <div style="position:absolute;top:50%;left:8px;transform:translateY(-50%);width:4px;height:40px;background:#444;border-radius:2px"></div>
+        <div style="background:white;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;width:100%;height:100%;border:2px solid #000">
+          ${hdr("Rindam Manihuruk","20031492")}
+          <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;position:relative">
+            ${(screens[activeScreen]||screenTC)()}
+          </div>
+          ${androidNav()}
+        </div>
+      </div>
+    </div>`;
+}
+
+render();
+</script>
+</body>
+</html>
