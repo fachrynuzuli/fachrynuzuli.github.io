@@ -8,6 +8,7 @@ Personal storefront by **Fachry Nuzuli** — hosted on GitHub Pages.
 |------|-----|-------------|
 | **Freebuilder Studio** | `/` (home) | AI builder services, MVP sprints, prompt packs |
 | **Aryendbumi & Co.** | `/aryendbumi-co.html` | Strategic communications & LinkedIn ghostwriting |
+| **FLS Dashboard** | `/fls-dashboard` | Restored logistics dashboard (React/Vite build) |
 
 ## 🛠 Tech Stack
 
@@ -53,6 +54,7 @@ git push origin main
 ```
 ├── index.html              # Freebuilder Studio (home page)
 ├── aryendbumi-co.html      # Aryendbumi & Co.
+├── fls-dashboard/          # FLS Dashboard (static build)
 ├── site-config.js          # Centralized links & settings
 ├── README.md
 ├── .github/
