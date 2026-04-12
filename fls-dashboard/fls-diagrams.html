@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLS — Supporting Diagrams</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1B2A4A;
+      --blue: #2563EB;
+      --blueL: #EFF6FF;
+      --blueM: #BFDBFE;
+      --green: #16A34A;
+      --gray50: #F8FAFC;
+      --gray100: #F1F5F9;
+      --gray200: #E2E8F0;
+      --gray400: #94A3B8;
+      --gray500: #64748B;
+      --gray700: #334155;
+      --gray900: #0F172A;
+      --white: #FFFFFF;
+      --amber: #D97706;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: var(--gray50);
+      color: var(--gray900);
+      padding: 0 0 60px;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray200);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .site-header .logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .site-header .logo-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--blue), #7C3AED);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .site-header .meta {
+      font-size: 11px;
+      color: var(--gray400);
+    }
+
+    /* ── NAV PILLS ──────────────────────────────────────────── */
+    .nav-pills {
+      display: flex;
+      gap: 6px;
+      padding: 20px 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-pills a {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      background: var(--white);
+      border: 1px solid var(--gray200);
+      color: var(--gray700);
+      transition: all 0.15s;
+    }
+
+    .nav-pills a:hover,
+    .nav-pills a.active {
+      background: var(--blueL);
+      color: var(--blue);
+      border-color: var(--blueM);
+    }
+
+    /* ── SECTION ────────────────────────────────────────────── */
+    .diagram-section {
+      margin: 28px 40px 0;
+      background: var(--white);
+      border: 1px solid var(--gray200);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      padding: 18px 24px 16px;
+      border-bottom: 1px solid var(--gray100);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    .tag-blue {
+      background: var(--blueL);
+      color: var(--blue);
+    }
+
+    .tag-green {
+      background: #F0FDF4;
+      color: var(--green);
+    }
+
+    .tag-purple {
+      background: #F5F3FF;
+      color: #7C3AED;
+    }
+
+    .tag-amber {
+      background: #FFFBEB;
+      color: var(--amber);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gray900);
+      margin-bottom: 4px;
+    }
+
+    .section-desc {
+      font-size: 12px;
+      color: var(--gray500);
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    .section-meta {
+      font-size: 11px;
+      color: var(--gray400);
+      text-align: right;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .section-body {
+      padding: 28px 24px;
+      overflow-x: auto;
+    }
+
+    .section-body .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── LEGEND ─────────────────────────────────────────────── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 24px;
+      background: var(--gray50);
+      border-top: 1px solid var(--gray100);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--gray500);
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* ── FOOTER NOTE ────────────────────────────────────────── */
+    .doc-footer {
+      margin: 40px 40px 0;
+      padding: 16px 24px;
+      background: var(--white);
+      border: 1px solid var(--gray200);
+      border-radius: 10px;
+      font-size: 11px;
+      color: var(--gray400);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="site-header">
+    <div class="logo">
+      <div class="logo-dot">F</div>
+      <div>
+        <div>Futong Loading System — FLS</div>
+        <div style="font-size:10px;font-weight:400;color:var(--gray400);">Supporting Diagrams · BRD Addendum v1.0</div>
+      </div>
+    </div>
+    
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; gap: 8px; border-right: 1px solid var(--gray200); padding-right: 16px; margin-right: 16px;">
+        <a href="./" style="font-size: 11px; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: var(--blueL); border-radius: 6px; transition: all 0.2s;">
+          <span>🏠</span> Dashboard
+        </a>
+        <a href="./fls-diagrams" style="font-size: 11px; font-weight: 700; color: var(--gray700); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: var(--gray100); border-radius: 6px; transition: all 0.2s;">
+          <span>📱</span> Back to App
+        </a>
+      </div>
+      <div class="meta">Fleet Dispatch System Enhancement · PTSI · March 2026</div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div
+    style="margin:16px 40px 0; padding:14px 20px; background:#FFFBEB; border:1px solid #FCD34D; border-radius:10px; font-size:12px; color:#92400E; line-height:1.7;">
+    <strong>⚠️ Diagram Disclaimer — Please Read Before Sharing</strong><br />
+    These diagrams are prepared by the <strong>Business Representative</strong> based on requirements discussions and
+    available documentation. They communicate <em>business intent and process logic</em> — not technical
+    implementation.<br />
+    <strong>The author (Fachry) does not have access to the real FDS / Digifleet database schema.</strong> All table
+    names,
+    column names, and field types shown in the ERD (Diagram 3) are <strong>educated guesses</strong> based on described
+    functionality only. The development team must validate and align all entity and field names against the actual
+    database before any implementation begins.
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-pills">
+    <a href="#seq" class="active">⓪ Sequence Diagram</a>
+    <a href="#ctx">① System Context</a>
+    <a href="#swimlane">② Swimlane Process Flow</a>
+    <a href="#erd">③ Entity Relationship (ERD)</a>
+    <a href="#dfd">④ Data Flow (DFD)</a>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     DIAGRAM 0 — SEQUENCE DIAGRAM
+════════════════════════════════════════════════════════════ -->
+  <div id="seq" class="diagram-section">
+    <div class="section-header">
+      <div>
+        <div class="section-tag tag-blue">Diagram 0 · Sequence Diagram</div>
+        <div class="section-title">DA Data Capture — Message Sequence Across Systems</div>
+        <div class="section-desc">
+          Ordered message sequence between TRAFFIC_CONTROLLER, Digifleet App, FDS Backend, Max-C,
+          and FUTONG_ADMIN covering all 7 DA prerequisite data capture requirements.
+          Shows actual-event timestamps (user-entered, retroactive) and system save timestamps
+          stored independently for every record.
+        </div>
+      </div>
+      <div class="section-meta">
+        Audience: Dev team · BA<br />
+        BRD ref: Section 6 (DA-001–007)
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="mermaid">
+        sequenceDiagram
+        autonumber
+        participant FA as FUTONG_ADMIN
+        participant TC as TRAFFIC_CONTROLLER
+        participant DG as Digifleet App
+        participant FDS as FDS Backend
+        participant MC as Max-C
+        participant DB as Dashboard Layer
+
+        rect rgb(240, 253, 244)
+        Note over TC,DB: -- DA-001 . Downtime Logging ------------------------------
+        TC->>DG: Open downtime record for MH unit
+        TC->>DG: Input: Unit · Category · Start Time · Stop Time
+        Note right of TC: Retroactive entry — actual event time,<br />not current clock time
+        DG->>FDS: POST downtime_event {unit_id, category, actual_start, actual_stop, tc_user_id, save_timestamp}
+        FDS-->>DG: 200 OK — record saved
+        DB->>FDS: Query downtime by unit + date range
+        FDS-->>DB: Downtime records → Availability % per unit
+        end
+
+        rect rgb(245, 243, 255)
+        Note over TC,DB: -- DA-002 / DA-003 / DA-004 . MH Timesheet Sequence -----
+        TC->>DG: Open MH Timesheet for unit
+        TC->>DG: Add sequence row: Operator · Start · Stop<br />HM Start · HM Finish · FM Start · FM Finish
+        Note right of TC: One row per operator sequence.<br />Multiple sequences per day supported.
+        DG->>DG: Calculate HM Delta = HM Finish − HM Start<br />Calculate Fuel Delta = FM Finish − FM Start
+        DG->>FDS: POST sequence {operator_id, actual_start, actual_stop, hm_start, hm_finish, fm_start, fm_finish, save_timestamp}
+        FDS-->>DG: 200 OK — sequence saved
+        Note over FDS: FDS sums all sequences per unit per day:<br />Total HM Working Hours · Total Fuel Consumed
+        DB->>FDS: Query sequences by unit + date
+        FDS-->>DB: Sequences → Utilization % · Loading Rate · Fuel Efficiency
+        end
+
+        rect rgb(239, 246, 255)
+        Note over TC,DB: -- DA-005 . Barge Attach / Detach ------------------------
+        TC->>DG: Attach barge to loading point
+        TC->>DG: Input: Barge ID · Loading Point · Actual Attach Time
+        DG->>FDS: POST barge_attach {barge_id, loading_point, actual_attach_time, save_timestamp}
+        FDS-->>DG: 200 OK — barge status: ATTACHED
+        Note over TC,FDS: Loading operations proceed...
+        TC->>DG: Detach barge (discharge complete)
+        TC->>DG: Input: Actual Detach Time (retroactive if needed)
+        DG->>FDS: POST barge_detach {barge_id, actual_detach_time, save_timestamp}
+        FDS-->>DG: 200 OK — barge status: DETACHED
+        Note over FDS: FDS calculates Duration = Detach − Attach
+        DB->>FDS: Query barge events by date
+        FDS-->>DB: Attach/Detach pairs → Unloading Duration per Barge
+        end
+
+        rect rgb(240, 253, 244)
+        Note over FA,DB: -- DA-006 . Delivery Target Input -----------------------
+        FA->>FDS: Open Target Management screen
+        Note left of FA: FUTONG_ADMIN role only.<br />Field hidden for all other roles.
+        FA->>FDS: Submit {period_type, period_ref, target_tonnes}
+        FDS->>FDS: Write audit log {prev_value, new_value, user_id, changed_at}
+        FDS-->>FA: 200 OK — target saved · audit logged
+        DB->>FDS: Query target for period
+        FDS-->>DB: Target value → Delivery Progress %
+        end
+
+        rect rgb(255, 251, 235)
+        Note over TC,DB: -- DA-007 . Loading Timestamp Precision -----------------
+        TC->>DG: Start Loading — truck trip
+        TC->>DG: Input: Actual Start Time (retroactive)
+        DG->>FDS: POST start_loading {trip_id, actual_start HH:mm:ss, save_timestamp}
+        TC->>DG: Stop Loading — same trip
+        TC->>DG: Input: Actual Stop Time (retroactive)
+        DG->>FDS: POST stop_loading {trip_id, actual_stop HH:mm:ss, save_timestamp}
+        FDS-->>DG: 200 OK — both timestamps stored at second precision
+        DB->>FDS: Query loading events grouped by stack count + date
+        FDS-->>DB: AVG(stop − start) per stack count → Loading Time by Stack
+        end
+
+        rect rgb(255, 242, 242)
+        Note over MC,DB: -- Max-C Integration . NETWEIGHT Feed (DB-003 to DB-011) -
+        MC->>FDS: Push NETWEIGHT per truck per trip
+        Note right of MC: 1–2 day accuracy lag.<br />Day boundary: 06:00 → 05:59 next day.
+        FDS->>FDS: Match incoming Trip Ticket → existing trip record
+        alt Trip Ticket matched
+        FDS->>FDS: Attach NETWEIGHT to trip record
+        else Trip Ticket mismatch
+        FDS->>FDS: Flag record — exclude from calc · log mismatch
+        end
+        DB->>FDS: Query NETWEIGHT by unit + date range
+        alt All trips weighed
+        FDS-->>DB: Full NETWEIGHT data
+        else Unweighed trips exist
+        FDS-->>DB: Partial NETWEIGHT + unweighed_count flag
+        DB->>DB: Render caution banner: "N trips not yet weighed"
+        end
+        end
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#16A34A"></div> TC field actions
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#7C3AED"></div> Digifleet app
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#2563EB"></div> FDS backend
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#D97706"></div> Max-C (async, external)
+      </div>
+      <div class="legend-item">⚠️ Retroactive = user enters actual event time (not current time) · Both timestamps
+        always stored independently</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     DIAGRAM 1 — SYSTEM CONTEXT
+════════════════════════════════════════════════════════════ -->
+  <div id="ctx" class="diagram-section">
+    <div class="section-header">
+      <div>
+        <div class="section-tag tag-blue">Diagram 1 · System Context</div>
+        <div class="section-title">FLS Ecosystem — System Context Overview</div>
+        <div class="section-desc">
+          30,000-foot view of all actors, systems, and data flows in the Futong Loading System ecosystem.
+          Shows how FDS, Digifleet, Max-C, TRMS, and the new Dashboard module connect —
+          and which human roles interact with each system.
+        </div>
+      </div>
+      <div class="section-meta">
+        Audience: All stakeholders<br />
+        BRD ref: Sections 3, 5, 6.13
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="mermaid">
+        graph TB
+        subgraph USERS["👥 Human Actors"]
+        direction TB
+        FA["🔑 FUTONG_ADMIN\n(Ops Manager)"]
+        TC["👷 TRAFFIC_CONTROLLER\n(Field — Digifleet)"]
+        OP["🦺 MH Operator\n(Field — Digifleet)"]
+        GM["📋 General Manager\n(Read-only dashboards)"]
+        PL["📅 Planner\n(FDS Web)"]
+        end
+
+        subgraph FDS["🖥️ FDS — Fleet Dispatch System (Web)"]
+        direction TB
+        FDS_DASH["Dashboard Module\n(11 Dashboards)"]
+        FDS_TARGET["Target Input\n(DA-006)"]
+        FDS_ORDER["Order & Dispatch\nPlanning"]
+        FDS_TRACK["Monitoring /\nTracking"]
+        FDS_MASTER["Master Data\n(Barge, MH, Route…)"]
+        end
+
+        subgraph DG["📱 Digifleet (Mobile App)"]
+        direction TB
+        DG_TC["Traffic Controller\nModule"]
+        DG_PSI["Pre-Start\nInspection"]
+        DG_FTW["Fit to Work"]
+        DG_TS["MH Timesheet\n(DA-002/003/004)"]
+        DG_DT["Downtime Log\n(DA-001)"]
+        DG_BARGE["Barge Attach/Detach\n(DA-005)"]
+        DG_LOAD["Loading Start/Stop\n(DA-007)"]
+        end
+
+        subgraph EXT["🔗 External Systems"]
+        MAXC["⚖️ Max-C\n(Weighbridge / TMS)\nNETWEIGHT per trip"]
+        TRMS["📊 TrMS\n(Transport Mgmt)\nTimesheet · Dispatch"]
+        SAP["🏢 SAP\nIWI · Material Grade"]
+        end
+
+        subgraph OUT["📺 Output"]
+        TV["TV Screens\n(Operations Floor)"]
+        EXP["PDF / Excel\nExports"]
+        end
+
+        FA -->|"Set targets\nRead dashboards"| FDS_TARGET
+        FA -->|"Read dashboards"| FDS_DASH
+        GM -->|"Read dashboards"| FDS_DASH
+        PL -->|"Create orders\nAllocate trucks"| FDS_ORDER
+        TC -->|"Log downtime · MH timesheet\nBarge events · Loading times"| DG_TC
+        OP -->|"Timesheet · PSI"| DG_PSI
+
+        DG_TC --- DG_TS
+        DG_TC --- DG_DT
+        DG_TC --- DG_BARGE
+        DG_TC --- DG_LOAD
+
+        DG_TS -->|"Sequence data\n(HM, FM, Operator)"| FDS
+        DG_DT -->|"Downtime events"| FDS
+        DG_BARGE -->|"Attach/Detach timestamps"| FDS
+        DG_LOAD -->|"Start/Stop timestamps"| FDS
+        DG_PSI -->|"Inspection results"| FDS
+        DG_FTW -->|"Driver fitness"| FDS
+
+        MAXC -->|"NETWEIGHT per trip\n(Trip Ticket match)"| FDS_TRACK
+        FDS -->|"Dispatch · FTW · PSI"| TRMS
+        TRMS -->|"Driver status\nReady trucks"| FDS
+        SAP -->|"IWI · Material grade"| FDS
+
+        FDS_TARGET -->|"Daily / Monthly\nTarget values"| FDS_DASH
+        FDS_TRACK -->|"NETWEIGHT data"| FDS_DASH
+        FDS_MASTER -->|"Barge · MH\nRoute data"| FDS_DASH
+
+        FDS_DASH -->|"Rendered dashboards"| TV
+        FDS_DASH -->|"Export"| EXP
+
+        style USERS fill:#F0FDF4,stroke:#16A34A,color:#14532D
+        style FDS fill:#EFF6FF,stroke:#2563EB,color:#1E3A5F
+        style DG fill:#F5F3FF,stroke:#7C3AED,color:#3B0764
+        style EXT fill:#FFFBEB,stroke:#D97706,color:#78350F
+        style OUT fill:#F8FAFC,stroke:#94A3B8,color:#334155
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#16A34A"></div> Human Actors
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#2563EB"></div> FDS Web System
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#7C3AED"></div> Digifleet Mobile
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#D97706"></div> External Systems
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#94A3B8"></div> Output Channels
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     DIAGRAM 2 — SWIMLANE
+════════════════════════════════════════════════════════════ -->
+  <div id="swimlane" class="diagram-section">
+    <div class="section-header">
+      <div>
+        <div class="section-tag tag-purple">Diagram 2 · Swimlane Process Flow</div>
+        <div class="section-title">TC Data Capture — Full Operational Workflow</div>
+        <div class="section-desc">
+          End-to-end process flow across all 7 DA requirements, organised by actor lane.
+          Shows every decision point and handoff between Traffic Controller, Digifleet, FDS Backend,
+          Max-C, and the Dashboard layer during a single operational day.
+        </div>
+      </div>
+      <div class="section-meta">
+        Audience: Dev team · Ops team<br />
+        BRD ref: Section 6 (DA-001–007)
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="mermaid">
+        flowchart TD
+        subgraph TC["👷 TRAFFIC_CONTROLLER"]
+        T1(["Shift Start\n06:00"])
+        T2["Open Digifleet\nEquipment List"]
+        T3{"Downtime\nevent?"}
+        T4["Input: Unit · Category\nStart Time · Stop Time\n⚠ Retroactive allowed"]
+        T5["Open MH Timesheet\nfor unit"]
+        T6["Add Sequence Row:\nOperator · HM Start/Finish\nFM Start/Finish · Times\n⚠ Retroactive allowed"]
+        T7{"Another\nsequence?"}
+        T8["Attach Barge\nto Loading Point\n⚠ Retroactive allowed"]
+        T9["Monitor loading\noperations"]
+        T10["Start Loading\n— enter actual time\n⚠ Retroactive allowed"]
+        T11["Stop Loading\n— enter actual time"]
+        T12{"Barge\ndischarged?"}
+        T13["Detach Barge\n— enter actual detach time\n⚠ Retroactive allowed"]
+        T14(["Shift End"])
+        end
+
+        subgraph DG["📱 Digifleet App"]
+        D1["Validate fields\nCalculate HM Delta\nCalculate FM Delta"]
+        D2["POST downtime_event\n{unit, category,\nactual_start, actual_stop,\nsave_timestamp}"]
+        D3["POST sequence\n{operator, hm_start,\nhm_finish, fm_start,\nfm_finish, save_timestamp}"]
+        D4["POST barge_attach\n{barge_id, loading_point,\nactual_attach, save_ts}"]
+        D5["POST start_loading\n{trip_id, actual_start\nHH:mm:ss, save_ts}"]
+        D6["POST stop_loading\n{trip_id, actual_stop\nHH:mm:ss, save_ts}"]
+        D7["POST barge_detach\n{barge_id,\nactual_detach, save_ts}"]
+        end
+
+        subgraph FDS["🖥️ FDS Backend"]
+        F1["Store downtime record\n(actual_ts + save_ts both stored)"]
+        F2["Store sequence row\nSum HM + FM per unit/day"]
+        F3["Store barge attach\nStatus → ATTACHED"]
+        F4["Store loading start\nHH:mm:ss precision"]
+        F5["Store loading stop\nCalc duration = stop − start"]
+        F6["Store barge detach\nCalc duration = detach − attach\nStatus → DETACHED"]
+        FA["FUTONG_ADMIN\nenters Daily/Monthly\ntargets → audit log"]
+        end
+
+        subgraph MC["⚖️ Max-C"]
+        M1["Push NETWEIGHT\nper truck per trip\n(1–2 day lag)"]
+        M2{"Trip Ticket\nmatch?"}
+        M3["Attach NETWEIGHT\nto trip record"]
+        M4["Flag mismatch\nExclude + log"]
+        end
+
+        subgraph DB["📊 Dashboard Layer"]
+        DB1["DB-001: Availability\n= (24h − Downtime) / 24h"]
+        DB2["DB-002: Utilization\n= HM Working / Available hrs"]
+        DB3["DB-003/004/005/006:\nLoading Rate\n= NETWEIGHT / Utilized hrs"]
+        DB4["DB-007: Fuel Efficiency\n= Fuel Consumed / NETWEIGHT"]
+        DB5["DB-008: Barge Unload Time\n= Detach − Attach"]
+        DB6["DB-009: Avg Load Time\n= AVG(Stop − Start) by stack"]
+        DB7["DB-010/011:\nDelivery Progress\n= NETWEIGHT / Target"]
+        end
+
+        T1 --> T2 --> T3
+        T3 -->|Yes| T4 --> D2 --> F1 --> DB1
+        T3 -->|No| T5
+        T4 --> T5
+        F1 --> DB2
+        T5 --> T6 --> D1 --> D3 --> F2
+        F2 --> DB2 & DB3 & DB4
+        T6 --> T7
+        T7 -->|Yes| T6
+        T7 -->|No| T8
+        T8 --> D4 --> F3 --> T9
+        T9 --> T10 --> D5 --> F4 --> T11 --> D6 --> F5 --> DB6
+        T11 --> T12
+        T12 -->|Yes| T13 --> D7 --> F6 --> DB5
+        T12 -->|No| T9
+        T13 --> T14
+
+        M1 --> M2
+        M2 -->|Match| M3 --> DB3 & DB4 & DB7
+        M2 -->|No match| M4
+
+        FA --> DB7
+
+        style TC fill:#F0FDF4,stroke:#16A34A,color:#14532D
+        style DG fill:#F5F3FF,stroke:#7C3AED,color:#3B0764
+        style FDS fill:#EFF6FF,stroke:#2563EB,color:#1E3A5F
+        style MC fill:#FFFBEB,stroke:#D97706,color:#78350F
+        style DB fill:#FEF2F2,stroke:#DC2626,color:#7F1D1D
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#16A34A"></div> TRAFFIC_CONTROLLER actions
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#7C3AED"></div> Digifleet app processing
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#2563EB"></div> FDS backend storage
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#D97706"></div> Max-C (external)
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#DC2626"></div> Dashboard computation
+      </div>
+      <div class="legend-item">⚠ = Retroactive entry supported</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     DIAGRAM 3 — ERD
+════════════════════════════════════════════════════════════ -->
+  <div id="erd" class="diagram-section">
+    <div class="section-header">
+      <div>
+        <div class="section-tag tag-green">Diagram 3 · Entity Relationship Diagram</div>
+        <div class="section-title">FLS Data Model — New & Enhanced Entities</div>
+        <div class="section-desc">
+          Simplified ERD showing all new tables and fields introduced by DA-001 to DA-007,
+          and how they relate to existing FDS entities. New entities are highlighted.
+          Existing entities shown only with relevant fields.
+        </div>
+        <div
+          style="margin-top:10px; padding:9px 13px; background:#FEF2F2; border:1px solid #FECACA; border-radius:7px; font-size:11px; color:#991B1B; line-height:1.6;">
+          ⚠️ <strong>Author's note:</strong> All table names, column names, and data types are the author's
+          <strong>educated guess</strong> — inferred from feature requirements only.
+          The author has <strong>no access to the actual FDS / Digifleet database schema.</strong>
+          Dev team must confirm, rename, and validate all entities and fields before implementation.
+        </div>
+      </div>
+      <div class="section-meta">
+        Audience: Dev team<br />
+        BRD ref: Section 6 (DA-001–007)
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="mermaid">
+        erDiagram
+        MH_UNIT {
+        string unit_id PK
+        string unit_name
+        string unit_type
+        string status
+        }
+
+        DOWNTIME_EVENT {
+        uuid event_id PK
+        string unit_id FK
+        enum category "Daily Maint | Prev Service | Urgent Repair"
+        datetime actual_start "User-entered retroactive"
+        datetime actual_stop "User-entered retroactive"
+        string logged_by FK
+        datetime save_timestamp "System-captured"
+        float duration_hours "Calculated: stop - start"
+        }
+
+        MH_TIMESHEET_SEQUENCE {
+        uuid sequence_id PK
+        string unit_id FK
+        string operator_id FK
+        date shift_date
+        datetime actual_start "User-entered retroactive"
+        datetime actual_stop "User-entered retroactive"
+        float hm_start "Hour meter reading"
+        float hm_finish "Hour meter reading"
+        float hm_delta "Calculated: finish - start"
+        float fm_start "Fuel meter reading (litres)"
+        float fm_finish "Fuel meter reading (litres)"
+        float fm_delta "Calculated: finish - start"
+        datetime save_timestamp "System-captured"
+        }
+
+        BARGE_EVENT {
+        uuid event_id PK
+        string barge_id FK
+        string loading_point_id FK
+        datetime actual_attach "User-entered retroactive"
+        datetime actual_detach "User-entered retroactive, nullable"
+        string status "ATTACHED | DETACHED | IN_PROGRESS"
+        string logged_by FK
+        datetime save_timestamp "System-captured"
+        float duration_hours "Calculated: detach - attach"
+        }
+
+        TRIP_RECORD {
+        uuid trip_id PK
+        string truck_id FK
+        string unit_id FK
+        string barge_id FK
+        string trip_ticket_no
+        int stack_count "Existing field - confirmed"
+        datetime loading_start "HH:mm:ss precision - DA-007"
+        datetime loading_stop "HH:mm:ss precision - DA-007"
+        float loading_duration "Calculated: stop - start"
+        float netweight "From Max-C via Trip Ticket match"
+        string wood_species "From Max-C"
+        datetime save_timestamp
+        }
+
+        DELIVERY_TARGET {
+        uuid target_id PK
+        enum period_type "Daily | Monthly | Yearly"
+        date period_ref "Date or month+year"
+        float target_tonnes
+        string created_by FK
+        datetime created_at
+        string last_modified_by FK
+        datetime last_modified_at
+        }
+
+        TARGET_AUDIT_LOG {
+        uuid log_id PK
+        uuid target_id FK
+        float prev_value
+        float new_value
+        string changed_by FK
+        datetime changed_at
+        }
+
+        OPERATOR {
+        string operator_id PK
+        string name
+        string role "Operator MH"
+        string section
+        string status
+        }
+
+        BARGE {
+        string barge_id PK
+        string barge_name
+        string barge_size
+        float est_discharge_hours
+        float est_swing_hours
+        }
+
+        MH_UNIT ||--o{ DOWNTIME_EVENT : "has downtime"
+        MH_UNIT ||--o{ MH_TIMESHEET_SEQUENCE : "has sequences"
+        MH_UNIT ||--o{ TRIP_RECORD : "loads via"
+        OPERATOR ||--o{ MH_TIMESHEET_SEQUENCE : "operates in"
+        BARGE ||--o{ BARGE_EVENT : "has attach/detach"
+        BARGE ||--o{ TRIP_RECORD : "loaded by"
+        DELIVERY_TARGET ||--o{ TARGET_AUDIT_LOG : "change logged in"
+        TRIP_RECORD }o--|| BARGE_EVENT : "occurs during"
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#16A34A"></div> New entities (DA-001–007)
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#2563EB"></div> Existing entities (enhanced)
+      </div>
+      <div class="legend-item">PK = Primary Key &nbsp;·&nbsp; FK = Foreign Key &nbsp;·&nbsp; Fields in quotes = enums or
+        calculation notes</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     DIAGRAM 4 — DFD
+════════════════════════════════════════════════════════════ -->
+  <div id="dfd" class="diagram-section">
+    <div class="section-header">
+      <div>
+        <div class="section-tag tag-amber">Diagram 4 · Data Flow Diagram</div>
+        <div class="section-title">NETWEIGHT Journey — Max-C to Dashboard</div>
+        <div class="section-desc">
+          Traces the critical NETWEIGHT data from Max-C weighbridge all the way to the 8 dashboards that
+          depend on it. Highlights the Trip Ticket matching logic, the 1–2 day lag, the unweighed load
+          detection, and the Max-C day boundary convention (06:00–05:59).
+        </div>
+      </div>
+      <div class="section-meta">
+        Audience: Dev team · BA<br />
+        BRD ref: NFR-007, NFR-008, UX-004
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="mermaid">
+        flowchart LR
+        subgraph FIELD["⚙️ Field Operations"]
+        direction TB
+        TRUCK["🚛 Truck Trip\n(FDS trip_record created\nby Traffic Controller)"]
+        WB["⚖️ Max-C Weighbridge\nTruck weighed on exit\n→ NETWEIGHT recorded"]
+        end
+
+        subgraph MAXC_PROC["📤 Max-C Export (daily)"]
+        direction TB
+        MC_DAY["Day boundary:\n06:00 today → 05:59 next day\n(not midnight)"]
+        MC_PUSH["Push per-trip records:\nTrip Ticket No · NETWEIGHT\nWood Species · Barge Size\nTimestamp"]
+        MC_LAG["⚠️ 1–2 day accuracy lag\nLoaded-but-unweighed\ntrucks excluded at cutoff"]
+        end
+
+        subgraph FDS_PROC["🖥️ FDS Processing"]
+        direction TB
+        MATCH{"Trip Ticket\nmatch?\nFDS ↔ Max-C"}
+        ATTACH["✅ Attach NETWEIGHT\nto trip_record\n(wood_species, barge_size)"]
+        MISMATCH["❌ Flag mismatch\nExclude from calc\nLog for admin review"]
+        UNWEIGH{"Any trips in\ndate range\nnot yet weighed?"}
+        BANNER["Set unweighed_count\nflag on query result"]
+        READY["Data ready\nfor dashboard queries"]
+        end
+
+        subgraph DG_PROC["📱 Digifleet Inputs\n(parallel stream)"]
+        direction TB
+        HM["HM Working Hours\nper sequence (DA-002)\n= Utilized Hours"]
+        FM["FM Fuel Consumed\nper sequence (DA-003)"]
+        OP_SEQ["Operator per sequence\n(DA-004)"]
+        end
+
+        subgraph DASH["📊 Dashboard Calculations"]
+        direction TB
+        DB3["DB-003\nLoading Rate (t/h)\n= NETWEIGHT ÷ Utilized Hrs"]
+        DB4["DB-004\nLoading Rate\nby Wood Species"]
+        DB5["DB-005\nLoading Rate\nby Barge Size"]
+        DB6["DB-006\nLoading Rate\nby Operator"]
+        DB7["DB-007\nFuel Efficiency (L/t)\n= FM Consumed ÷ NETWEIGHT"]
+        DB10["DB-010\nDelivery Progress\n= NETWEIGHT ÷ Daily Target"]
+        DB11["DB-011\nDelivery Achievement\n= MTD NETWEIGHT ÷ Monthly Target"]
+        WARN["⚠️ Caution Banner\n'N trips not yet weighed'\nDisplayed on all affected panels"]
+        end
+
+        subgraph TARGET["🎯 Target Stream\n(separate)"]
+        FADMIN["FUTONG_ADMIN\nenters targets\n(DA-006)"]
+        TSTORE["delivery_target table\n+ audit log"]
+        end
+
+        TRUCK -->|"Trip Ticket No\nassigned in FDS"| MATCH
+        TRUCK --> WB
+        WB -->|"NETWEIGHT +\nTrip Ticket No"| MC_DAY
+        MC_DAY --> MC_LAG --> MC_PUSH
+        MC_PUSH -->|"Daily push\nto FDS integration"| MATCH
+
+        MATCH -->|"Matched"| ATTACH
+        MATCH -->|"Not matched"| MISMATCH
+        ATTACH --> UNWEIGH
+        UNWEIGH -->|"Yes — some trips\nnot yet weighed"| BANNER
+        UNWEIGH -->|"No — all weighed"| READY
+        BANNER --> READY
+
+        HM --> DB3 & DB4 & DB5 & DB6 & DB7
+        FM --> DB7
+        OP_SEQ --> DB6 & DB7
+
+        READY -->|"NETWEIGHT data"| DB3 & DB4 & DB5 & DB6 & DB7 & DB10 & DB11
+        BANNER --> WARN
+
+        FADMIN --> TSTORE
+        TSTORE -->|"Target values"| DB10 & DB11
+
+        style FIELD fill:#F0FDF4,stroke:#16A34A,color:#14532D
+        style MAXC_PROC fill:#FFFBEB,stroke:#D97706,color:#78350F
+        style FDS_PROC fill:#EFF6FF,stroke:#2563EB,color:#1E3A5F
+        style DG_PROC fill:#F5F3FF,stroke:#7C3AED,color:#3B0764
+        style DASH fill:#FEF2F2,stroke:#DC2626,color:#7F1D1D
+        style TARGET fill:#F0FDF4,stroke:#16A34A,color:#14532D
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#16A34A"></div> Field / Target inputs
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#D97706"></div> Max-C processing
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#2563EB"></div> FDS backend logic
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#7C3AED"></div> Digifleet parallel stream
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#DC2626"></div> Dashboard output
+      </div>
+      <div class="legend-item">⚠ = Risk / validation point</div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>FLS Dashboard Module — Supporting Diagrams · BRD Addendum v1.0 · PTSI · March 2026 · CONFIDENTIAL</span>
+    <span>5 diagrams: Sequence · System Context · Swimlane · ERD · DFD · ERD table names are author's best guess —
+      confirm with dev team</span>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#EFF6FF',
+        primaryTextColor: '#1B2A4A',
+        primaryBorderColor: '#2563EB',
+        lineColor: '#64748B',
+        secondaryColor: '#F0FDF4',
+        tertiaryColor: '#F5F3FF',
+        background: '#FFFFFF',
+        mainBkg: '#EFF6FF',
+        nodeBorder: '#2563EB',
+        clusterBkg: '#F8FAFC',
+        titleColor: '#1B2A4A',
+        edgeLabelBackground: '#FFFFFF',
+        fontFamily: "'Inter', 'Segoe UI', sans-serif",
+        fontSize: '13px',
+      },
+      flowchart: { curve: 'basis', padding: 20 },
+      er: { diagramPadding: 30, layoutDirection: 'TB', minEntityWidth: 100 },
+      sequence: { actorMargin: 60, messageMargin: 30 }
+    });
+
+    // Smooth scroll for nav pills
+    document.querySelectorAll('.nav-pills a').forEach(a => {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-pills a').forEach(x => x.classList.remove('active'));
+        this.classList.add('active');
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+
+</html>
