@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fachrynuzuli — builder portfolio</title>
+<title>fachrynuzuli — portfolio</title>
 <meta name="description" content="Fachry Nuzuli Kamal — Digital Transformation Lead, AI builder, product manager. Real projects, real clients, real code. Riau, Indonesia.">
 <meta property="og:title" content="Fachry Nuzuli — Builder Portfolio">
 <meta property="og:description" content="Digital Transformation Lead, AI builder, product manager. Running 3 active operations on the side — real clients, real code, real builds.">
@@ -495,6 +495,33 @@
     .hero-name { font-size: 40px; }
   }
 
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    z-index: 1000; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal-content {
+    width: 90vw; height: 90vh; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 8px;
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+  .modal-header {
+    height: 48px; background: var(--bg2); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
+  }
+  .modal-header .modal-title { font-size: 13px; font-weight: 500; color: var(--text); }
+  .modal-header .modal-close {
+    background: none; border: none; color: var(--muted);
+    font-size: 20px; line-height: 1; cursor: pointer; padding: 4px;
+  }
+  .modal-header .modal-close:hover { color: var(--accent); }
+  .modal-iframe { flex: 1; width: 100%; height: 100%; border: none; background: #fff; }
+
   /* SITE NAV (SHARED) */
   .site-nav {
     background: rgba(14,14,15,0.85);
@@ -554,7 +581,7 @@
         <a href="#stack">stack</a>
         <a href="#about">readme</a>
         <a href="#contact">contact</a>
-        <a href="https://fachrynuzuli.com" target="_blank">→ main site</a>
+        <a href="https://fachrynuzuli.com" target="_blank">→ blog</a>
       </div>
     </div>
   </div>
@@ -563,24 +590,20 @@
 <div class="container">
 
   <div class="hero" id="top">
-    <div class="prompt-line">whoami — I build things so I have something worth teaching</div>
+    <div class="prompt-line">whoami — I build things so I have something worth sharing</div>
     <h1 class="hero-name">Fachry <em>Nuzuli</em><br>Kamal<span class="cursor"></span></h1>
     <div class="hero-handle">@fachrynuzuli · Indonesia · github.com/fachrynuzuli</div>
     <p class="hero-desc">
       Digital Transformation Lead at a multinational. Running 3 active operations on the side — real clients, real code, real builds.
       500+ users helped. Everything I ship starts as a working link, not a pitch deck.
     </p>
-    <div class="hero-tags" style="flex-direction: column; gap: 8px;">
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <span class="tag coral">digital transformation</span>
-        <span class="tag green">product management</span>
-        <span class="tag green">ai-first</span>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <span class="tag accent">prompt engineering</span>
-        <span class="tag accent">context management</span>
-        <span class="tag accent">vibe coding</span>
-      </div>
+    <div class="hero-tags">
+      <span class="tag coral">digital transformation</span>
+      <span class="tag green">product management</span>
+      <span class="tag green">ai-first</span>
+      <span class="tag accent">prompt engineering</span>
+      <span class="tag accent">context management</span>
+      <span class="tag accent">vibe coding</span>
     </div>
   </div>
 
@@ -598,6 +621,21 @@
         <div class="tree-item"><span class="fname">knock-knock/</span></div>
         <div class="tree-item"><span class="fname">sharemaxxing/</span></div>
         <div class="tree-item"><span class="fname">README.md</span> <span class="ftype">.md</span> <span class="fcomment">— you are here</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">/ active operations</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="tree">
+      <div class="tree-root">📁 agencies/</div>
+      <div style="padding-left: 12px;">
+        <div class="tree-item"><span class="fname">freeware-lab/</span> <span class="fcomment">— done-for-you MVP sprints · $497–997/sprint</span></div>
+        <div class="tree-item"><span class="fname">freebuilder/</span> <span class="fcomment">— AI education brand · prompt files · playbooks</span></div>
+        <div class="tree-item"><span class="fname">freewriter-co/</span> <span class="fcomment">— ghostwriting · LinkedIn personal brand</span></div>
       </div>
     </div>
   </div>
@@ -643,7 +681,7 @@
           <span class="stack-badge">Recharts</span>
         </div>
         <div class="project-links">
-          <a href="/fls-dashboard/" class="project-link">view dashboard <span class="arrow">→</span></a>
+          <a href="/fls-dashboard/" onclick="openModal('FLS Dashboard', '/fls-dashboard/', event)" class="project-link">view dashboard <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -662,7 +700,7 @@
           <span class="stack-badge">Netlify</span>
         </div>
         <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">freeware.lab <span class="arrow">→</span></a>
+          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('Rapid MVP Sprint', 'https://fachrynuzuli.com', event)" class="project-link">freeware.lab <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -680,7 +718,7 @@
           <span class="stack-badge">Prompt Systems</span>
         </div>
         <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">freebuilder <span class="arrow">→</span></a>
+          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('Prompt Files', 'https://fachrynuzuli.com', event)" class="project-link">freebuilder <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -698,7 +736,7 @@
           <span class="stack-badge">AI Profiling</span>
         </div>
         <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" class="project-link">view agency <span class="arrow">→</span></a>
+          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('freewriter.co', 'https://fachrynuzuli.com', event)" class="project-link">view agency <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -800,23 +838,13 @@
       </div>
       <div class="readme-body">
         <p>
-          <strong>Digital Transformation Lead</strong> at a multinational pulp & paper corporation.
-          Building FMS suites, procurement systems, and logistics tools for 400+ contractors across 11 departments.
-          On weekends, I run three side operations under the same philosophy:
-          <strong>visible proof beats theory.</strong>
+          <strong>Digital Transformation Lead</strong> at a multinational pulp & paper corporation. Currently focused on building FMS suites, procurement systems, and logistics infrastructure for 400+ contractors across 11 departments.
         </p>
         <p>
-          <strong>freeware.lab</strong> — two-person web dev agency. Brief to working app in 48–72 hours.
-          Clients own the source code outright. No agency markup.<br>
-          <strong>freebuilder</strong> — AI education brand for Southeast Asia. Every lesson is backed by a real build.<br>
-          <strong>freewriter.co</strong> — ghostwriting and personal brand strategy for B2B leaders.
+          Outside of corporate work, I operate three independent ventures spanning MVP development, AI workflow education, and technical ghostwriting. My focus is on practical, AI-first builds and high-leverage context management.
         </p>
         <p>
-          Every role has been the same job with a different name: walk into a broken system, understand it faster than anyone expects, then rebuild it. Financial analysis, equity research, logistics operations, digital transformation. The tools changed. The problem didn't.
-        </p>
-        <p>
-          The methodology is always the same: <strong>vibe-code the prototype, validate with real users, hand off clean code.</strong>
-          Don't build what nobody asked for. Ship broken. Fix live.
+          For every prototype, MVP, and corporate system: <strong>vibe-code the prototype, validate with real users, hand off clean code.</strong> Don't build what nobody asked for. Ship broken. Fix live.
         </p>
         <div class="readme-stats">
           <div class="stat-cell">
@@ -887,5 +915,38 @@
 
 </div>
   <script src="site-config.js"></script>
+
+  <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Project Viewer</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="#" id="modalExternalLink" target="_blank" style="color: var(--accent); font-size: 11px; text-decoration: none;">open in new tab ↗</a>
+          <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+      </div>
+      <iframe class="modal-iframe" id="modalIframe" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal(title, url, event) {
+      if (event) event.preventDefault();
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalExternalLink').href = url;
+      document.getElementById('modalIframe').src = url;
+      document.getElementById('projectModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(event) {
+      if (event && event.target.id !== 'projectModal' && !event.target.classList.contains('modal-close')) return;
+      document.getElementById('projectModal').classList.remove('active');
+      setTimeout(() => {
+        document.getElementById('modalIframe').src = 'about:blank';
+        document.body.style.overflow = '';
+      }, 300);
+    }
+  </script>
 </body>
 </html>
