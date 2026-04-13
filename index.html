@@ -98,12 +98,22 @@
   .topbar-links {
     display: flex;
     gap: 20px;
+    flex-shrink: 0;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .topbar-links::-webkit-scrollbar {
+    display: none;
   }
   .topbar-links a {
     color: var(--muted2);
     text-decoration: none;
     font-size: 11px;
     transition: color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .topbar-links a:hover { color: var(--accent); }
 
@@ -491,7 +501,6 @@
   @media (max-width: 600px) {
     .projects-grid { grid-template-columns: 1fr; }
     .readme-stats { grid-template-columns: repeat(2, 1fr); }
-    .topbar-links { display: none; }
     .hero-name { font-size: 40px; }
   }
 
@@ -530,7 +539,8 @@
     font-family: var(--mono);
     font-size: 11px;
     cursor: pointer;
-    padding: 0;
+    padding: 10px 10px;
+    margin: -10px -10px;
     transition: color 0.15s;
     position: relative;
   }
