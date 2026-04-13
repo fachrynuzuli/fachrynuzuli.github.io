@@ -8,6 +8,9 @@
 1. **Zillennials / Peer Builders**: Primary audience (identity confirmation, peer respect).
 2. **Early-stage Founders / Clients**: Secondary audience (service proof).
 3. **Recruiters / Leadership**: Tertiary audience (credential check).
+4. **Potential freelance clients** — People evaluating Fachry for MVP sprint services (freeware.lab) or ghostwriting (Aryendbumi & Co.)
+5. **Social media followers** — Audience from X, Instagram, LinkedIn, Substack who clicked through to learn more about the person behind the content
+6. **Recruiters & corporate stakeholders** — People vetting Fachry's side portfolio alongside his corporate digital transformation work
 
 **Context of use:** Visitors arrive from social media bios, direct URL sharing, or web search. They need to quickly understand who Fachry is, what he builds, and how to engage with his work. Most visits are mobile-first, time-constrained, and intent-driven.
 

@@ -522,6 +522,44 @@
   .modal-header .modal-close:hover { color: var(--accent); }
   .modal-iframe { flex: 1; width: 100%; height: 100%; border: none; background: #fff; }
 
+  /* TOPBAR DROPDOWN */
+  .dots-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+    position: relative;
+  }
+  .dots-btn:hover { color: var(--text); }
+  .dots-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    min-width: 160px;
+    z-index: 200;
+    display: none;
+  }
+  .dots-dropdown.open { display: block; }
+  .dots-dropdown a {
+    display: block;
+    padding: 9px 14px;
+    font-size: 11px;
+    color: var(--muted2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .dots-dropdown a:last-child { border-bottom: none; }
+  .dots-dropdown a:hover { color: var(--accent); background: var(--bg3); }
+  .dots-dropdown .dd-label { font-size: 9px; color: var(--muted); display: block; }
+
   /* SITE NAV (SHARED) */
   .site-nav {
     background: rgba(14,14,15,0.85);
@@ -561,9 +599,10 @@
 <body>
 
 <header class="site-nav">
-  <a href="index.html" class="active">Hub</a>
-  <a href="freebuilder-co.html">Freebuilder</a>
-  <a href="aryendbumi-co.html">Aryendbumi &amp; Co.</a>
+  <a href="index.html" class="active">home</a>
+  <a href="freebuilder.html">freebuilder.co</a>
+  <a href="freeware.html">freeware.lab</a>
+  <a href="freewriter.html">freewriter.lab</a>
 </header>
 
 <div class="topbar">
@@ -574,7 +613,14 @@
         <span class="sep">/</span>
         <span>fachrynuzuli</span>
         <span class="sep">/</span>
-        <span class="current">portfolio</span>
+        <span style="position:relative;">
+          <button class="dots-btn" id="dotsBtn" aria-label="Navigate to sub-sites">...</button>
+          <div class="dots-dropdown" id="dotsDropdown">
+            <a href="freebuilder.html"><span class="dd-label">education</span>freebuilder.co</a>
+            <a href="freeware.html"><span class="dd-label">web apps</span>freeware.lab</a>
+            <a href="freewriter.html"><span class="dd-label">ghostwriting</span>freewriter.lab</a>
+          </div>
+        </span>
       </div>
       <div class="topbar-links">
         <a href="#projects">projects</a>
@@ -594,8 +640,7 @@
     <h1 class="hero-name">Fachry <em>Nuzuli</em><br>Kamal<span class="cursor"></span></h1>
     <div class="hero-handle">@fachrynuzuli · Indonesia · github.com/fachrynuzuli</div>
     <p class="hero-desc">
-      Digital Transformation Lead at a multinational. Running 3 active operations on the side — real clients, real code, real builds.
-      500+ users helped. Everything I ship starts as a working link, not a pitch deck.
+      Digital Transformation PM at a multinational manufacturing corp. I build with AI, lead changes org-wide, write about what I learn, and lend my voice to people who think clearly but struggle to say it.
     </p>
     <div class="hero-tags">
       <span class="tag coral">digital transformation</span>
@@ -625,20 +670,7 @@
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-label">/ active operations</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="tree">
-      <div class="tree-root">📁 agencies/</div>
-      <div style="padding-left: 12px;">
-        <div class="tree-item"><span class="fname">freeware-lab/</span> <span class="fcomment">— done-for-you MVP sprints · $497–997/sprint</span></div>
-        <div class="tree-item"><span class="fname">freebuilder/</span> <span class="fcomment">— AI education brand · prompt files · playbooks</span></div>
-        <div class="tree-item"><span class="fname">freewriter-co/</span> <span class="fcomment">— ghostwriting · LinkedIn personal brand</span></div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- PROJECTS -->
   <div class="section" id="projects">
@@ -838,18 +870,18 @@
       </div>
       <div class="readme-body">
         <p>
-          <strong>Digital Transformation Lead</strong> at a multinational pulp & paper corporation. Currently focused on building FMS suites, procurement systems, and logistics infrastructure for 400+ contractors across 11 departments.
+          <strong>Digital Transformation PM</strong> at a multinational manufacturing corp. I own full-cycle digital products inside a large, complex organization: 11 departments, 400+ contractors, systems with real operational and financial consequences.
         </p>
         <p>
-          Outside of corporate work, I operate three independent ventures spanning MVP development, AI workflow education, and technical ghostwriting. My focus is on practical, AI-first builds and high-leverage context management.
+          Outside of that, I run 3 independent operations. <a href="freeware.html" style="color:var(--accent2);text-decoration:none;">freeware.lab</a> builds working apps in 48 hours for founders who can't afford agency timelines. <a href="freewriter.html" style="color:var(--accent2);text-decoration:none;">freewriter.lab</a> lends a voice to executives who think clearly but won't write publicly. <a href="freebuilder.html" style="color:var(--accent2);text-decoration:none;">freebuilder.co</a> teaches AI workflows to builders who want to move faster without a CS degree.
         </p>
         <p>
-          For every prototype, MVP, and corporate system: <strong>vibe-code the prototype, validate with real users, hand off clean code.</strong> Don't build what nobody asked for. Ship broken. Fix live.
+          The rule across all of it: ship the link, not the pitch. Proof is the only currency that compounds.
         </p>
         <div class="readme-stats">
           <div class="stat-cell">
-            <span class="stat-value">500+</span>
-            <span class="stat-label">users helped</span>
+            <span class="stat-value">$1.26M+</span>
+            <span class="stat-label">corp ROI delivered</span>
           </div>
           <div class="stat-cell">
             <span class="stat-value">1M+</span>
@@ -860,9 +892,10 @@
             <span class="stat-label">MVP delivery</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-value">3</span>
-            <span class="stat-label">active divisions</span>
+            <span class="stat-value">230</span>
+            <span class="stat-label">substack subs</span>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -939,6 +972,15 @@
       document.body.style.overflow = 'hidden';
     }
     
+    // Dots dropdown
+    const dotsBtn = document.getElementById('dotsBtn');
+    const dotsDropdown = document.getElementById('dotsDropdown');
+    dotsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dotsDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => dotsDropdown.classList.remove('open'));
+
     function closeModal(event) {
       if (event && event.target.id !== 'projectModal' && !event.target.classList.contains('modal-close')) return;
       document.getElementById('projectModal').classList.remove('active');
