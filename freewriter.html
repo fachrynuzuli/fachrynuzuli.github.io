@@ -39,6 +39,10 @@
       color: var(--text);
       font-family: var(--font-sans);
       overflow-x: hidden;
+      transition: margin-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    body:has(.site-nav.force-show) {
+      margin-top: 40px;
     }
 
     /* ── PAPER TEXTURE ── */
@@ -55,14 +59,16 @@
 
     /* ── SITE NAV (SHARED) ── */
     .site-nav {
-      background: rgba(250,246,238,0.8);
+      background: rgba(250,246,238,0.9);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(196,152,58,0.15);
       padding: 0 64px;
       display: flex; align-items: center; justify-content: center; gap: 2px;
-      position: sticky; top: 0; z-index: 100;
+      position: fixed; width: 100%; top: 0; z-index: 2000;
+      transform: translateY(-100%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
+    .site-nav.force-show { transform: translateY(0); }
     .site-nav a {
       font-family: var(--font-sans); font-size: 11px;
       letter-spacing: 2px; text-transform: uppercase;
@@ -78,30 +84,6 @@
       content: ''; position: absolute;
       bottom: 0; left: 24px; right: 24px;
       height: 2px; background: var(--gold);
-    }
-
-    /* ── ANNOUNCEMENT BANNER ── */
-    #announcement-banner {
-      background: var(--navy);
-      padding: 10px 24px;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      position: relative;
-    }
-    .banner-text {
-      font-family: var(--font-sans); font-size: 12px;
-      color: rgba(255,255,255,0.55); letter-spacing: 0.5px;
-    }
-    .banner-link {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
-      color: var(--gold-light); text-decoration: none;
-    }
-    .banner-link:hover { text-decoration: underline; }
-    .banner-close {
-      position: absolute; right: 18px;
-      background: none; border: none;
-      color: rgba(255,255,255,0.35); cursor: pointer; font-size: 14px;
-      min-width: 44px; min-height: 44px;
-      display: flex; align-items: center; justify-content: center;
     }
 
     /* ── PAGE NAV ── */
@@ -168,8 +150,8 @@
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
     .hero-sub {
-      font-size: 14px; color: var(--text-muted); line-height: 1.85;
-      font-weight: 300; margin-bottom: 44px; max-width: 440px;
+      font-size: 18px; color: var(--text-muted); line-height: 1.6;
+      font-weight: 300; margin-bottom: 44px; max-width: 38ch;
       animation: fadeInUp 0.6s ease 0.2s both;
     }
 
@@ -239,8 +221,8 @@
       color: var(--cream); font-weight: 300; line-height: 1.25;
     }
     .about-right p {
-      font-size: 15px; color: rgba(250,246,238,0.6);
-      line-height: 1.95; font-weight: 300; margin-bottom: 20px;
+      font-size: 17px; color: rgba(250,246,238,0.7);
+      line-height: 1.7; font-weight: 300; margin-bottom: 24px; max-width: 55ch;
     }
     .about-right p:last-child { margin-bottom: 0; }
     .about-right strong { color: var(--cream); font-weight: 500; }
@@ -289,8 +271,8 @@
       margin-bottom: 14px; line-height: 1.25;
     }
     .service-desc {
-      font-size: 13px; color: var(--text-muted); line-height: 1.85;
-      font-weight: 300; margin-bottom: 28px;
+      font-size: 15px; color: var(--text-muted); line-height: 1.6;
+      font-weight: 300; margin-bottom: 28px; max-width: 50ch;
     }
     .service-price {
       font-family: var(--font-serif); font-size: 24px;
@@ -322,7 +304,7 @@
       color: var(--navy); font-weight: 500; margin-bottom: 12px;
     }
     .step-desc {
-      font-size: 13px; color: var(--text-muted); line-height: 1.85; font-weight: 300;
+      font-size: 15px; color: var(--text-muted); line-height: 1.6; font-weight: 300; max-width: 45ch;
     }
 
     /* ── FOR WHO ── */
@@ -339,8 +321,8 @@
     }
     .forwho-list { list-style: none; }
     .forwho-list li {
-      font-size: 13px; color: var(--text-muted);
-      padding: 11px 0; border-bottom: 1px solid var(--cream-mid);
+      font-size: 15px; color: var(--text-muted);
+      padding: 12px 0; border-bottom: 1px solid var(--cream-mid);
       display: flex; gap: 14px; line-height: 1.6; font-weight: 300;
       transition: color 0.2s;
     }
@@ -374,9 +356,9 @@
     }
     .cta-block h2 em { font-style: italic; color: var(--gold); }
     .cta-block p {
-      font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 44px;
-      font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto;
-      line-height: 1.8; position: relative;
+      font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 44px;
+      font-weight: 300; max-width: 48ch; margin-left: auto; margin-right: auto;
+      line-height: 1.6; position: relative;
     }
     .btn-gold {
       background: var(--gold); color: var(--navy);
@@ -472,13 +454,6 @@
     <a href="freewriter.html" class="active">freewriter.lab</a>
   </header>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div id="announcement-banner">
-    <span class="banner-text">Need a working app in 48 hours?</span>
-    <a href="freeware.html" class="banner-link">→ freeware.lab</a>
-    <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close banner">✕</button>
-  </div>
-
   <!-- PAGE NAV -->
   <nav>
     <div class="nav-logo">Freewriter Lab</div>
@@ -501,7 +476,7 @@
         <div class="hero-left">
           <p class="hero-eyebrow">B2B Strategic Communications</p>
           <h1>You run the<br>transformation.<br><em>We write<br>the story.</em></h1>
-          <p class="hero-sub">LinkedIn ghostwriting for digital transformation leaders and B2B industrial tech & supply chain SaaS founders. We don't just write — we translate technical expertise into thought leadership that earns trust before the sales conversation starts.</p>
+          <p class="hero-sub">LinkedIn ghostwriting for executives who lead digital transformations and B2B industrial founders. Your expertise is stuck in your head. I extract it and publish it, so you earn trust before booking the sales call.</p>
           <a href="#contact" class="nav-cta" style="display:inline-flex;" data-link="links.bookCall">Book Discovery Call →</a>
         </div>
         <div class="hero-right">
@@ -540,9 +515,9 @@
             <h2>We speak your industry's language.</h2>
           </div>
           <div class="about-right reveal">
-            <p>Most ghostwriters interview you, write generic leadership content, and call it a strategy. The problem: they've never managed a digital transformation. They've never made a capex distribution decision. They've never built systems for people whose jobs involve physical constraints — not just software.</p>
-            <p><strong>Freewriter Lab is different.</strong> Our founder spent years inside multinational industrial operations before becoming a product builder. He understands the specific thinking of people who manage complex, asset-heavy, operationally constrained environments.</p>
-            <p>When he writes for you, he's not translating your expertise into generic thought leadership. He's writing from a position of <strong>genuine domain fluency</strong> — the same fluency that helped build a Fleet Management System from zero into a $1.5M+ infrastructure suite spanning mobile apps, GPS integration, and field operations across millions of tons of logistics.</p>
+            <p>Most ghostwriters have never managed a capex budget. They've never dealt with physical operational constraints. They just write generic fluff and call it a strategy.</p>
+            <p><strong>Freewriter Lab is different.</strong> Our founder spent 5+ years inside multinational industrial operations before building products. He understands how leaders in physical asset-heavy environments actually think.</p>
+            <p>When he writes for you, he writes with <strong>actual domain fluency</strong>. The same fluency that built a $1.5M infrastructure suite managing millions of tons of logistics. No fluff, just your expertise cleanly articulated.</p>
           </div>
         </div>
       </div>
@@ -560,7 +535,7 @@
             <div class="service-num">01</div>
             <span class="service-badge">Monthly Retainer</span>
             <h3 class="service-name">LinkedIn Authority Program</h3>
-            <p class="service-desc">For digital transformation executives, operations directors, and industrial tech leaders. We turn your internal knowledge — the kind that lives in boardrooms, site visits, and hard deployment decisions — into consistent LinkedIn presence that attracts peers, clients, and speaking opportunities.</p>
+            <p class="service-desc">For digital transformation and operations executives. We extract the knowledge you only share in boardrooms or site visits and turn it into a consistent LinkedIn presence that attracts peers, clients, and talent.</p>
             <div class="service-price">From $1,500 / mo</div>
             <div class="service-detail">4 posts/week · Monthly strategy session · Full content ownership</div>
           </div>
@@ -568,7 +543,7 @@
             <div class="service-num">02</div>
             <span class="service-badge">Monthly Retainer</span>
             <h3 class="service-name">Founder Voice Program</h3>
-            <p class="service-desc">For B2B industrial tech and supply chain SaaS founders. Your product solves a real operational problem. Your potential customers just don't know you exist yet. We build your founder voice on LinkedIn — technical authority that converts before the sales conversation starts.</p>
+            <p class="service-desc">For B2B industrial tech founders. Your product solves a real operational problem, but your potential customers don't know you exist. We build your technical authority on LinkedIn to convert awareness into pipeline.</p>
             <div class="service-price">From $1,200 / mo</div>
             <div class="service-detail">3 posts/week · Positioning workshop · Full content ownership</div>
           </div>
@@ -576,7 +551,7 @@
             <div class="service-num">03</div>
             <span class="service-badge">Per Engagement</span>
             <h3 class="service-name">Corporate Workshop</h3>
-            <p class="service-desc">AI Foundation for leadership teams, Vibe Coding for product teams, or Digital Transformation strategy sessions. Built from real $1.5M+ transformation experience — not slides borrowed from a consultant who's never deployed a system in the field.</p>
+            <p class="service-desc">AI foundation and vibe coding for leadership teams. Built from real $1.5M transformation experience—not slides borrowed from a consultant who has never deployed a live system in the field.</p>
             <div class="service-price">Inquire for Pricing</div>
             <div class="service-detail">Half-day from $800 · Full-day available · Customised curriculum</div>
           </div>
@@ -646,7 +621,7 @@
       <div class="cta-block">
         <span class="cta-bg-text">Freewriter</span>
         <h2>Ready to own<br>your <em>narrative?</em></h2>
-        <p>One discovery call. No commitment. We'll tell you exactly what your LinkedIn presence should look like — and whether we're the right fit to build it together.</p>
+        <p>One discovery call. No commitment. We'll tell you exactly what your LinkedIn presence should look like, and whether we're the right fit to build it together.</p>
         <a href="#" class="btn-gold" data-link="links.bookCall">Book Discovery Call →</a>
       </div>
     </section>
@@ -673,6 +648,30 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Pull-to-reveal global nav mechanics
+    const globalNav = document.querySelector('.site-nav');
+    let pullStartY = 0;
+    
+    window.addEventListener('touchstart', (e) => {
+      if (window.scrollY <= 0) pullStartY = e.touches[0].clientY;
+    }, {passive: true});
+    
+    window.addEventListener('touchmove', (e) => {
+      if (window.scrollY <= 0 && e.touches[0].clientY - pullStartY > 40) {
+        globalNav.classList.add('force-show');
+      }
+    }, {passive: true});
+
+    window.addEventListener('wheel', (e) => {
+      if (window.scrollY <= 0 && e.deltaY < -20) {
+        globalNav.classList.add('force-show');
+      }
+    }, {passive: true});
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) globalNav.classList.remove('force-show');
+    }, {passive: true});
   </script>
   <script src="site-config.js"></script>
 </body>

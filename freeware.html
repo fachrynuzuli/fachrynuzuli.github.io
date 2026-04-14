@@ -15,22 +15,21 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #080808;
-      --bg2: #111111;
-      --bg3: #181818;
-      --green: #00E87A;
-      --green-dim: #00994d;
-      --green-glow: rgba(0,232,122,0.12);
-      --green-subtle: rgba(0,232,122,0.06);
-      --text: #E8E8E8;
-      --text-muted: #707070;
-      --border: #222222;
-      --font-display: 'Bebas Neue', sans-serif;
+      --bg-acc: rgba(13, 13, 13, 0.7);
+      --accent: #00E87A;
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Bebas Neue', cursve;
+      --font-heading: 'Outfit', sans-serif;
+      --font-sans: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --font-body: 'DM Sans', sans-serif;
+      --mesh-gradient: radial-gradient(at 0% 0%, hsla(152,100%,10%,0.4) 0, transparent 50%), 
+                       radial-gradient(at 100% 100%, hsla(152,100%,10%,0.4) 0, transparent 50%);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -39,6 +38,13 @@
       color: var(--text);
       font-family: var(--font-body);
       overflow-x: hidden;
+      transition: margin-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    body:has(.site-nav.force-show) {
+      margin-top: 40px;
+    }
+    body:has(.site-nav.force-show) .pill-nav {
+      top: 56px;
     }
 
     /* ── NOISE OVERLAY ── */
@@ -61,63 +67,40 @@
       position: relative; z-index: 1;
     }
 
-    /* ── SITE NAV (SHARED) ── */
-    .site-nav {
-      background: rgba(8,8,8,0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,232,122,0.1);
-      padding: 0 48px;
-      display: flex; align-items: center; justify-content: center; gap: 2px;
-      position: sticky; top: 0; z-index: 100;
+    /* ── PILL NAV (FREEWARE SPECIFIC) ── */
+    .pill-nav {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      padding: 6px; display: flex; align-items: center; gap: 4px; border-radius: 100px;
+      background: var(--bg-acc); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border); z-index: 1000; transition: transform 0.3s ease;
     }
-    .site-nav a {
-      font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      text-decoration: none; padding: 14px 24px;
-      color: var(--text-muted); transition: color 0.2s;
-      position: relative;
+    .pill-nav a {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      text-decoration: none; padding: 10px 20px; border-radius: 100px;
+      color: var(--text-muted); transition: 0.2s;
     }
-    .site-nav a:hover { color: var(--green); }
-    .site-nav a.active {
-      color: var(--green);
-    }
-    .site-nav a.active::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 24px; right: 24px;
-      height: 2px; background: var(--green);
-    }
+    .pill-nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .pill-nav a.active { background: var(--accent); color: var(--bg); }
 
-    /* ── ANNOUNCEMENT BANNER ── */
-    #announcement-banner {
-      background: var(--bg2);
+    /* ── SITE NAV (SHARED GLOBALLY) ── */
+    .site-nav {
+      background: rgba(8,8,8,0.9);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 10px 20px;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      position: relative;
+      padding: 0 24px; display: flex; align-items: center; justify-content: center; gap: 2px;
+      position: fixed; width: 100%; top: 0; z-index: 2000;
+      transform: translateY(-100%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .banner-dot {
-      width: 6px; height: 6px;
-      background: var(--green); border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+    .site-nav.force-show { transform: translateY(0); }
+    .site-nav a {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+      text-transform: uppercase; text-decoration: none; padding: 14px 20px;
+      color: var(--text-muted); transition: color 0.15s; position: relative;
     }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
-    .banner-text {
-      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
-      letter-spacing: 1px;
-    }
-    .banner-link {
-      font-family: var(--font-mono); font-size: 11px;
-      color: var(--green); text-decoration: none; font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .banner-link:hover { text-decoration: underline; }
-    .banner-close {
-      position: absolute; right: 16px;
-      background: none; border: none; color: var(--text-muted);
-      cursor: pointer; font-size: 14px; line-height: 1;
-      min-width: 44px; min-height: 44px;
-      display: flex; align-items: center; justify-content: center;
+    .site-nav a:hover, .site-nav a.active { color: var(--accent); }
+    .site-nav a.active::after {
+      content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+      height: 2px; background: var(--accent);
     }
 
     /* ── PAGE NAV ── */
@@ -167,55 +150,62 @@
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
+    .hero {
+      padding: 160px 24px 100px; text-align: center; position: relative;
+      background: var(--mesh-gradient);
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0, 232, 122, 0.08); border: 1px solid rgba(0, 232, 122, 0.15);
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .hero-pill .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--accent); }
+    .hero-pill span { font-size: 11px; font-family: var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; }
+
+    .hero h1 {
+      font-size: clamp(64px, 12vw, 120px); line-height: 0.85; margin-bottom: 32px;
+      font-weight: 400; font-family: var(--font-display); letter-spacing: -1px;
+    }
+    .hero h1 .stroke {
+      color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+    }
     .hero-sub {
-      font-size: 15px; color: var(--text-muted);
-      max-width: 500px; line-height: 1.75; margin-bottom: 40px; font-weight: 300;
+      font-size: 18px; color: var(--text-muted);
+      max-width: 48ch; line-height: 1.6; margin-bottom: 48px; font-weight: 300;
+      margin-left: auto; margin-right: auto;
       animation: fadeInUp 0.6s ease 0.2s both;
+      font-family: var(--font-sans);
     }
     .hero-btns {
-      display: flex; gap: 14px; flex-wrap: wrap;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
       animation: fadeInUp 0.6s ease 0.3s both;
     }
     .btn-primary {
-      background: var(--green); color: #000;
-      padding: 14px 28px; font-family: var(--font-mono);
-      font-size: 12px; font-weight: 700; text-decoration: none;
-      letter-spacing: 1.5px; display: inline-block;
-      transition: all 0.25s ease;
-      min-height: 44px;
+      background: var(--accent); color: var(--bg);
+      padding: 16px 32px; font-family: var(--font-sans);
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      border-radius: 100px; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,232,122,0.2); }
+    .btn-primary:hover { background: #fff; transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 32px rgba(0,232,122,0.3); }
     .btn-secondary {
-      border: 1px solid var(--border); color: var(--text);
-      padding: 14px 28px; font-family: var(--font-mono);
-      font-size: 12px; text-decoration: none; letter-spacing: 1.5px;
-      display: inline-block; transition: all 0.25s ease;
-      min-height: 44px;
+      background: rgba(255,255,255,0.03); color: var(--text);
+      padding: 16px 32px; font-family: var(--font-sans); border: 1px solid var(--border);
+      font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 100px;
+      transition: all 0.3s ease;
     }
-    .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: var(--accent); transform: translateY(-3px); }
 
     /* ── STATS ── */
     .stats-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+      max-width: 1100px; margin: 0 auto 100px; padding: 0 48px;
     }
-    .stat-item {
-      padding: 28px 20px; text-align: center;
-      transition: background 0.3s;
-    }
-    .stat-item:hover { background: var(--bg2); }
-    .stat-item + .stat-item { border-left: 1px solid var(--border); }
-    .stat-num {
-      font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px);
-      color: var(--green); letter-spacing: 2px;
-    }
-    .stat-label {
-      font-family: var(--font-mono); font-size: 10px;
-      color: var(--text-muted); letter-spacing: 2px;
-      text-transform: uppercase; margin-top: 6px;
-    }
-    .stat-context { font-size: 11px; color: #444; margin-top: 4px; }
+    .stat-item { padding: 24px 0; text-align: left; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 48px; font-family: var(--font-heading); font-weight: 600; color: var(--text); line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 14px; font-family: var(--font-sans); color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .stat-context { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--font-sans); }
 
     /* ── TICKER ── */
     .ticker-wrap {
@@ -248,6 +238,31 @@
       font-size: clamp(32px, 5vw, 54px);
       letter-spacing: 2px; text-transform: uppercase;
     }
+
+    /* ── PROJECTS ── */
+    #projects { padding: 120px 0; }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+    }
+    .product-card {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+      border-radius: 32px; overflow: hidden; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(255, 255, 255, 0.04); }
+    .product-img {
+      width: 100%; aspect-ratio: 16/11; background: #111; position: relative;
+      border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+    .product-card-body { padding: 32px; }
+    .product-name { font-size: 28px; font-family: var(--font-heading); font-weight: 600; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .product-desc { font-size: 16px; color: var(--text-muted); line-height: 1.6; font-family: var(--font-sans); font-weight: 300; margin-bottom: 24px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 24px; }
+    .product-meta { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; }
+    .product-cta { color: var(--text); text-decoration: none; font-size: 14px; font-family: var(--font-sans); font-weight: 500; }
+    .product-cta:hover { color: var(--accent); }
 
     /* ── MVP SPRINT ── */
     .sprint-card {
@@ -284,12 +299,12 @@
       letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
     }
     .sprint-desc {
-      color: var(--text-muted); font-size: 14px; line-height: 1.8;
-      margin-bottom: 28px; font-weight: 300;
+      color: var(--text-muted); font-size: 16px; line-height: 1.6;
+      max-width: 55ch; margin-bottom: 28px; font-weight: 300;
     }
     .sprint-features { list-style: none; margin-bottom: 36px; }
     .sprint-features li {
-      font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+      font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);
       padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5;
       transition: color 0.2s;
     }
@@ -339,8 +354,8 @@
       letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
     }
     .product-desc {
-      font-size: 13px; color: var(--text-muted); line-height: 1.7;
-      margin-bottom: 24px; font-weight: 300;
+      font-size: 15px; color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 24px; font-weight: 300; max-width: 55ch;
     }
     .product-footer {
       display: flex; align-items: center; justify-content: space-between;
@@ -396,29 +411,25 @@
       letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
     }
     .runbook-inner p {
-      font-size: 14px; color: var(--text-muted); line-height: 1.7;
-      max-width: 500px; font-weight: 300;
+      font-size: 16px; color: var(--text-muted); line-height: 1.6;
+      max-width: 55ch; font-weight: 300;
     }
     .runbook-right { flex-shrink: 0; text-align: right; }
     .runbook-note {
       font-family: var(--font-mono); font-size: 10px;
-      color: var(--text-muted); letter-spacing: 2px; margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-
-    /* ── FOOTER ── */
+          /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 48px;
+      padding: 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .footer-left {
-      font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+      font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);
     }
-    .footer-left span { color: var(--green); }
+    .footer-left span { color: var(--accent); }
     .footer-right {
-      font-family: var(--font-display); font-size: 16px;
-      letter-spacing: 2px; color: var(--text-muted);
+      font-family: var(--font-heading); font-size: 20px;
+      letter-spacing: 1px; color: rgba(255,255,255,0.2);
     }
 
     /* ── ANIMATIONS ── */
@@ -427,54 +438,38 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-d1 { transition-delay: 0.1s; }
     .reveal-d2 { transition-delay: 0.2s; }
     .reveal-d3 { transition-delay: 0.3s; }
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none; background: none; border: none;
-      cursor: pointer; width: 44px; height: 44px;
-      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--text); transition: all 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
     /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      .site-nav { padding: 0 20px; }
-      .site-nav a { padding: 12px 16px; font-size: 10px; }
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); flex-direction: column; padding: 0; }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 16px 20px; border-bottom: 1px solid var(--border); min-height: 48px; }
-      .hamburger { display: flex; }
-      .hero { padding: 48px 20px 40px; }
-      .hero h1 { font-size: clamp(48px, 14vw, 80px); }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(3) { border-left: none; }
-      .sprint-inner { grid-template-columns: 1fr; padding: 28px; }
-      .sprint-inner::after { display: none; }
+    @media (max-width: 900px) {
+      .hero { padding: 140px 24px 80px; }
+      .hero h1 { font-size: 80px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 0; }
+      .stat-item:nth-child(even) { border-right: none; }
+      .stat-item:last-child { border-bottom: none; }
       .products-grid { grid-template-columns: 1fr; }
-      .bundle-inner { flex-direction: column; }
-      .bundle-right { text-align: left; }
-      .section-head, .sprint-card, .bundle-wrap { padding-left: 20px; padding-right: 20px; }
-      .section-wrap { padding-left: 20px; padding-right: 20px; }
-      .runbook-inner { flex-direction: column; padding: 28px; }
-      .runbook-right { text-align: left; }
-      footer { flex-direction: column; gap: 10px; padding: 24px 20px; text-align: center; }
+      .sprint-inner { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
     }
-    @media (max-width: 400px) {
-      .hero h1 { font-size: 44px; }
+    @media (max-width: 600px) {
+      .pill-nav { width: 95%; top: 12px; }
+      .pill-nav a { padding: 8px 12px; font-size: 11px; }
+      .site-nav { padding: 0 10px; }
+      .site-nav a { padding: 14px 10px; font-size: 9px; letter-spacing: 1px; }
+      .hero { padding-top: 120px; }
+      .hero h1 { font-size: 60px; }
+      .stats-bar { grid-template-columns: 1fr; gap: 0; }
+      .stat-item { padding: 20px 0; border-right: none; border-bottom: 1px solid var(--border); }
+      .section-wrap { padding: 0 24px; }
+      .footer-right { display: none; }
+      footer { padding: 32px 24px; text-align: center; flex-direction: column; gap: 16px; }
+    }e: 44px; }
       .hero-btns { flex-direction: column; }
       .site-nav a { font-size: 9px; letter-spacing: 1px; padding: 12px 10px; }
     }
@@ -491,61 +486,60 @@
   <a href="freewriter.html">freewriter.lab</a>
 </header>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div id="announcement-banner">
-    <span class="banner-dot"></span>
-    <span class="banner-text">Need ghostwriting for your LinkedIn?</span>
-    <a href="freewriter.html" class="banner-link">→ freewriter.lab</a>
-    <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close banner">✕</button>
-  </div>
+  <!-- SITE NAV (SHARED) -->
+  <header class="site-nav" id="globalNav">
+    <a href="index.html">home</a>
+    <a href="freebuilder.html">freebuilder.co</a>
+    <a href="freeware.html" class="active">freeware.lab</a>
+    <a href="freewriter.html">freewriter.lab</a>
+  </header>
 
-  <!-- PAGE NAV -->
-  <nav>
-    <div class="nav-logo">FREE<span>WARE</span></div>
-    <button class="hamburger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links">
-      <a href="#" data-link="socials.x">𝕏 Twitter</a>
-      <a href="#" data-link="socials.instagram">Instagram</a>
-      <a href="#" data-link="socials.linkedin">LinkedIn</a>
-    </div>
+  <!-- PILL NAV (FREEWARE SPECIFIC) -->
+  <nav class="pill-nav">
+    <a href="#hero" class="active">HOME</a>
+    <a href="#process">PROTOCOL</a>
+    <a href="#projects">LATEST WORK</a>
+    <a href="#sprint">PRICING</a>
+    <a href="https://cal.com/fachrynuzuli/discovery" style="background: var(--accent); color: var(--bg);">BOOK CALL</a>
   </nav>
 
   <main>
     <!-- HERO -->
-    <section>
+    <section id="hero">
       <div class="hero">
-        <p class="hero-tag">// Web App Development · 48-Hour Delivery</p>
-        <h1>I SHIP.<br><span class="accent">THEREFORE</span><br>I AM.</h1>
-        <p class="hero-sub">Rapid MVP Sprints for founders who can't afford bloated agency timelines. We go from brief to working app in 48 hours. No agency markups. No monthly retainers. You own the source code outright.</p>
+        <div class="hero-pill">
+          <span class="dot"></span>
+          <span>Official AI Studio Partner</span>
+        </div>
+        <h1>YOUR MVP.<br><span class="stroke">BUILT IN</span><br>48 HOURS.</h1>
+        <p class="hero-sub">The #1 AI-native product studio—trusted by founders to design, build, and launch functional web apps in 48 hours. No agency bloat. Full ownership.</p>
         <div class="hero-btns">
-          <a href="#sprint" class="btn-primary">RAPID MVP SPRINT →</a>
+          <a href="#sprint" class="btn-primary">START MVP SPRINT →</a>
+          <a href="#projects" class="btn-secondary">EXPLORE WORK</a>
         </div>
       </div>
     </section>
 
-    <!-- STATS -->
     <div class="stats-bar">
       <div class="stat-item reveal">
         <div class="stat-num">48H</div>
         <div class="stat-label">Delivery Time</div>
-        <div class="stat-context">From brief to working app</div>
+        <div class="stat-context">From brief to live app</div>
       </div>
       <div class="stat-item reveal reveal-d1">
         <div class="stat-num">$0</div>
-        <div class="stat-label">Tools Cost</div>
-        <div class="stat-context">Lovable, Bolt, v0 — all free tier</div>
+        <div class="stat-label">Monthly Tools Cost</div>
+        <div class="stat-context">Running on free tiers</div>
       </div>
       <div class="stat-item reveal reveal-d2">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Users Helped</div>
-        <div class="stat-context">Via free products & builds</div>
+        <div class="stat-num">$1.5M</div>
+        <div class="stat-label">Systems Built</div>
+        <div class="stat-context">Real enterprise scale</div>
       </div>
       <div class="stat-item reveal reveal-d3">
-        <div class="stat-num">1M+</div>
-        <div class="stat-label">Impressions</div>
-        <div class="stat-context">Across X, Instagram, LinkedIn</div>
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Native Process</div>
+        <div class="stat-context">Lovable, Bolt, v0</div>
       </div>
     </div>
 
@@ -576,40 +570,111 @@
       <div class="sprint-card">
         <div class="sprint-inner reveal">
           <div>
-            <span class="sprint-badge">🚀 FLAGSHIP SERVICE</span>
+            <span class="sprint-badge">🚀 48-HOUR DELIVERY</span>
             <h3 class="sprint-name">RAPID MVP SPRINT</h3>
-            <p class="sprint-desc">We build your MVP in 48 hours using AI tools. You receive a working app and full source code. No agency markup. No monthly fees. No retainer. Same methodology used to ship a $1.26M+ digital transformation suite — compressed into 2 days for your business.</p>
+            <p class="sprint-desc">Get a full working product ready to launch to the world. We combine AI automation with real engineering best practices to build at unmatched speed.</p>
             <ul class="sprint-features">
-              <li>Working app — not a wireframe, not a Figma mockup</li>
-              <li>Full source code — no lock-in, you own it</li>
-              <li>Built with Lovable, Bolt, v0 + Supabase backend</li>
-              <li>No monthly fees. One payment, done.</li>
-              <li>48-hour turnaround. Guaranteed or full refund.</li>
+              <li>Functional MVP web app built with Lovable</li>
+              <li>Database & API logic (Supabase, OpenAI, etc.)</li>
+              <li>User authentication & seamless onboarding</li>
+              <li>Full source code ownership — no lock-in</li>
+              <li>Clear, async updates via Slack/WhatsApp</li>
             </ul>
           </div>
           <div class="sprint-right">
             <div class="sprint-price">$497</div>
-            <p class="sprint-price-note">// One-time payment. Full ownership.</p>
+            <p class="sprint-price-note">// One-time payment. Pause or cancel anytime.</p>
             <div class="sprint-cta">
-              <a href="#" class="btn-primary" data-link="links.sprintCTA">BOOK SPRINT NOW →</a>
+              <a href="#" class="btn-primary" data-link="links.sprintCTA" style="width: 100%;">START PROJECT TODAY →</a>
             </div>
             <div class="sprint-proof">
-              <span class="proof-label">// Why this works</span>
-              Dev agency: $10K+ and 3 months.<br>
-              freeware.lab: 48 hours, &lt;10% of that price.<br>
-              You keep the code. You own it outright.<br><br>
-              Built on the same approach gue pake<br>
-              build the FMS suite — mobile app,<br>
-              web app, GPS integration, Wi-Fi infra.<br>
-              Real systems. Real scale.
+              <span class="proof-label">// GUARANTEE</span>
+              Working app delivered in 48 hours or full refund.<br><br>
+              Stop waiting 3 months for agencies.<br>
+              Launch this week.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    
-  </main>
+    <!-- HOW IT WORKS -->
+    <section id="process">
+      <div class="section-head">
+        <p class="section-tag">// High Velocity Protocol</p>
+        <h2 class="section-title">THE 48H PROTOCOL</h2>
+      </div>
+      <div class="section-wrap" style="padding-bottom: 80px;">
+        <div class="products-grid">
+          <div class="product-card reveal">
+            <div class="product-card-body">
+              <span class="product-meta">STEP 01</span>
+              <h3 class="product-name" style="margin-top: 12px;">Discovery Brief</h3>
+              <p class="product-desc">You fill out a sharp, asynchronous brief outlining your core concept, target user, and the absolute must-have features.</p>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d1">
+            <div class="product-card-body">
+              <span class="product-meta">STEP 02</span>
+              <h3 class="product-name" style="margin-top: 12px;">Architecture</h3>
+              <p class="product-desc">Within 24 hours, we stand up the core user interface and database schema using AI-native tools like Lovable and Supabase.</p>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d2">
+            <div class="product-card-body">
+              <span class="product-meta">STEP 03</span>
+              <h3 class="product-name" style="margin-top: 12px;">Logic & Handoff</h3>
+              <p class="product-desc">By hour 48, we wire up the authentication, APIs, and business logic. We hand over the live URL and full source code repo.</p>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d3">
+            <div class="product-card-body">
+              <span class="product-meta">STEP 04</span>
+              <h3 class="product-name" style="margin-top: 12px;">Iterate & Scale</h3>
+              <p class="product-desc">Launch to your users immediately. Need more features? Add another sprint block whenever you want flexibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST WORK -->
+    <section id="projects">
+      <div class="section-head">
+        <p class="section-tag">// Proof of Execution</p>
+        <h2 class="section-title">LATEST WORK</h2>
+      </div>
+      <div class="section-wrap">
+        <div class="products-grid">
+          <div class="product-card reveal">
+            <div class="product-img">
+              <img src="mvp_ui_mockup_1_1776129479872.png" alt="Logistics Platform">
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-name">AI FLEET MANAGER</h3>
+              <p class="product-desc">Enterprise logistics suite for heavy asset operations. Real-time GPS tracking, AI fuel optimization, and automated dispatch chains.</p>
+              <div class="product-footer">
+                <span class="product-meta">LOGISTICS · ENTERPRISE</span>
+                <a href="#" class="product-cta">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card reveal reveal-d1">
+            <div class="product-img">
+              <img src="mvp_ui_mockup_2_1776129644733.png" alt="Content Scheduler">
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-name">AURA AI PLANNER</h3>
+              <p class="product-desc">Mobile-first content strategy engine. AI-powered scheduling, virality forecasting, and multi-channel asset distribution.</p>
+              <div class="product-footer">
+                <span class="product-meta">SAAS · CONSUMER</span>
+                <a href="#" class="product-cta">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- FOOTER -->
   <footer>
@@ -619,13 +684,63 @@
 
   <script src="site-config.js"></script>
   <script>
-    // Scroll reveal
+    // Scroll reveal & Global Nav pull-to-reveal logic
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.pill-nav a');
+    const globalNav = document.getElementById('globalNav');
+
+    // Pull-to-reveal mechanics at the top of the page
+    let pullStartY = 0;
+    
+    window.addEventListener('touchstart', (e) => {
+      if (window.scrollY <= 0) {
+        pullStartY = e.touches[0].clientY;
+      }
+    }, {passive: true});
+    
+    window.addEventListener('touchmove', (e) => {
+      if (window.scrollY <= 0) {
+        const currentY = e.touches[0].clientY;
+        if (currentY - pullStartY > 40) { // Forceful pull down on mobile
+          globalNav.classList.add('force-show');
+        }
+      }
+    }, {passive: true});
+
+    window.addEventListener('wheel', (e) => {
+      if (window.scrollY <= 0 && e.deltaY < -20) { // Forceful scroll up (pull down) on trackpad
+        globalNav.classList.add('force-show');
+      }
+    }, {passive: true});
+
+    // Hide global nav when user scrolls down into the page content
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        globalNav.classList.remove('force-show');
+      }
+    }, {passive: true});
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Update active link on pill nav
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            navLinks.forEach(link => {
+              // Ignore the book call button
+              if (link.getAttribute('href').startsWith('#')) {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+              }
+            });
+          }
+        }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.2 });
+
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    sections.forEach(sec => observer.observe(sec));
   </script>
   </body>
 </html>

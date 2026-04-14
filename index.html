@@ -64,6 +64,10 @@
     pointer-events: none;
     z-index: 100;
   }
+  
+  body { transition: margin-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  body:has(.site-nav.force-show) { margin-top: 36px; }
+  body:has(.site-nav.force-show) .topbar { top: 36px; }
 
   .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
@@ -581,7 +585,10 @@
     align-items: center;
     justify-content: center;
     gap: 2px;
+    position: fixed; width: 100%; top: 0; z-index: 2000;
+    transform: translateY(-100%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
+  .site-nav.force-show { transform: translateY(0); }
   .site-nav a {
     font-family: var(--mono);
     font-size: 10px;
@@ -999,6 +1006,30 @@
         document.body.style.overflow = '';
       }, 300);
     }
+
+    // Pull-to-reveal global nav mechanics
+    const globalNav = document.querySelector('.site-nav');
+    let pullStartY = 0;
+    
+    window.addEventListener('touchstart', (e) => {
+      if (window.scrollY <= 0) pullStartY = e.touches[0].clientY;
+    }, {passive: true});
+    
+    window.addEventListener('touchmove', (e) => {
+      if (window.scrollY <= 0 && e.touches[0].clientY - pullStartY > 40) {
+        globalNav.classList.add('force-show');
+      }
+    }, {passive: true});
+
+    window.addEventListener('wheel', (e) => {
+      if (window.scrollY <= 0 && e.deltaY < -20) {
+        globalNav.classList.add('force-show');
+      }
+    }, {passive: true});
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) globalNav.classList.remove('force-show');
+    }, {passive: true});
   </script>
 </body>
 </html>
