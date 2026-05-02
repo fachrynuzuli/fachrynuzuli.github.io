@@ -1,1035 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fachrynuzuli — portfolio</title>
-<meta name="description" content="Fachry Nuzuli Kamal — Digital Transformation Lead, AI builder, product manager. Real projects, real clients, real code. Riau, Indonesia.">
-<meta property="og:title" content="Fachry Nuzuli — Builder Portfolio">
-<meta property="og:description" content="Digital Transformation Lead, AI builder, product manager. Running 3 active operations on the side — real clients, real code, real builds.">
-<meta property="og:url" content="https://fachrynuzuli.github.io/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0e0e0f;
-    --bg2: #141415;
-    --bg3: #1a1a1b;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #e8e6e0;
-    --muted: #6b6960;
-    --muted2: #9a9790;
-    --accent: #c8a96e;
-    --accent2: #7eb8a4;
-    --accent3: #e07a5f;
-    --green: #6aad8e;
-    --mono: 'JetBrains Mono', monospace;
-    --serif: 'Fraunces', serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  ::selection { background: var(--accent); color: var(--bg); }
-
-  /* SCANLINE EFFECT */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.03) 2px,
-      rgba(0,0,0,0.03) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fachrynuzuli — terminal</title>
+  <meta name="description" content="Digital Transformation PM & AI Builder.">
   
-  body { transition: margin-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  body:has(.site-nav.force-show) { margin-top: 36px; }
-  body:has(.site-nav.force-show) .topbar { top: 36px; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0e0e0f;
+      --text: #e8e6e0;
+      --muted: #6b6960;
+      --muted-light: #9a9790;
+      --gold: #c8a96e;
+      --green: #6aad8e;
+      --coral: #e07a5f;
+      
+      /* Sub-brand accents */
+      --freebuilder: #F5A623; /* Amber */
+      --freeware: #00E87A; /* Neon Green */
+      --freewriter: #C4983A; /* Gold */
+      
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Fraunces', serif;
+    }
 
-  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  /* TOPBAR */
-  .topbar {
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    position: sticky;
-    top: 0;
-    background: rgba(14,14,15,0.92);
-    backdrop-filter: blur(8px);
-    z-index: 50;
-  }
+    /* Scanline effect */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.04) 2px,
+        rgba(0,0,0,0.04) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
 
-  .topbar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.15s ease, text-decoration 0.15s ease;
+      cursor: pointer;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      color: var(--green);
+    }
 
-  .topbar-path {
-    color: var(--muted);
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .topbar-path .sep { color: var(--border2); }
-  .topbar-path .current { color: var(--accent); }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding-top: 4vh;
+    }
 
-  .topbar-links {
-    display: flex;
-    gap: 20px;
-    flex-shrink: 0;
-    align-items: center;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .topbar-links::-webkit-scrollbar {
-    display: none;
-  }
-  .topbar-links a {
-    color: var(--muted2);
-    text-decoration: none;
-    font-size: 11px;
-    transition: color 0.15s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .topbar-links a:hover { color: var(--accent); }
+    .prompt {
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .prompt span { color: var(--text); font-weight: normal; }
 
-  /* HERO */
-  .hero {
-    padding: 72px 0 56px;
-    border-bottom: 1px solid var(--border);
-  }
+    .view {
+      display: none;
+      animation: reveal 0.4s ease forwards;
+    }
+    
+    .view.active {
+      display: block;
+    }
 
-  .prompt-line {
-    color: var(--green);
-    font-size: 11px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .prompt-line::before {
-    content: '$';
-    color: var(--accent);
-    font-weight: 700;
-  }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(42px, 7vw, 72px);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--text);
-    margin-bottom: 4px;
-    letter-spacing: -0.02em;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
+    /* Typography */
+    h1 {
+      font-family: var(--serif);
+      font-size: 26px; /* Reduced from 32px to match scale better */
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      color: var(--muted-light);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
 
-  .hero-handle {
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 32px;
-  }
+    .section-title {
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
 
-  .hero-desc {
-    font-size: 13px;
-    color: var(--muted2);
-    max-width: 480px;
-    line-height: 1.75;
-    margin-bottom: 32px;
-  }
+    /* Directory Tree */
+    .tree {
+      margin-left: 0;
+      margin-bottom: 16px; /* reduced space below */
+    }
+    
+    .tree-item {
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    
+    .tree-item::before {
+      content: '└─';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+    
+    .tree-subitem {
+      padding: 4px 0 4px 44px;
+      position: relative;
+    }
+    
+    .tree-subitem::before {
+      content: '└─';
+      position: absolute;
+      left: 24px;
+      color: var(--muted);
+    }
+    
+    .tree-desc {
+      color: var(--muted-light);
+      font-size: 12px;
+      margin-left: 8px;
+    }
 
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+    /* Lists */
+    .list-item {
+      margin-bottom: 20px;
+    }
+    
+    .list-date {
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    
+    .list-title {
+      font-weight: 500;
+      color: var(--text);
+    }
 
-  .tag {
-    font-size: 10px;
-    padding: 3px 10px;
-    border: 1px solid var(--border2);
-    color: var(--muted2);
-    border-radius: 2px;
-    letter-spacing: 0.05em;
-  }
-  .tag.accent { border-color: var(--accent); color: var(--accent); }
-  .tag.green { border-color: var(--green); color: var(--green); }
-  .tag.coral { border-color: var(--accent3); color: var(--accent3); }
+    .project-card {
+      margin-bottom: 24px;
+      padding-left: 16px;
+      border-left: 1px solid var(--muted);
+    }
+    
+    .project-title {
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .badge-live { background: rgba(106,173,142,0.15); color: var(--green); border: 1px solid rgba(106,173,142,0.3); }
+    
+    .project-metrics {
+      color: var(--gold);
+      font-size: 11px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    
+    .project-desc {
+      color: var(--muted-light);
+      font-size: 12px;
+    }
 
-  /* SECTION */
-  .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    .venture-card {
+      margin-bottom: 32px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
+    .venture-freeware .venture-name { color: var(--freeware); }
+    .venture-freebuilder .venture-name { color: var(--freebuilder); }
+    .venture-freewriter .venture-name { color: var(--freewriter); }
 
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--muted);
+    }
+    .nav-back:hover { color: var(--coral); }
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+    .contact-line {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--muted);
+      color: var(--muted-light);
+    }
 
-  /* FILE TREE */
-  .tree { margin-left: 0; }
-  .tree-root {
-    color: var(--accent);
-    font-size: 12px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .tree-item {
-    padding: 2px 0 2px 20px;
-    position: relative;
-    color: var(--muted2);
-    font-size: 12px;
-    cursor: default;
-  }
-  .tree-item::before {
-    content: '├──';
-    position: absolute;
-    left: 0;
-    color: var(--border2);
-  }
-  .tree-item:last-child::before { content: '└──'; }
-
-  .tree-item .fname { color: var(--text); }
-  .tree-item .ftype { color: var(--accent2); }
-  .tree-item .fcomment { color: var(--muted); }
-
-  /* PROJECT CARDS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 1px;
-    border: 1px solid var(--border);
-  }
-
-  .project-card {
-    background: var(--bg2);
-    padding: 24px;
-    transition: background 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card:hover { background: var(--bg3); }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 2px; height: 0;
-    background: var(--accent);
-    transition: height 0.2s;
-  }
-  .project-card:hover::before { height: 100%; }
-
-  .project-number {
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .project-status {
-    font-size: 9px;
-    padding: 2px 8px;
-    border-radius: 2px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .status-live { background: rgba(106,173,142,0.15); color: var(--green); border: 1px solid rgba(106,173,142,0.3); }
-  .status-wip { background: rgba(200,169,110,0.12); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
-  .status-internal { background: rgba(156,156,156,0.1); color: var(--muted2); border: 1px solid var(--border2); }
-
-  .project-name {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-
-  .project-desc {
-    font-size: 11.5px;
-    color: var(--muted2);
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
-
-  .project-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 16px;
-  }
-
-  .stack-badge {
-    font-size: 9.5px;
-    padding: 2px 7px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    color: var(--muted2);
-    border-radius: 2px;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 16px;
-  }
-
-  .project-link {
-    font-size: 11px;
-    color: var(--muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: color 0.15s;
-  }
-  .project-link:hover { color: var(--accent); }
-  .project-link .arrow { transition: transform 0.15s; }
-  .project-link:hover .arrow { transform: translateX(2px); }
-
-  /* STACK SECTION */
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1px;
-    border: 1px solid var(--border);
-  }
-
-  .stack-group {
-    background: var(--bg2);
-    padding: 20px;
-  }
-
-  .stack-group-label {
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-
-  .stack-items { display: flex; flex-direction: column; gap: 6px; }
-  .stack-item {
-    font-size: 11.5px;
-    color: var(--muted2);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .stack-item::before {
-    content: '';
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--border2);
-    flex-shrink: 0;
-  }
-  .stack-item.active::before { background: var(--green); }
-
-  /* ABOUT / README */
-  .readme {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 28px;
-  }
-
-  .readme-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .readme-header .file { color: var(--accent2); }
-
-  .readme-body p {
-    font-size: 12.5px;
-    color: var(--muted2);
-    line-height: 1.8;
-    margin-bottom: 14px;
-  }
-  .readme-body strong { color: var(--text); font-weight: 500; }
-
-  .readme-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    border: 1px solid var(--border);
-    margin-top: 24px;
-  }
-
-  .stat-cell {
-    background: var(--bg3);
-    padding: 16px 14px;
-    text-align: center;
-  }
-
-  .stat-value {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* CONTACT */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1px;
-    border: 1px solid var(--border);
-  }
-
-  .contact-item {
-    background: var(--bg2);
-    padding: 16px 24px;
-    flex: 1;
-    min-width: 160px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .contact-item:hover { background: var(--bg3); }
-
-  .contact-platform {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .contact-handle {
-    font-size: 12px;
-    color: var(--text);
-  }
-
-  /* FOOTER */
-  .footer {
-    padding: 32px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-left { font-size: 11px; color: var(--muted); }
-  .footer-right { font-size: 11px; color: var(--muted); }
-  .footer-right a { color: var(--accent); text-decoration: none; }
-
-  /* CURSOR BLINK */
-  .cursor {
-    display: inline-block;
-    width: 8px; height: 14px;
-    background: var(--accent);
-    animation: blink 1s step-end infinite;
-    vertical-align: middle;
-    margin-left: 4px;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* FADE IN */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero { animation: fadeUp 0.5s ease both; }
-  .section:nth-child(2) { animation: fadeUp 0.5s 0.1s ease both; }
-  .section:nth-child(3) { animation: fadeUp 0.5s 0.2s ease both; }
-  .section:nth-child(4) { animation: fadeUp 0.5s 0.3s ease both; }
-
-  @media (max-width: 600px) {
-    .projects-grid { grid-template-columns: 1fr; }
-    .readme-stats { grid-template-columns: repeat(2, 1fr); }
-    .hero-name { font-size: 40px; }
-  }
-
-  /* MODAL */
-  .modal-overlay {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-    z-index: 1000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-  }
-  .modal-overlay.active { opacity: 1; pointer-events: all; }
-  .modal-content {
-    width: 90vw; height: 90vh; background: var(--bg);
-    border: 1px solid var(--border); border-radius: 8px;
-    display: flex; flex-direction: column; overflow: hidden;
-    transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-  .modal-header {
-    height: 48px; background: var(--bg2); border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
-  }
-  .modal-header .modal-title { font-size: 13px; font-weight: 500; color: var(--text); }
-  .modal-header .modal-close {
-    background: none; border: none; color: var(--muted);
-    font-size: 20px; line-height: 1; cursor: pointer; padding: 4px;
-  }
-  .modal-header .modal-close:hover { color: var(--accent); }
-  .modal-iframe { flex: 1; width: 100%; height: 100%; border: none; background: #fff; }
-
-  /* TOPBAR DROPDOWN */
-  .dots-btn {
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 11px;
-    cursor: pointer;
-    padding: 10px 10px;
-    margin: -10px -10px;
-    transition: color 0.15s;
-    position: relative;
-  }
-  .dots-btn:hover { color: var(--text); }
-  .dots-dropdown {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    min-width: 160px;
-    z-index: 200;
-    display: none;
-  }
-  .dots-dropdown.open { display: block; }
-  .dots-dropdown a {
-    display: block;
-    padding: 9px 14px;
-    font-size: 11px;
-    color: var(--muted2);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.15s, background 0.15s;
-    letter-spacing: 0.04em;
-  }
-  .dots-dropdown a:last-child { border-bottom: none; }
-  .dots-dropdown a:hover { color: var(--accent); background: var(--bg3); }
-  .dots-dropdown .dd-label { font-size: 9px; color: var(--muted); display: block; }
-
-  /* SITE NAV (SHARED) */
-  .site-nav {
-    background: rgba(14,14,15,0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(200,169,110,0.12);
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    position: fixed; width: 100%; top: 0; z-index: 2000;
-    transform: translateY(-100%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .site-nav.force-show { transform: translateY(0); }
-  .site-nav a {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 11px 20px;
-    color: var(--muted);
-    transition: color 0.15s;
-    position: relative;
-  }
-  .site-nav a:hover { color: var(--accent); }
-  .site-nav a.active { color: var(--accent); }
-  .site-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 2px;
-    background: var(--accent);
-  }
-</style>
+    /* Cursor blink */
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 15px;
+      background: var(--green);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
 </head>
 <body>
 
-<header class="site-nav">
-  <a href="index.html" class="active">home</a>
-  <a href="freebuilder.html">freebuilder.co</a>
-  <a href="freeware.html">freeware.lab</a>
-  <a href="freewriter.html">freewriter.lab</a>
-</header>
-
-<div class="topbar">
   <div class="container">
-    <div class="topbar-inner">
-      <div class="topbar-path">
-        <span>~</span>
-        <span class="sep">/</span>
-        <span>fachrynuzuli</span>
-        <span class="sep">/</span>
-        <span style="position:relative;">
-          <button class="dots-btn" id="dotsBtn" aria-label="Navigate to sub-sites">...</button>
-          <div class="dots-dropdown" id="dotsDropdown">
-            <a href="freebuilder.html"><span class="dd-label">education</span>freebuilder.co</a>
-            <a href="freeware.html"><span class="dd-label">web apps</span>freeware.lab</a>
-            <a href="freewriter.html"><span class="dd-label">ghostwriting</span>freewriter.lab</a>
-          </div>
-        </span>
+    
+    <!-- HOME VIEW -->
+    <div id="home" class="view active">
+      
+      <h1>Fachry <em style="color: var(--gold); font-style: italic;">Nuzuli</em> Kamal<span class="cursor"></span></h1>
+      <p class="subtitle">
+        Digital Transformation PM at a multinational corp. I build with AI, lead org-wide changes, and teach non-technical founders how to ship real products.
+      </p>
+
+      <div class="prompt" style="color: var(--text);">main directory:</div>
+      
+      <div class="tree" style="margin-left: 12px;">
+        <div class="tree-item">
+          <a href="#notes">notes/</a>
+          <span class="tree-desc">writings on product & AI</span>
+        </div>
+        <div class="tree-item">
+          <a href="#work">work/</a>
+          <span class="tree-desc">enterprise case studies & portfolio</span>
+        </div>
+        <div class="tree-item">
+          <a href="#ventures">ventures/</a>
+          <span class="tree-desc">my indie operations & labs</span>
+        </div>
+        <div class="tree-item">
+          <a href="#resources">resources/</a>
+          <span class="tree-desc">free prompts, workflows & tools i use</span>
+        </div>
       </div>
-      <div class="topbar-links">
-        <a href="#projects">projects</a>
-        <a href="#stack">stack</a>
-        <a href="#about">readme</a>
-        <a href="#contact">contact</a>
-        <a href="https://fachrynuzuli.com" target="_blank">→ blog</a>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-
-  <div class="hero" id="top">
-    <div class="prompt-line">whoami — I build things so I have something worth sharing</div>
-    <h1 class="hero-name">Fachry <em>Nuzuli</em><br>Kamal<span class="cursor"></span></h1>
-    <div class="hero-handle">@fachrynuzuli · Indonesia · github.com/fachrynuzuli</div>
-    <p class="hero-desc">
-      Digital Transformation PM at a multinational manufacturing corp. I build with AI, lead changes org-wide, write about what I learn, and lend my voice to people who think clearly but struggle to say it.
-    </p>
-    <div class="hero-tags">
-      <span class="tag coral">digital transformation</span>
-      <span class="tag green">product management</span>
-      <span class="tag green">ai-first</span>
-      <span class="tag accent">prompt engineering</span>
-      <span class="tag accent">context management</span>
-      <span class="tag accent">vibe coding</span>
-    </div>
-  </div>
-
-  <!-- FILE TREE -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-label">/ public repository</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="tree">
-      <div class="tree-root">📁 fachrynuzuli/</div>
-      <div style="padding-left: 12px;">
-        <div class="tree-item"><span class="fname">dispatch-system/</span></div>
-        <div class="tree-item"><span class="fname">fachrynuzuli.github.io/</span></div>
-        <div class="tree-item"><span class="fname">knock-knock/</span></div>
-        <div class="tree-item"><span class="fname">sharemaxxing/</span></div>
-        <div class="tree-item"><span class="fname">README.md</span> <span class="ftype">.md</span> <span class="fcomment">— you are here</span></div>
+      <div class="contact-line">
+        <a href="mailto:fachrynuzuli@gmail.com">fachrynuzuli@gmail.com</a> | 
+        <a href="https://github.com/fachrynuzuli" target="_blank">github</a> |
+        <a href="https://linkedin.com/in/fachrynuzuli" target="_blank">linkedin</a> |
+        <a href="https://fachry.substack.com" target="_blank">substack</a> |
+        <a href="https://x.com/fachrynuzuli" target="_blank">x (twitter)</a>
       </div>
     </div>
-  </div>
 
-
-
-  <!-- PROJECTS -->
-  <div class="section" id="projects">
-    <div class="section-header">
-      <span class="section-label">/ projects</span>
-      <div class="section-line"></div>
+    <!-- NOTES VIEW -->
+    <div id="notes" class="view">
+      <a href="#home" class="nav-back">← main directory</a>
+      <div class="section-title">Writings & Essays</div>
+      
+      <div class="list-item">
+        <span class="list-date">[2024-12-27]</span>
+        <span class="list-title">Why essays matter more than blogs</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-12-20]</span>
+        <span class="list-title">Building 30 apps: what I learned on Day 10</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-12-15]</span>
+        <span class="list-title">Free AI tools are good enough</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-12-10]</span>
+        <span class="list-title">Product thinking vs feature thinking</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-12-05]</span>
+        <span class="list-title">The PM who ships with constraints</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-11-28]</span>
+        <span class="list-title">How I used Claude to automate my workflow</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-11-20]</span>
+        <span class="list-title">Learning to say no as a PM</span>
+      </div>
+      <div class="list-item">
+        <span class="list-date">[2024-11-15]</span>
+        <span class="list-title">Why I quit my job to build for 30 days</span>
+      </div>
     </div>
-    <div class="projects-grid">
 
+    <!-- WORK VIEW -->
+    <div id="work" class="view">
+      <a href="#home" class="nav-back">← main directory</a>
+      <div class="section-title">Enterprise & PM Portfolio</div>
+      
       <div class="project-card">
-        <div class="project-number">
-          <span>001</span>
-          <span class="project-status status-live">live</span>
-        </div>
-        <div class="project-name">FMS Suite</div>
-        <div class="project-desc">Fleet Management System with mobile app, web dashboard, GPS tracking, and Wi-Fi infrastructure. Built for 400+ contractors across 11 departments at a multinational pulp & paper corp.</div>
-        <div class="project-desc" style="color: var(--green); font-size: 10.5px; margin-top: -8px;">3 system audits passed. 400+ contractors onboarded.</div>
-        <div class="project-stack">
-          <span class="stack-badge">Lovable</span>
-          <span class="stack-badge">Supabase</span>
-          <span class="stack-badge">GPS Integration</span>
-          <span class="stack-badge">Mobile App</span>
-        </div>
-        <div class="project-links">
-          <span class="project-link" style="color: var(--muted); cursor: default;">internal deployment</span>
-        </div>
+        <div class="project-title">Fleet Management Ecosystem <span class="badge badge-live">LIVE</span></div>
+        <div class="project-metrics">400+ vehicles • $301K annual impact</div>
+        <div class="project-desc">Led the digital transformation of contractor workforce management and logistics visibility at a multinational corp. 3 system audits passed.</div>
+        <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
-        <div class="project-number">
-          <span>002</span>
-          <span class="project-status status-live">live</span>
-        </div>
-        <div class="project-name">FLS Dashboard</div>
-        <div class="project-desc">Interactive logistics dashboard for Forestry Logistics System. Visualizing haulage efficiency, fleet utilization, and production metrics. Built as part of the wider transport digitization initiative.</div>
-        <div class="project-stack">
-          <span class="stack-badge">React</span>
-          <span class="stack-badge">Vite</span>
-          <span class="stack-badge">Framer Motion</span>
-          <span class="stack-badge">Recharts</span>
-        </div>
-        <div class="project-links">
-          <a href="/fls-dashboard/" onclick="openModal('FLS Dashboard', '/fls-dashboard/', event)" class="project-link">view dashboard <span class="arrow">→</span></a>
-        </div>
+        <div class="project-title">AI Driver Safety Platform <span class="badge badge-live">LIVE</span></div>
+        <div class="project-metrics">450+ users • Zero accidents post-launch</div>
+        <div class="project-desc">Implemented a real-time safety monitoring solution, directly improving operational safety KPIs across the hauling fleet.</div>
+        <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
-        <div class="project-number">
-          <span>003</span>
-          <span class="project-status status-live">live</span>
-        </div>
-        <div class="project-name">Rapid MVP Sprint</div>
-        <div class="project-desc">Done-for-you MVP service. Brief to working app in 48–72 hours using AI-first tools. Client owns the code. No agency markup, no monthly fees. Built 3+ MVPs delivered to real clients.</div>
-        <div class="project-stack">
-          <span class="stack-badge">Lovable</span>
-          <span class="stack-badge">v0</span>
-          <span class="stack-badge">Supabase</span>
-          <span class="stack-badge">Vercel</span>
-          <span class="stack-badge">Netlify</span>
-        </div>
-        <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('Rapid MVP Sprint', 'https://fachrynuzuli.com', event)" class="project-link">freeware.lab <span class="arrow">→</span></a>
-        </div>
+        <div class="project-title">Predictive Maintenance System <span class="badge badge-live">LIVE</span></div>
+        <div class="project-metrics">$207K annual savings • 5% asset life extension</div>
+        <div class="project-desc">Built predictive models to reduce unplanned downtime for heavy machinery and logistics assets.</div>
+        <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
-        <div class="project-number">
-          <span>004</span>
-          <span class="project-status status-wip">in progress</span>
-        </div>
-        <div class="project-name">Prompt Files</div>
-        <div class="project-desc">Packaged AI workflow packs. Each is a complete A-to-Z system — context management, JSON profiling, LLM mastery, vibe coding workflows. Built for non-developers who want to move like power users.</div>
-        <div class="project-stack">
-          <span class="stack-badge">Whop</span>
-          <span class="stack-badge">Claude</span>
-          <span class="stack-badge">JSON Profiles</span>
-          <span class="stack-badge">Prompt Systems</span>
-        </div>
-        <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('Prompt Files', 'https://fachrynuzuli.com', event)" class="project-link">freebuilder <span class="arrow">→</span></a>
-        </div>
+        <div class="project-title">30 Apps in 30 Days Challenge <span class="badge badge-live">LIVE</span></div>
+        <div class="project-metrics">Speed & Execution Benchmark</div>
+        <div class="project-desc">Building and shipping complete applications using entirely free AI tools, documenting the process publicly.</div>
+        <div style="margin-top: 8px;"><a href="#">[View builds]</a></div>
       </div>
-
+      
       <div class="project-card">
-        <div class="project-number">
-          <span>005</span>
-          <span class="project-status status-live">live</span>
-        </div>
-        <div class="project-name">freewriter.co</div>
-        <div class="project-desc">Personal brand and ghostwriting service for B2B and digital transformation leaders. AI-assisted profiling, LinkedIn content strategy, voice extraction. Real clients, real personal brands.</div>
-        <div class="project-stack">
-          <span class="stack-badge">Claude</span>
-          <span class="stack-badge">LinkedIn</span>
-          <span class="stack-badge">Content Strategy</span>
-          <span class="stack-badge">AI Profiling</span>
-        </div>
-        <div class="project-links">
-          <a href="https://fachrynuzuli.com" target="_blank" onclick="openModal('freewriter.co', 'https://fachrynuzuli.com', event)" class="project-link">view agency <span class="arrow">→</span></a>
-        </div>
+        <div class="project-title">AI PM Tool Suite <span class="badge badge-live">LIVE</span></div>
+        <div class="project-metrics">20+ prototypes • 9 production-ready tools</div>
+        <div class="project-desc">Open-source collection of AI tools built specifically for product managers to automate daily workflows.</div>
+        <div style="margin-top: 8px;"><a href="https://github.com/fachrynuzuli" target="_blank">[View on GitHub]</a></div>
       </div>
-
-      <div class="project-card">
-        <div class="project-number">
-          <span>006</span>
-          <span class="project-status status-internal">internal</span>
-        </div>
-        <div class="project-name">Transport Digitization Suite</div>
-        <div class="project-desc">Multi-system digitization covering procurement, contractor workforce management, and forestry logistics. Full-cycle PM: requirements, prototyping, stakeholder alignment, and program integration.</div>
-        <div class="project-stack">
-          <span class="stack-badge">TRMS</span>
-          <span class="stack-badge">Digifleet</span>
-          <span class="stack-badge">Orpak</span>
-          <span class="stack-badge">Vibe Coding</span>
-        </div>
-        <div class="project-links">
-          <a href="/fls-dashboard" class="project-link">view dashboard <span class="arrow">→</span></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-number">
-          <span>007</span>
-          <span class="project-status status-wip">building</span>
-        </div>
-        <div class="project-name">Freebuilder Content Engine</div>
-        <div class="project-desc">1M+ impressions generated across X, Instagram, LinkedIn. Daily content system around AI education — real builds, real proof, real audience in SEA. 230 Substack subscribers. 2,700+ social following.</div>
-        <div class="project-stack">
-          <span class="stack-badge">Substack</span>
-          <span class="stack-badge">Instagram</span>
-          <span class="stack-badge">X / Twitter</span>
-          <span class="stack-badge">LinkedIn</span>
-          <span class="stack-badge">TikTok</span>
-        </div>
-        <div class="project-links">
-          <a href="https://x.com/fachrynuzuli" target="_blank" class="project-link">follow <span class="arrow">→</span></a>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <!-- STACK -->
-  <div class="section" id="stack">
-    <div class="section-header">
-      <span class="section-label">/ stack</span>
-      <div class="section-line"></div>
+    <!-- VENTURES VIEW -->
+    <div id="ventures" class="view">
+      <a href="#home" class="nav-back">← main directory</a>
+      <div class="section-title" style="margin-bottom: 24px;">My Indie Operations (Founder)</div>
+      <p style="color: var(--muted-light); margin-bottom: 32px; font-size: 12px; max-width: 600px;">
+        Beyond my enterprise work, I run three active operations on the side. I build these entirely myself, leveraging AI to scale my output and help other non-technical founders ship faster.
+      </p>
+      
+      <div class="venture-card venture-freeware">
+        <div class="project-title"><span class="venture-name">freeware.lab</span> <span class="badge badge-live" style="color: var(--freeware); border-color: rgba(0,232,122,0.3); background: rgba(0,232,122,0.1);">ACTIVE</span></div>
+        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
+          <strong>Rapid MVP Sprints & Development.</strong> I help founders go from idea to working app in 48-72 hours using AI-first tools. No agency markup, no monthly fees. I've delivered 3+ MVPs to real clients.
+        </div>
+        <div class="tree" style="margin-bottom: 12px;">
+          <div class="tree-item"><span style="color: var(--text);">2-Hour MVP Build</span> <span class="tree-desc">I build your MVP with free AI tools</span></div>
+          <div class="tree-item"><span style="color: var(--text);">Product Sprint Week</span> <span class="tree-desc">5-day sprint: 5 connected features</span></div>
+        </div>
+        <a href="freeware.html">[Visit freeware.lab →]</a>
+      </div>
+
+      <div class="venture-card venture-freebuilder">
+        <div class="project-title"><span class="venture-name">freebuilder.co</span> <span class="badge badge-live" style="color: var(--freebuilder); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.1);">ACTIVE</span></div>
+        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
+          <strong>Packaged AI Workflows & Education.</strong> I package my exact systems (context management, JSON profiling, vibe coding workflows) into playbooks for non-developers who want to move like power users.
+        </div>
+        <div class="tree" style="margin-bottom: 12px;">
+          <div class="tree-item"><span style="color: var(--text);">The Free Tier Playbook</span> <span class="tree-desc">30 prompts + workflows + tool comparisons</span></div>
+          <div class="tree-item"><span style="color: var(--text);">AI PM Toolkit</span> <span class="tree-desc">50+ prompts, templates, video tutorials</span></div>
+        </div>
+        <a href="freebuilder.html">[Visit freebuilder.co →]</a>
+      </div>
+
+      <div class="venture-card venture-freewriter">
+        <div class="project-title"><span class="venture-name">freewriter.lab</span> <span class="badge badge-live" style="color: var(--freewriter); border-color: rgba(196,152,58,0.3); background: rgba(196,152,58,0.1);">ACTIVE</span></div>
+        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
+          <strong>Ghostwriting & Personal Brand Agency.</strong> I help B2B and digital transformation leaders extract their voice and build credibility on LinkedIn using AI-assisted profiling and content strategy.
+        </div>
+        <a href="freewriter.html">[Visit freewriter.lab →]</a>
+      </div>
     </div>
-    <div class="stack-grid">
-      <div class="stack-group">
-        <div class="stack-group-label">build tools</div>
-        <div class="stack-items">
-          <div class="stack-item active">Lovable</div>
-          <div class="stack-item active">v0</div>
-          <div class="stack-item active">Antigravity</div>
-          <div class="stack-item active">Claude Code</div>
-          <div class="stack-item active">AI Studio</div>
+
+    <!-- RESOURCES DIRECTORY VIEW -->
+    <div id="resources" class="view">
+      <a href="#home" class="nav-back">← main directory</a>
+      <div class="prompt" style="color: var(--text);">resources directory:</div>
+      
+      <div class="tree" style="margin-left: 12px;">
+        <div class="tree-item">
+          <a href="#prompts">prompts/</a>
+          <span class="tree-desc">my free prompt collection</span>
         </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-label">backend / deploy</div>
-        <div class="stack-items">
-          <div class="stack-item active">Supabase</div>
-          <div class="stack-item active">Firebase</div>
-          <div class="stack-item active">Convex</div>
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-label">ai models</div>
-        <div class="stack-items">
-          <div class="stack-item active">Claude (Anthropic)</div>
-          <div class="stack-item active">Gemini (Google)</div>
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-label">ops / content</div>
-        <div class="stack-items">
-          <div class="stack-item active">Whop</div>
-          <div class="stack-item active">Substack</div>
-          <div class="stack-item active">Cal</div>
-          <div class="stack-item active">Obsidian</div>
+        <div class="tree-item">
+          <a href="#tools">tools/</a>
+          <span class="tree-desc">the stack i use daily</span>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- README -->
-  <div class="section" id="about">
-    <div class="section-header">
-      <span class="section-label">/ readme.md</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="readme">
-      <div class="readme-header">
-        <span>📄</span>
-        <span class="file">README.md</span>
-        <span style="margin-left: auto;">last updated: <span data-meta="meta.lastUpdated">April 2026</span></span>
-      </div>
-      <div class="readme-body">
-        <p>
-          <strong>Digital Transformation PM</strong> at a multinational manufacturing corp. I own full-cycle digital products inside a large, complex organization: 11 departments, 400+ contractors, systems with real operational and financial consequences.
-        </p>
-        <p>
-          Outside of that, I run 3 independent operations. <a href="freeware.html" style="color:var(--accent2);text-decoration:none;">freeware.lab</a> builds working apps in 48 hours for founders who can't afford agency timelines. <a href="freewriter.html" style="color:var(--accent2);text-decoration:none;">freewriter.lab</a> lends a voice to executives who think clearly but won't write publicly. <a href="freebuilder.html" style="color:var(--accent2);text-decoration:none;">freebuilder.co</a> teaches AI workflows to builders who want to move faster without a CS degree.
-        </p>
-        <p>
-          The rule across all of it: ship the link, not the pitch. Proof is the only currency that compounds.
-        </p>
-        <div class="readme-stats">
-          <div class="stat-cell">
-            <span class="stat-value">$1.26M+</span>
-            <span class="stat-label">corp ROI delivered</span>
-          </div>
-          <div class="stat-cell">
-            <span class="stat-value">1M+</span>
-            <span class="stat-label">impressions</span>
-          </div>
-          <div class="stat-cell">
-            <span class="stat-value">48h</span>
-            <span class="stat-label">MVP delivery</span>
-          </div>
-          <div class="stat-cell">
-            <span class="stat-value">230</span>
-            <span class="stat-label">substack subs</span>
-          </div>
-        </div>
-        </div>
+    <!-- PROMPTS VIEW -->
+    <div id="prompts" class="view">
+      <a href="#resources" class="nav-back">← resources</a>
+      <div class="section-title">Prompt Collection</div>
+      
+      <div class="tree" style="margin-left: 0;">
+        <div class="tree-item" style="color: var(--gold); font-weight: 500;">ideation/</div>
+        <div class="tree-subitem"><a href="#">prompt ideation 1</a></div>
+        <div class="tree-subitem"><a href="#">prompt ideation 2</a></div>
+        
+        <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">creation/</div>
+        <div class="tree-subitem"><a href="#">prompt creation 1</a></div>
+        <div class="tree-subitem"><a href="#">prompt creation 2</a></div>
+        
+        <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">sell/</div>
+        <div class="tree-subitem"><a href="#">prompt sell 1</a></div>
+        <div class="tree-subitem"><a href="#">prompt sell 2</a></div>
+        
+        <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">business_ops/</div>
+        <div class="tree-subitem"><a href="#">prompt ops 1</a></div>
+        <div class="tree-subitem"><a href="#">prompt ops 2</a></div>
       </div>
     </div>
-  </div>
 
-  <!-- CONTACT -->
-  <div class="section" id="contact">
-    <div class="section-header">
-      <span class="section-label">/ contact</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="contact-row">
-      <a href="#" data-link="socials.x" target="_blank" class="contact-item">
-        <div>
-          <span class="contact-platform">X / Twitter</span>
-          <span class="contact-handle">@fachrynuzuli</span>
+    <!-- TOOLS VIEW -->
+    <div id="tools" class="view">
+      <a href="#resources" class="nav-back">← resources</a>
+      <div class="section-title">The Stack (What I Use)</div>
+      
+      <div style="margin-top: 24px;">
+        <div class="list-item">
+          <div class="list-title">Claude (Anthropic)</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">My daily driver. Best for complex reasoning, writing code, and structuring thoughts.</div>
+          <a href="https://claude.ai" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-      </a>
-      <a href="#" data-link="socials.instagram" target="_blank" class="contact-item">
-        <div>
-          <span class="contact-platform">Instagram</span>
-          <span class="contact-handle">@fachrynuzuli</span>
+        
+        <div class="list-item">
+          <div class="list-title">Cursor</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">AI-first code editor. An absolute game-changer for PMs acting as solo-engineers.</div>
+          <a href="https://cursor.sh" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-      </a>
-      <a href="#" data-link="socials.linkedin" target="_blank" class="contact-item">
-        <div>
-          <span class="contact-platform">LinkedIn</span>
-          <span class="contact-handle">Fachry Nuzuli Kamal</span>
+        
+        <div class="list-item">
+          <div class="list-title">Lovable / v0</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Generating beautiful UI components and full functional prototypes from text prompts.</div>
+          <a href="https://v0.dev" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-      </a>
-      <a href="#" data-link="socials.substack" target="_blank" class="contact-item">
-        <div>
-          <span class="contact-platform">Substack</span>
-          <span class="contact-handle">fachrynuzuli</span>
+        
+        <div class="list-item">
+          <div class="list-title">Supabase</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Postgres database, Auth, and Edge Functions. The perfect backend for rapid shipping.</div>
+          <a href="https://supabase.com" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-      </a>
-      <a href="https://fachrynuzuli.com" target="_blank" class="contact-item">
-        <div>
-          <span class="contact-platform">main site</span>
-          <span class="contact-handle">fachrynuzuli.com</span>
+        
+        <div class="list-item">
+          <div class="list-title">Replit</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Deploying apps in minutes. Zero DevOps overhead.</div>
+          <a href="https://replit.com" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-      </a>
-    </div>
-  </div>
-
-  <div class="footer">
-      <div class="footer-left">© <span data-meta="meta.year">2026</span> Fachry Nuzuli Kamal · Riau, Indonesia</div>
-    <div class="footer-right">built with AI, shipped with intent · <a href="https://fachrynuzuli.com">fachrynuzuli.com →</a></div>
-  </div>
-
-</div>
-  <script src="site-config.js"></script>
-
-  <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <div class="modal-title" id="modalTitle">Project Viewer</div>
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <a href="#" id="modalExternalLink" target="_blank" style="color: var(--accent); font-size: 11px; text-decoration: none;">open in new tab ↗</a>
-          <button class="modal-close" onclick="closeModal()">×</button>
+        
+        <div class="list-item">
+          <div class="list-title">Notion</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Where my brain lives. Product docs, roadmaps, and sprint planning.</div>
+          <a href="https://notion.so" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
       </div>
-      <iframe class="modal-iframe" id="modalIframe" src="about:blank"></iframe>
     </div>
+
   </div>
 
   <script>
-    function openModal(title, url, event) {
-      if (event) event.preventDefault();
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalExternalLink').href = url;
-      document.getElementById('modalIframe').src = url;
-      document.getElementById('projectModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    // Dots dropdown
-    const dotsBtn = document.getElementById('dotsBtn');
-    const dotsDropdown = document.getElementById('dotsDropdown');
-    dotsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dotsDropdown.classList.toggle('open');
-    });
-    document.addEventListener('click', () => dotsDropdown.classList.remove('open'));
+    // Simple Hash Router for SPA functionality
+    function route() {
+      // Get hash from URL, default to 'home'
+      let hash = window.location.hash.substring(1) || 'home';
+      
+      // Safety check - if hash doesn't exist as an ID, go home
+      if (!document.getElementById(hash)) {
+        hash = 'home';
+      }
 
-    function closeModal(event) {
-      if (event && event.target.id !== 'projectModal' && !event.target.classList.contains('modal-close')) return;
-      document.getElementById('projectModal').classList.remove('active');
-      setTimeout(() => {
-        document.getElementById('modalIframe').src = 'about:blank';
-        document.body.style.overflow = '';
-      }, 300);
+      // Hide all views
+      document.querySelectorAll('.view').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // Show the targeted view
+      const targetView = document.getElementById(hash);
+      targetView.classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
     }
 
-    // Pull-to-reveal global nav mechanics
-    const globalNav = document.querySelector('.site-nav');
-    let pullStartY = 0;
+    // Listen for hash changes
+    window.addEventListener('hashchange', route);
     
-    window.addEventListener('touchstart', (e) => {
-      if (window.scrollY <= 0) pullStartY = e.touches[0].clientY;
-    }, {passive: true});
-    
-    window.addEventListener('touchmove', (e) => {
-      if (window.scrollY <= 0 && e.touches[0].clientY - pullStartY > 40) {
-        globalNav.classList.add('force-show');
-      }
-    }, {passive: true});
-
-    window.addEventListener('wheel', (e) => {
-      if (window.scrollY <= 0 && e.deltaY < -20) {
-        globalNav.classList.add('force-show');
-      }
-    }, {passive: true});
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 30) globalNav.classList.remove('force-show');
-    }, {passive: true});
+    // Initial route load
+    window.addEventListener('DOMContentLoaded', route);
   </script>
 </body>
 </html>
