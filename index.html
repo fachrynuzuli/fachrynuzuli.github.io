@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fachrynuzuli — terminal</title>
+  <title>fachrynuzuli — digital transformation PM</title>
   <meta name="description" content="Digital Transformation PM & AI Builder.">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="favicon-192.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -244,6 +248,46 @@
       margin-left: 4px;
     }
     @keyframes blink { 50% { opacity: 0; } }
+
+    /* Section Treemap */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      margin-top: 32px;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+    .tree-root {
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tree-node {
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .tree-node::before {
+      content: '├──';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+    .tree-node:last-child::before {
+      content: '└──';
+    }
   </style>
 </head>
 <body>
@@ -258,24 +302,30 @@
         Digital Transformation PM at a multinational corp. I build with AI, lead org-wide changes, and teach non-technical founders how to ship real products.
       </p>
 
-      <div class="prompt" style="color: var(--text);">main directory:</div>
+      <div class="section-header">
+        <span class="section-label">/ public repository</span>
+        <div class="section-line"></div>
+      </div>
       
-      <div class="tree" style="margin-left: 12px;">
-        <div class="tree-item">
-          <a href="#notes">notes/</a>
-          <span class="tree-desc">writings on product & AI</span>
-        </div>
-        <div class="tree-item">
-          <a href="#work">work/</a>
-          <span class="tree-desc">enterprise case studies & portfolio</span>
-        </div>
-        <div class="tree-item">
-          <a href="#ventures">ventures/</a>
-          <span class="tree-desc">my indie operations & labs</span>
-        </div>
-        <div class="tree-item">
-          <a href="#resources">resources/</a>
-          <span class="tree-desc">free prompts, workflows & tools i use</span>
+      <div class="tree" style="margin-left: 0;">
+        <div class="tree-root">📁 fachrynuzuli/</div>
+        <div style="padding-left: 12px;">
+          <div class="tree-node">
+            <a href="#notes">notes/</a>
+            <span class="tree-desc">writings on product & AI</span>
+          </div>
+          <div class="tree-node">
+            <a href="#work">work/</a>
+            <span class="tree-desc">enterprise case studies & portfolio</span>
+          </div>
+          <div class="tree-node">
+            <a href="#ventures">ventures/</a>
+            <span class="tree-desc">my indie operations & labs</span>
+          </div>
+          <div class="tree-node">
+            <a href="#resources">resources/</a>
+            <span class="tree-desc">free prompts, workflows & tools i use</span>
+          </div>
         </div>
       </div>
 
