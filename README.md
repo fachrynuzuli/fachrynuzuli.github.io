@@ -1,67 +1,28 @@
 # fachrynuzuli.github.io
 
-Personal storefront by **Fachry Nuzuli** — hosted on GitHub Pages.
+Personal directory, writings, and active operations for **Fachry Nuzuli**.
 
-## 🏪 What's Inside
-
-| Page | URL | Description |
-|------|-----|-------------|
-| **Freebuilder Studio** | `/` (home) | AI builder services, MVP sprints, prompt packs |
-| **Aryendbumi & Co.** | `/aryendbumi-co.html` | Strategic communications & LinkedIn ghostwriting |
+- **[Main Directory](https://fachrynuzuli.github.io/)** — Writings, enterprise case studies, and resources.
+- **[freebuilder.co](https://fachrynuzuli.github.io/freebuilder.html)** — AI workflows and education playbooks.
+- **[freeware.lab](https://fachrynuzuli.github.io/freeware.html)** — Rapid MVP sprints and AI-first development.
+- **[freewriter.lab](https://fachrynuzuli.github.io/freewriter.html)** — Strategic communications and ghostwriting.
 
 ## 🛠 Tech Stack
+- **Vanilla HTML / CSS / JS** (No frameworks, no build step)
+- **GitHub Pages** for hosting
 
-- **Vanilla HTML / CSS / JS** — no framework, no build step
-- **GitHub Actions** → GitHub Pages (auto-deploy on push to `main`)
-- **`site-config.js`** — centralized link management (see below)
+## 📁 Content Structure
+The main hub (`index.html`) acts as a terminal-style directory:
 
-## 🚀 Run Locally
-
-```bash
-# Clone the repo
-git clone https://github.com/fachrynuzuli/fachrynuzuli.github.io.git
-cd fachrynuzuli.github.io
-
-# Start a local server
-python3 -m http.server 8000
-
-# Open http://localhost:8000
+```text
+📁 main/
+├── notes/                  # Writings on product management and AI
+├── works/                  # Enterprise case studies and portfolio
+├── ventures/               # Active indie operations (freeware, freebuilder, freewriter)
+├── resources/              # Free prompts, workflows, and the tools I use daily
+│   ├── prompts/            # My free prompt collection
+│   └── tools/              # The stack I use daily
+└── repository/             # Check on all files we have
 ```
 
-## 🔗 Updating Links
-
-All external URLs (CTAs, social links, checkout) are managed in **one file**:
-
-```
-site-config.js
-```
-
-Edit the values there — both pages pick them up automatically. No need to search through HTML.
-
-## 📦 Deploying
-
-Push to `main` → GitHub Actions deploys automatically to `fachrynuzuli.github.io`.
-
-```bash
-git add .
-git commit -m "update"
-git push origin main
-```
-
-## 📁 Project Structure
-
-```
-├── index.html              # Freebuilder Studio (home page)
-├── aryendbumi-co.html      # Aryendbumi & Co.
-├── site-config.js          # Centralized links & settings
-├── README.md
-├── .github/
-│   └── workflows/
-│       └── deploy.yml      # GitHub Actions deploy workflow
-└── tasks/
-    └── prd-*.md            # Product requirement docs
-```
-
-## 📝 License
-
-© 2025 Fachry Nuzuli. All rights reserved.
+© 2026 Fachry Nuzuli. All rights reserved.

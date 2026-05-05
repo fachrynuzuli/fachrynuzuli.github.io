@@ -1,0 +1,317 @@
+    :root {
+      --bg: #0e0e0f;
+      --text: #e8e6e0;
+      --muted: #6b6960;
+      --muted-light: #9a9790;
+      --gold: #c8a96e;
+      --green: #6aad8e;
+      --coral: #e07a5f;
+
+      /* Sub-brand accents */
+      --freebuilder: #F5A623;
+      /* Amber */
+      --freeware: #00E87A;
+      /* Neon Green */
+      --freewriter: #C4983A;
+      /* Gold */
+
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Fraunces', serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scanline effect */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.04) 2px,
+          rgba(0, 0, 0, 0.04) 4px);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.15s ease, text-decoration 0.15s ease;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--green);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding-top: 4vh;
+    }
+
+    .prompt {
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .prompt span {
+      color: var(--text);
+      font-weight: normal;
+    }
+
+    .view {
+      display: none;
+      animation: reveal 0.4s ease forwards;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Typography */
+    h1 {
+      font-family: var(--serif);
+      font-size: 26px;
+      /* Reduced from 32px to match scale better */
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted-light);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .section-title {
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Directory Tree */
+    .tree {
+      margin-left: 0;
+      margin-bottom: 16px;
+      /* reduced space below */
+    }
+
+    .tree-item {
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .tree-item::before {
+      content: '└─';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .tree-subitem {
+      padding: 4px 0 4px 44px;
+      position: relative;
+    }
+
+    .tree-subitem::before {
+      content: '└─';
+      position: absolute;
+      left: 24px;
+      color: var(--muted);
+    }
+
+    .tree-desc {
+      color: var(--muted-light);
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    /* Lists */
+    .list-item {
+      margin-bottom: 20px;
+    }
+
+    .list-date {
+      color: var(--muted);
+      margin-right: 8px;
+    }
+
+    .list-title {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .project-card {
+      margin-bottom: 24px;
+      padding-left: 16px;
+      border-left: 1px solid var(--muted);
+    }
+
+    .project-title {
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-live {
+      background: rgba(106, 173, 142, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(106, 173, 142, 0.3);
+    }
+
+    .project-metrics {
+      color: var(--gold);
+      font-size: 11px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      color: var(--muted-light);
+      font-size: 12px;
+    }
+
+    .venture-card {
+      margin-bottom: 32px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .venture-freeware .venture-name {
+      color: var(--freeware);
+    }
+
+    .venture-freebuilder .venture-name {
+      color: var(--freebuilder);
+    }
+
+    .venture-freewriter .venture-name {
+      color: var(--freewriter);
+    }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--muted);
+    }
+
+    .nav-back:hover {
+      color: var(--coral);
+    }
+
+    .contact-line {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--muted);
+      color: var(--muted-light);
+    }
+
+    /* Cursor blink */
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: var(--green);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* Section Treemap */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      margin-top: 32px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tree-root {
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tree-node {
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .tree-node::before {
+      content: '├──';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .tree-node:last-child::before {
+      content: '└──';
+    }
