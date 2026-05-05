@@ -12,9 +12,9 @@ const CONFIG = {
     github: 'https://github.com/fachrynuzuli'
   },
   ctas: {
-    email: 'mailto:placeholder@example.com',
-    booking: 'javascript:void(0)',
-    sprint: 'javascript:void(0)',
+    email: 'mailto:fachrynuzuli@gmail.com',
+    booking: 'https://cal.com/fachrynuzuli/discovery',
+    sprint: 'https://cal.com/fachrynuzuli/discovery',
     prompts: 'javascript:void(0)',
     freeware_lab: 'javascript:void(0)'
   },
@@ -23,9 +23,9 @@ const CONFIG = {
     twitter: 'https://x.com/fachrynuzuli',
     instagram: 'https://instagram.com/fachrynuzuli',
     linkedin: 'https://linkedin.com/in/fachrynuzuli',
-    email: 'mailto:placeholder@example.com',
-    bookCall: 'javascript:void(0)',
-    sprintCTA: 'javascript:void(0)',
+    email: 'mailto:fachrynuzuli@gmail.com',
+    bookCall: 'https://cal.com/fachrynuzuli/discovery',
+    sprintCTA: 'https://cal.com/fachrynuzuli/discovery',
     contentPack: 'javascript:void(0)',
     contextPack: 'javascript:void(0)',
     vibeCoding: 'javascript:void(0)',
