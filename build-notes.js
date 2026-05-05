@@ -41,27 +41,21 @@ files.forEach(file => {
     const raw = fs.readFileSync(path.join(contentDir, file), 'utf8');
     const { data, content } = matter(raw);
     
-    // Extract title
+    // Extract title from filename
     let title = file.replace('.md', '');
     let cleanContent = content;
     
-    // Try to find first H1 and remove it, but only use it as title if it's not "References"
+    // If there is an H1, prefer it as the official title (unless it's "References")
     const match = content.match(/^#\s+(.+)$/m);
-    if (match) {
-        if (match[1].trim().toLowerCase() !== 'references') {
-            title = match[1].trim();
-        }
-        // Always remove the first H1 if it matches the title to avoid duplication
-        if (match[1].trim() === title) {
-            cleanContent = content.replace(/^#\s+(.+)$/m, '').trim();
-        }
+    if (match && match[1].trim().toLowerCase() !== 'references') {
+        title = match[1].trim();
     }
     
     const slug = slugify(title);
     let created = new Date(data.created);
     if (isNaN(created.getTime())) {
-        // Try parsing from the markdown content (e.g. _11 Jun, 2024_ or 04 Sep, 2024)
-        const dateMatch = content.match(/_?(\d{1,2}\s+[A-Za-z]+,\s+\d{4})_?/);
+        // Try parsing from the markdown content (e.g. _11 Jun, 2024_, 04 Sep, 2024, or *02 Sep, 2024*)
+        const dateMatch = content.match(/[\*_]*(\d{1,2}\s+[A-Za-z]+,\s+\d{4})[\*_]*/);
         if (dateMatch) {
             created = new Date(dateMatch[1]);
         } else {
@@ -69,10 +63,19 @@ files.forEach(file => {
         }
     }
     
-    // Clean up Obsidian metadata
+    // Setup regex to remove duplicated titles from the body
+    const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const titleRegex = new RegExp(`^#{1,6}\\s+${escapedTitle}\\s*$`, 'gmi');
+    const plainTitleRegex = new RegExp(`^[\\*_]*${escapedTitle}[\\*_]*\\s*$`, 'gmi');
+    
+    // Clean up Obsidian metadata and duplicate titles
     cleanContent = cleanContent
-        // Remove loose dates (e.g. "04 Sep, 2024", "19 Jul, 2024 12:14", "_11 Jun, 2024_")
-        .replace(/^_?\d{1,2}\s+[A-Za-z]+,\s+\d{4}(?:\s+\d{2}:\d{2})?_?\s*$/gm, '')
+        // Remove duplicated headings matching the title
+        .replace(titleRegex, '')
+        // Remove duplicated plain text matching the title
+        .replace(plainTitleRegex, '')
+        // Remove loose dates (e.g. "04 Sep, 2024", "19 Jul, 2024 12:14", "*02 Sep, 2024*")
+        .replace(/^[\*_]*\d{1,2}\s+[A-Za-z]+,\s+\d{4}(?:\s+\d{2}:\d{2})?[\*_]*\s*$/gm, '')
         // Remove lines starting with Status: or Tags:
         .replace(/^(?:Status|Tags):\s*.*$/gm, '')
         // Clean up multiple empty lines
