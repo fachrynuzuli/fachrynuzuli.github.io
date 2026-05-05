@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fachrynuzuli — digital transformation PM</title>
   <meta name="description" content="Digital Transformation PM & AI Builder.">
-  
+
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="favicon-192.png">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
   <style>
     :root {
       --bg: #0e0e0f;
@@ -23,18 +26,25 @@
       --gold: #c8a96e;
       --green: #6aad8e;
       --coral: #e07a5f;
-      
+
       /* Sub-brand accents */
-      --freebuilder: #F5A623; /* Amber */
-      --freeware: #00E87A; /* Neon Green */
-      --freewriter: #C4983A; /* Gold */
-      
+      --freebuilder: #F5A623;
+      /* Amber */
+      --freeware: #00E87A;
+      /* Neon Green */
+      --freewriter: #C4983A;
+      /* Gold */
+
       --mono: 'JetBrains Mono', monospace;
       --serif: 'Fraunces', serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -51,13 +61,11 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.04) 2px,
-        rgba(0,0,0,0.04) 4px
-      );
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.04) 2px,
+          rgba(0, 0, 0, 0.04) 4px);
       pointer-events: none;
       z-index: 100;
     }
@@ -68,7 +76,7 @@
       transition: color 0.15s ease, text-decoration 0.15s ease;
       cursor: pointer;
     }
-    
+
     a:hover {
       text-decoration: underline;
       color: var(--green);
@@ -85,32 +93,43 @@
       font-weight: 700;
       margin-bottom: 24px;
     }
-    
-    .prompt span { color: var(--text); font-weight: normal; }
+
+    .prompt span {
+      color: var(--text);
+      font-weight: normal;
+    }
 
     .view {
       display: none;
       animation: reveal 0.4s ease forwards;
     }
-    
+
     .view.active {
       display: block;
     }
 
     @keyframes reveal {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Typography */
     h1 {
       font-family: var(--serif);
-      font-size: 26px; /* Reduced from 32px to match scale better */
+      font-size: 26px;
+      /* Reduced from 32px to match scale better */
       font-weight: 300;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
-    
+
     .subtitle {
       color: var(--muted-light);
       margin-bottom: 32px;
@@ -129,33 +148,34 @@
     /* Directory Tree */
     .tree {
       margin-left: 0;
-      margin-bottom: 16px; /* reduced space below */
+      margin-bottom: 16px;
+      /* reduced space below */
     }
-    
+
     .tree-item {
       padding: 4px 0 4px 20px;
       position: relative;
     }
-    
+
     .tree-item::before {
       content: '└─';
       position: absolute;
       left: 0;
       color: var(--muted);
     }
-    
+
     .tree-subitem {
       padding: 4px 0 4px 44px;
       position: relative;
     }
-    
+
     .tree-subitem::before {
       content: '└─';
       position: absolute;
       left: 24px;
       color: var(--muted);
     }
-    
+
     .tree-desc {
       color: var(--muted-light);
       font-size: 12px;
@@ -166,12 +186,12 @@
     .list-item {
       margin-bottom: 20px;
     }
-    
+
     .list-date {
       color: var(--muted);
       margin-right: 8px;
     }
-    
+
     .list-title {
       font-weight: 500;
       color: var(--text);
@@ -182,7 +202,7 @@
       padding-left: 16px;
       border-left: 1px solid var(--muted);
     }
-    
+
     .project-title {
       font-weight: 700;
       color: var(--text);
@@ -190,7 +210,7 @@
       align-items: center;
       gap: 8px;
     }
-    
+
     .badge {
       font-size: 10px;
       padding: 2px 6px;
@@ -198,16 +218,20 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    
-    .badge-live { background: rgba(106,173,142,0.15); color: var(--green); border: 1px solid rgba(106,173,142,0.3); }
-    
+
+    .badge-live {
+      background: rgba(106, 173, 142, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(106, 173, 142, 0.3);
+    }
+
     .project-metrics {
       color: var(--gold);
       font-size: 11px;
       margin-top: 4px;
       margin-bottom: 4px;
     }
-    
+
     .project-desc {
       color: var(--muted-light);
       font-size: 12px;
@@ -216,20 +240,31 @@
     .venture-card {
       margin-bottom: 32px;
       padding: 16px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .venture-freeware .venture-name { color: var(--freeware); }
-    .venture-freebuilder .venture-name { color: var(--freebuilder); }
-    .venture-freewriter .venture-name { color: var(--freewriter); }
+    .venture-freeware .venture-name {
+      color: var(--freeware);
+    }
+
+    .venture-freebuilder .venture-name {
+      color: var(--freebuilder);
+    }
+
+    .venture-freewriter .venture-name {
+      color: var(--freewriter);
+    }
 
     .nav-back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--muted);
     }
-    .nav-back:hover { color: var(--coral); }
+
+    .nav-back:hover {
+      color: var(--coral);
+    }
 
     .contact-line {
       margin-top: 48px;
@@ -241,13 +276,19 @@
     /* Cursor blink */
     .cursor {
       display: inline-block;
-      width: 8px; height: 15px;
+      width: 8px;
+      height: 15px;
       background: var(--green);
       animation: blink 1s step-end infinite;
       vertical-align: middle;
       margin-left: 4px;
     }
-    @keyframes blink { 50% { opacity: 0; } }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
 
     /* Section Treemap */
     .section-header {
@@ -257,17 +298,20 @@
       margin-bottom: 24px;
       margin-top: 32px;
     }
+
     .section-label {
       font-size: 10px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .section-line {
       flex: 1;
       height: 1px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
+
     .tree-root {
       color: var(--gold);
       margin-bottom: 8px;
@@ -275,47 +319,47 @@
       align-items: center;
       gap: 6px;
     }
+
     .tree-node {
       padding: 4px 0 4px 20px;
       position: relative;
     }
+
     .tree-node::before {
       content: '├──';
       position: absolute;
       left: 0;
       color: var(--muted);
     }
+
     .tree-node:last-child::before {
       content: '└──';
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
-    
+
     <!-- HOME VIEW -->
     <div id="home" class="view active">
-      
+
       <h1>Fachry <em style="color: var(--gold); font-style: italic;">Nuzuli</em> Kamal<span class="cursor"></span></h1>
       <p class="subtitle">
-        Digital Transformation PM at a multinational corp. I build with AI, lead org-wide changes, and teach non-technical founders how to ship real products.
+        Digital Transformation PM at a multinational corp. I build with AI, lead org-wide changes, and teach
+        non-technical founders how to ship real products.
       </p>
 
-      <div class="section-header">
-        <span class="section-label">/ public repository</span>
-        <div class="section-line"></div>
-      </div>
-      
       <div class="tree" style="margin-left: 0;">
-        <div class="tree-root">📁 fachrynuzuli/</div>
+        <div class="tree-root"> 📁 main/</div>
         <div style="padding-left: 12px;">
           <div class="tree-node">
             <a href="#notes">notes/</a>
             <span class="tree-desc">writings on product & AI</span>
           </div>
           <div class="tree-node">
-            <a href="#work">work/</a>
+            <a href="#work">works/</a>
             <span class="tree-desc">enterprise case studies & portfolio</span>
           </div>
           <div class="tree-node">
@@ -326,11 +370,15 @@
             <a href="#resources">resources/</a>
             <span class="tree-desc">free prompts, workflows & tools i use</span>
           </div>
+          <div class="tree-node">
+            <a href="#repository">repository/</a>
+            <span class="tree-desc">check on all files we have</span>
+          </div>
         </div>
       </div>
 
       <div class="contact-line">
-        <a href="mailto:fachrynuzuli@gmail.com">fachrynuzuli@gmail.com</a> | 
+        <a href="mailto:fachrynuzuli@gmail.com">fachrynuzuli@gmail.com</a> |
         <a href="https://github.com/fachrynuzuli" target="_blank">github</a> |
         <a href="https://linkedin.com/in/fachrynuzuli" target="_blank">linkedin</a> |
         <a href="https://fachry.substack.com" target="_blank">substack</a> |
@@ -342,7 +390,7 @@
     <div id="notes" class="view">
       <a href="#home" class="nav-back">← main directory</a>
       <div class="section-title">Writings & Essays</div>
-      
+
       <div class="list-item">
         <span class="list-date">[2024-12-27]</span>
         <span class="list-title">Why essays matter more than blogs</span>
@@ -381,40 +429,46 @@
     <div id="work" class="view">
       <a href="#home" class="nav-back">← main directory</a>
       <div class="section-title">Enterprise & PM Portfolio</div>
-      
+
       <div class="project-card">
         <div class="project-title">Fleet Management Ecosystem <span class="badge badge-live">LIVE</span></div>
         <div class="project-metrics">400+ vehicles • $301K annual impact</div>
-        <div class="project-desc">Led the digital transformation of contractor workforce management and logistics visibility at a multinational corp. 3 system audits passed.</div>
+        <div class="project-desc">Led the digital transformation of contractor workforce management and logistics
+          visibility at a multinational corp. 3 system audits passed.</div>
         <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
         <div class="project-title">AI Driver Safety Platform <span class="badge badge-live">LIVE</span></div>
         <div class="project-metrics">450+ users • Zero accidents post-launch</div>
-        <div class="project-desc">Implemented a real-time safety monitoring solution, directly improving operational safety KPIs across the hauling fleet.</div>
+        <div class="project-desc">Implemented a real-time safety monitoring solution, directly improving operational
+          safety KPIs across the hauling fleet.</div>
         <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
         <div class="project-title">Predictive Maintenance System <span class="badge badge-live">LIVE</span></div>
         <div class="project-metrics">$207K annual savings • 5% asset life extension</div>
-        <div class="project-desc">Built predictive models to reduce unplanned downtime for heavy machinery and logistics assets.</div>
+        <div class="project-desc">Built predictive models to reduce unplanned downtime for heavy machinery and logistics
+          assets.</div>
         <div style="margin-top: 8px;"><a href="#">[Read case study]</a></div>
       </div>
 
       <div class="project-card">
         <div class="project-title">30 Apps in 30 Days Challenge <span class="badge badge-live">LIVE</span></div>
         <div class="project-metrics">Speed & Execution Benchmark</div>
-        <div class="project-desc">Building and shipping complete applications using entirely free AI tools, documenting the process publicly.</div>
+        <div class="project-desc">Building and shipping complete applications using entirely free AI tools, documenting
+          the process publicly.</div>
         <div style="margin-top: 8px;"><a href="#">[View builds]</a></div>
       </div>
-      
+
       <div class="project-card">
         <div class="project-title">AI PM Tool Suite <span class="badge badge-live">LIVE</span></div>
         <div class="project-metrics">20+ prototypes • 9 production-ready tools</div>
-        <div class="project-desc">Open-source collection of AI tools built specifically for product managers to automate daily workflows.</div>
-        <div style="margin-top: 8px;"><a href="https://github.com/fachrynuzuli" target="_blank">[View on GitHub]</a></div>
+        <div class="project-desc">Open-source collection of AI tools built specifically for product managers to automate
+          daily workflows.</div>
+        <div style="margin-top: 8px;"><a href="https://github.com/fachrynuzuli" target="_blank">[View on GitHub]</a>
+        </div>
       </div>
     </div>
 
@@ -423,37 +477,51 @@
       <a href="#home" class="nav-back">← main directory</a>
       <div class="section-title" style="margin-bottom: 24px;">My Indie Operations (Founder)</div>
       <p style="color: var(--muted-light); margin-bottom: 32px; font-size: 12px; max-width: 600px;">
-        Beyond my enterprise work, I run three active operations on the side. I build these entirely myself, leveraging AI to scale my output and help other non-technical founders ship faster.
+        Beyond my enterprise work, I run three active operations on the side. I build these entirely myself, leveraging
+        AI to scale my output and help other non-technical founders ship faster.
       </p>
-      
+
       <div class="venture-card venture-freeware">
-        <div class="project-title"><span class="venture-name">freeware.lab</span> <span class="badge badge-live" style="color: var(--freeware); border-color: rgba(0,232,122,0.3); background: rgba(0,232,122,0.1);">ACTIVE</span></div>
+        <div class="project-title"><span class="venture-name">freeware.lab</span> <span class="badge badge-live"
+            style="color: var(--freeware); border-color: rgba(0,232,122,0.3); background: rgba(0,232,122,0.1);">ACTIVE</span>
+        </div>
         <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Rapid MVP Sprints & Development.</strong> I help founders go from idea to working app in 48-72 hours using AI-first tools. No agency markup, no monthly fees. I've delivered 3+ MVPs to real clients.
+          <strong>Rapid MVP Sprints & Development.</strong> I help founders go from idea to working app in 48-72 hours
+          using AI-first tools. No agency markup, no monthly fees. I've delivered 3+ MVPs to real clients.
         </div>
         <div class="tree" style="margin-bottom: 12px;">
-          <div class="tree-item"><span style="color: var(--text);">2-Hour MVP Build</span> <span class="tree-desc">I build your MVP with free AI tools</span></div>
-          <div class="tree-item"><span style="color: var(--text);">Product Sprint Week</span> <span class="tree-desc">5-day sprint: 5 connected features</span></div>
+          <div class="tree-item"><span style="color: var(--text);">2-Hour MVP Build</span> <span class="tree-desc">I
+              build your MVP with free AI tools</span></div>
+          <div class="tree-item"><span style="color: var(--text);">Product Sprint Week</span> <span
+              class="tree-desc">5-day sprint: 5 connected features</span></div>
         </div>
         <a href="freeware.html">[Visit freeware.lab →]</a>
       </div>
 
       <div class="venture-card venture-freebuilder">
-        <div class="project-title"><span class="venture-name">freebuilder.co</span> <span class="badge badge-live" style="color: var(--freebuilder); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.1);">ACTIVE</span></div>
+        <div class="project-title"><span class="venture-name">freebuilder.co</span> <span class="badge badge-live"
+            style="color: var(--freebuilder); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.1);">ACTIVE</span>
+        </div>
         <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Packaged AI Workflows & Education.</strong> I package my exact systems (context management, JSON profiling, vibe coding workflows) into playbooks for non-developers who want to move like power users.
+          <strong>Packaged AI Workflows & Education.</strong> I package my exact systems (context management, JSON
+          profiling, vibe coding workflows) into playbooks for non-developers who want to move like power users.
         </div>
         <div class="tree" style="margin-bottom: 12px;">
-          <div class="tree-item"><span style="color: var(--text);">The Free Tier Playbook</span> <span class="tree-desc">30 prompts + workflows + tool comparisons</span></div>
-          <div class="tree-item"><span style="color: var(--text);">AI PM Toolkit</span> <span class="tree-desc">50+ prompts, templates, video tutorials</span></div>
+          <div class="tree-item"><span style="color: var(--text);">The Free Tier Playbook</span> <span
+              class="tree-desc">30 prompts + workflows + tool comparisons</span></div>
+          <div class="tree-item"><span style="color: var(--text);">AI PM Toolkit</span> <span class="tree-desc">50+
+              prompts, templates, video tutorials</span></div>
         </div>
         <a href="freebuilder.html">[Visit freebuilder.co →]</a>
       </div>
 
       <div class="venture-card venture-freewriter">
-        <div class="project-title"><span class="venture-name">freewriter.lab</span> <span class="badge badge-live" style="color: var(--freewriter); border-color: rgba(196,152,58,0.3); background: rgba(196,152,58,0.1);">ACTIVE</span></div>
+        <div class="project-title"><span class="venture-name">freewriter.lab</span> <span class="badge badge-live"
+            style="color: var(--freewriter); border-color: rgba(196,152,58,0.3); background: rgba(196,152,58,0.1);">ACTIVE</span>
+        </div>
         <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Ghostwriting & Personal Brand Agency.</strong> I help B2B and digital transformation leaders extract their voice and build credibility on LinkedIn using AI-assisted profiling and content strategy.
+          <strong>Ghostwriting & Personal Brand Agency.</strong> I help B2B and digital transformation leaders extract
+          their voice and build credibility on LinkedIn using AI-assisted profiling and content strategy.
         </div>
         <a href="freewriter.html">[Visit freewriter.lab →]</a>
       </div>
@@ -463,7 +531,7 @@
     <div id="resources" class="view">
       <a href="#home" class="nav-back">← main directory</a>
       <div class="prompt" style="color: var(--text);">resources directory:</div>
-      
+
       <div class="tree" style="margin-left: 12px;">
         <div class="tree-item">
           <a href="#prompts">prompts/</a>
@@ -480,20 +548,20 @@
     <div id="prompts" class="view">
       <a href="#resources" class="nav-back">← resources</a>
       <div class="section-title">Prompt Collection</div>
-      
+
       <div class="tree" style="margin-left: 0;">
         <div class="tree-item" style="color: var(--gold); font-weight: 500;">ideation/</div>
         <div class="tree-subitem"><a href="#">prompt ideation 1</a></div>
         <div class="tree-subitem"><a href="#">prompt ideation 2</a></div>
-        
+
         <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">creation/</div>
         <div class="tree-subitem"><a href="#">prompt creation 1</a></div>
         <div class="tree-subitem"><a href="#">prompt creation 2</a></div>
-        
+
         <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">sell/</div>
         <div class="tree-subitem"><a href="#">prompt sell 1</a></div>
         <div class="tree-subitem"><a href="#">prompt sell 2</a></div>
-        
+
         <div class="tree-item" style="color: var(--gold); font-weight: 500; margin-top: 16px;">business_ops/</div>
         <div class="tree-subitem"><a href="#">prompt ops 1</a></div>
         <div class="tree-subitem"><a href="#">prompt ops 2</a></div>
@@ -504,41 +572,47 @@
     <div id="tools" class="view">
       <a href="#resources" class="nav-back">← resources</a>
       <div class="section-title">The Stack (What I Use)</div>
-      
+
       <div style="margin-top: 24px;">
         <div class="list-item">
           <div class="list-title">Claude (Anthropic)</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">My daily driver. Best for complex reasoning, writing code, and structuring thoughts.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">My daily driver. Best for
+            complex reasoning, writing code, and structuring thoughts.</div>
           <a href="https://claude.ai" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-        
+
         <div class="list-item">
           <div class="list-title">Cursor</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">AI-first code editor. An absolute game-changer for PMs acting as solo-engineers.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">AI-first code editor. An
+            absolute game-changer for PMs acting as solo-engineers.</div>
           <a href="https://cursor.sh" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-        
+
         <div class="list-item">
           <div class="list-title">Lovable / v0</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Generating beautiful UI components and full functional prototypes from text prompts.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Generating beautiful UI
+            components and full functional prototypes from text prompts.</div>
           <a href="https://v0.dev" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-        
+
         <div class="list-item">
           <div class="list-title">Supabase</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Postgres database, Auth, and Edge Functions. The perfect backend for rapid shipping.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Postgres database, Auth,
+            and Edge Functions. The perfect backend for rapid shipping.</div>
           <a href="https://supabase.com" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-        
+
         <div class="list-item">
           <div class="list-title">Replit</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Deploying apps in minutes. Zero DevOps overhead.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Deploying apps in minutes.
+            Zero DevOps overhead.</div>
           <a href="https://replit.com" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
-        
+
         <div class="list-item">
           <div class="list-title">Notion</div>
-          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Where my brain lives. Product docs, roadmaps, and sprint planning.</div>
+          <div class="tree-desc" style="margin-left: 0; margin-top: 2px; margin-bottom: 4px;">Where my brain lives.
+            Product docs, roadmaps, and sprint planning.</div>
           <a href="https://notion.so" target="_blank" style="font-size: 12px;">[Try it →]</a>
         </div>
       </div>
@@ -551,7 +625,7 @@
     function route() {
       // Get hash from URL, default to 'home'
       let hash = window.location.hash.substring(1) || 'home';
-      
+
       // Safety check - if hash doesn't exist as an ID, go home
       if (!document.getElementById(hash)) {
         hash = 'home';
@@ -565,16 +639,17 @@
       // Show the targeted view
       const targetView = document.getElementById(hash);
       targetView.classList.add('active');
-      
+
       // Scroll to top
       window.scrollTo(0, 0);
     }
 
     // Listen for hash changes
     window.addEventListener('hashchange', route);
-    
+
     // Initial route load
     window.addEventListener('DOMContentLoaded', route);
   </script>
 </body>
+
 </html>
