@@ -40,13 +40,3 @@ Sekarang aku mau kamu ganti bidangmu. Keluarkan dirimu dari sebuah kotak imajine
 I'm here to tell you it's not over. Feed your curiosities and become who you want to be.
 
 Knowledges are limitless. Human are knowledges synthesizer.
-
-# References
-
-[[Efek Terbalik dari Project]]
-
-[[Zillenials — Generasi Paling Sial]]
-
-[[The Art of Self-Architecture (How to Change Who You Are)]]
-
-[[Self-Transformation (Cara Mengubah Dirimu)]]

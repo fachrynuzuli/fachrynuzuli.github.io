@@ -13,7 +13,6 @@ Status: [[suffering]]
 Tags: #sculpted 
 
 #### orang bijak tahu kapan harus berhenti
-*04 Sep, 2024* 
 
 Menolak untuk berhenti tidak selamanya bisa diasosiasikan dengan heroic resilience. Boleh jadi itu adalah stubborn rigidity.
 

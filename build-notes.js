@@ -60,15 +60,25 @@ files.forEach(file => {
     const slug = slugify(title);
     let created = new Date(data.created);
     if (isNaN(created.getTime())) {
-        // Try parsing from the markdown content (e.g. _11 Jun, 2024_)
-        const dateMatch = content.match(/_(\d{1,2}\s+[A-Za-z]+,\s+\d{4})_/);
+        // Try parsing from the markdown content (e.g. _11 Jun, 2024_ or 04 Sep, 2024)
+        const dateMatch = content.match(/_?(\d{1,2}\s+[A-Za-z]+,\s+\d{4})_?/);
         if (dateMatch) {
             created = new Date(dateMatch[1]);
         } else {
-            created = new Date('2024-01-01'); // fallback
+            created = fs.statSync(path.join(contentDir, file)).birthtime;
         }
     }
     
+    // Clean up Obsidian metadata
+    cleanContent = cleanContent
+        // Remove loose dates (e.g. "04 Sep, 2024", "19 Jul, 2024 12:14", "_11 Jun, 2024_")
+        .replace(/^_?\d{1,2}\s+[A-Za-z]+,\s+\d{4}(?:\s+\d{2}:\d{2})?_?\s*$/gm, '')
+        // Remove lines starting with Status: or Tags:
+        .replace(/^(?:Status|Tags):\s*.*$/gm, '')
+        // Clean up multiple empty lines
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+        
     // Parse markdown
     const htmlContent = marked.parse(cleanContent);
     

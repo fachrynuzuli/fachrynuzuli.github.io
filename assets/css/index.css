@@ -192,21 +192,19 @@ h1 {
 
 .article-title {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
   color: var(--text);
-  line-height: 1.1;
-  margin-bottom: var(--space-sm);
-  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.02em;
 }
 
 .article-meta {
-  font-family: var(--mono);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--muted-light);
+  margin-bottom: var(--space-xl);
 }
 
 /* ── Prompt (resources view) ── */
@@ -311,48 +309,61 @@ h1 {
 }
 
 
-/* ── Notes List (Rauch Style) ── */
+/* ── Notes List ── */
 
 .notes-group {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .year-group-title {
-  display: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.1em;
 }
 
 .note-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-xl);
-  padding: 0;
-  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: var(--space-lg);
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--t-fast) ease;
+  margin-left: -8px;
+  padding-left: 8px;
+  border-radius: 3px;
+}
+
+.note-item:hover {
+  background-color: oklch(0.14 0.008 70 / 0.5);
+}
+
+.note-item:hover .note-title a {
+  color: var(--green);
 }
 
 .note-date {
-  color: var(--muted-light);
+  color: var(--muted);
   font-family: var(--mono);
-  font-size: 14px;
-  flex-shrink: 0;
-  width: 60px;
+  font-size: 13px;
+  white-space: nowrap;
+  padding-top: 1px;
 }
 
 .note-title {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
-  font-weight: 500;
-  line-height: 1.4;
+  color: var(--text);
+  font-size: 14px;
 }
 
 .note-title a {
   color: var(--text);
   text-decoration: none;
-  transition: opacity var(--t-fast) ease;
-}
-
-.note-title a:hover {
-  opacity: 0.5;
+  font-weight: 400;
+  transition: color var(--t-fast) ease;
 }
 
 
@@ -750,45 +761,47 @@ h1 {
 }
 
 
-/* ── Article Content (Rauch / Steph Ango Hybrid) ── */
+/* ── Article Content (long-form reading) ── */
 
 .article-content {
-  max-width: 650px;
+  max-width: 65ch;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.8;
-  color: oklch(0.85 0 0);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-dim);
   font-weight: 400;
 }
 
 .article-content p {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4em;
 }
 
 .article-content h2 {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-  margin-top: 2.5em;
-  margin-bottom: 1em;
-  letter-spacing: -0.02em;
-}
-
-.article-content h3 {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
   margin-top: 2em;
   margin-bottom: 0.8em;
+  letter-spacing: -0.01em;
+}
+
+.article-content h3 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .article-content h4 {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--muted-light);
+  color: var(--text);
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
@@ -799,14 +812,13 @@ h1 {
 }
 
 .article-content a {
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
-  transition: border-color var(--t-fast) ease;
+  text-decoration: underline;
+  text-decoration-color: oklch(0.74 0.10 75 / 0.4);
+  text-underline-offset: 3px;
 }
 
 .article-content a:hover {
-  border-bottom-color: var(--text);
+  text-decoration-color: var(--green);
 }
 
 .article-content pre {
