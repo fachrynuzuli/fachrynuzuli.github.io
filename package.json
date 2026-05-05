@@ -1,0 +1,26 @@
+{
+  "name": "fachrynuzuli.github.io",
+  "version": "1.0.0",
+  "description": "Personal directory, writings, and active operations for **Fachry Nuzuli**.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build-notes.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fachrynuzuli/fachrynuzuli.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fachrynuzuli/fachrynuzuli.github.io/issues"
+  },
+  "homepage": "https://github.com/fachrynuzuli/fachrynuzuli.github.io#readme",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.3"
+  }
+}
