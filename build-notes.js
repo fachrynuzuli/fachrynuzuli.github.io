@@ -41,14 +41,15 @@ files.forEach(file => {
     const raw = fs.readFileSync(path.join(contentDir, file), 'utf8');
     const { data, content } = matter(raw);
     
-    // Extract title from filename
-    let title = file.replace('.md', '');
+    // Prefer title from frontmatter if available, otherwise look for H1 in content
+    let title = data.title || file.replace('.md', '');
     let cleanContent = content;
     
-    // If there is an H1, prefer it as the official title (unless it's "References")
-    const match = content.match(/^#\s+(.+)$/m);
-    if (match && match[1].trim().toLowerCase() !== 'references') {
-        title = match[1].trim();
+    if (!data.title) {
+        const match = content.match(/^#\s+(.+)$/m);
+        if (match && match[1].trim().toLowerCase() !== 'references') {
+            title = match[1].trim();
+        }
     }
     
     const slug = slugify(title);
@@ -85,13 +86,20 @@ files.forEach(file => {
     // Parse markdown
     const htmlContent = marked.parse(cleanContent);
     
-    // Steph Ango styled HTML wrapper
+    const sourceUrl = data.url || data.source || '';
+    const sourceLabel = sourceUrl.includes('x.com') ? 'View on X' : 
+                        sourceUrl.includes('medium.com') ? 'Read on Medium' :
+                        sourceUrl.includes('substack.com') ? 'Read on Substack' : 'View Original Source';
+
+    const isPost = data.categories?.includes('[[Posts]]') || data.tags?.includes('tweets') || sourceUrl.includes('x.com');
+
+    // Synthesis-style HTML wrapper
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} — Fachry Nuzuli</title>
+  <title>${title} — Synthesis</title>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192.png">
   <link rel="apple-touch-icon" href="../assets/images/favicon-192.png">
@@ -99,12 +107,29 @@ files.forEach(file => {
 </head>
 <body>
   <div class="container">
-    <a href="../index.html#notes" class="nav-back">← back to notes</a>
-    <h1 class="article-title">${title}</h1>
-    <div class="article-meta">${formatDate(created)}</div>
-    <div class="article-content">
+    <header class="article-header">
+      <a href="../index.html#notes" class="nav-back">← back to index</a>
+      <h1 class="article-title">${title}</h1>
+      <div class="article-meta">
+        <span>Published ${formatDate(created)}</span>
+        ${sourceUrl ? `<span class="meta-separator">•</span> <a href="${sourceUrl}" target="_blank" class="source-meta-link">${sourceLabel}</a>` : ''}
+      </div>
+    </header>
+    
+    <div class="article-content ${isPost ? 'is-thread' : ''}">
 ${htmlContent}
     </div>
+
+    ${sourceUrl ? `
+    <footer class="article-footer">
+      <div class="footer-line"></div>
+      <div class="read-more-container">
+        <p class="read-more-text">This is a synthesized version of the original writing.</p>
+        <a href="${sourceUrl}" target="_blank" class="read-more-btn">
+          ${sourceLabel} <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </footer>` : ''}
   </div>
 </body>
 </html>`;
@@ -121,29 +146,53 @@ ${htmlContent}
     });
 });
 
-// Sort descending
-notes.sort((a, b) => b.date - a.date);
+// Sort by rank according to the analysis document
+const rankingData = {
+    'the-kamal-way-restart-karier-dalam-6-bulan': { score: '90%', tier: 'S', category: 'Career' },
+    'the-intelligent-investor-akan-selalu-relevan': { score: '88%', tier: 'A', category: 'Investing' },
+    'karier-terancam-stuck-cara-survive': { score: '88%', tier: 'A', category: 'Career' },
+    '5-pertanyaan': { score: '84%', tier: 'A', category: 'Product' },
+    'the-knowledge-action-gap': { score: '80%', tier: 'A', category: 'Mindset' },
+    '2-tahun-setelah-pay-cut-57': { score: '80%', tier: 'A', category: 'Career' },
+    'procrastination-is-a-superpower': { score: '80%', tier: 'A', category: 'Mindset' },
+    'life-lesson-from-59-hours-bed-rest': { score: '80%', tier: 'A', category: 'Mindset' },
+    'niche-down-is-terrible-advice-for-smart-people-dan-koe': { score: '78%', tier: 'B', category: 'Writing' },
+    'supernova-and-entropy-from-a-fiction-book': { score: '78%', tier: 'B', category: 'Mindset' }
+};
 
-// Group by year
-const grouped = notes.reduce((acc, note) => {
-    if (!acc[note.year]) acc[note.year] = [];
-    acc[note.year].push(note);
-    return acc;
-}, {});
+const rankingOrder = Object.keys(rankingData);
+
+notes.sort((a, b) => {
+    let indexA = rankingOrder.indexOf(a.slug);
+    let indexB = rankingOrder.indexOf(b.slug);
+    
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return b.date - a.date;
+});
 
 // Generate HTML for list
 let listHtml = '<!-- NOTES LIST START -->\n';
-for (const year of Object.keys(grouped).sort().reverse()) {
-    listHtml += `      <div class="notes-group">\n`;
-    listHtml += `        <div class="year-group-title">${year}</div>\n`;
-    grouped[year].forEach(note => {
-        listHtml += `        <div class="note-item">\n`;
-        listHtml += `          <time class="note-date" datetime="${note.year}-${note.month}-${note.day}">${note.month}/${note.day}</time>\n`;
-        listHtml += `          <span class="note-title"><a href="notes/${note.slug}.html">${note.title}</a></span>\n`;
-        listHtml += `        </div>\n`;
-    });
-    listHtml += `      </div>\n`;
-}
+listHtml += `      <div class="notes-ranked-list">\n`;
+listHtml += `        <div class="note-item list-header">\n`;
+listHtml += `          <div class="note-col note-col-rank">#</div>\n`;
+listHtml += `          <div class="note-col note-col-title">Title</div>\n`;
+listHtml += `          <div class="note-col note-col-category">Category</div>\n`;
+listHtml += `          <div class="note-col note-col-date">Date</div>\n`;
+listHtml += `        </div>\n`;
+notes.forEach((note, index) => {
+    const displayRank = (index + 1).toString().padStart(2, '0');
+    const meta = rankingData[note.slug] || { score: '-', tier: '-', category: 'Other' };
+    
+    listHtml += `        <div class="note-item">\n`;
+    listHtml += `          <div class="note-col note-col-rank">${displayRank}</div>\n`;
+    listHtml += `          <div class="note-col note-col-title"><a href="notes/${note.slug}.html">${note.title}</a></div>\n`;
+    listHtml += `          <div class="note-col note-col-category">${meta.category}</div>\n`;
+    listHtml += `          <div class="note-col note-col-date">${note.year}-${note.month}</div>\n`;
+    listHtml += `        </div>\n`;
+});
+listHtml += `      </div>\n`;
 listHtml += '      <!-- NOTES LIST END -->';
 
 // Update index.html

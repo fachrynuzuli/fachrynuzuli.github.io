@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expert Content Summarizer — Fachry Nuzuli</title>
-  <meta name="description" content="Free prompt: Expert Content Summarizer. Part of Fachry Nuzuli's curated prompt collection.">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192.png">
-  <link rel="apple-touch-icon" href="../assets/images/favicon-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/index.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    <a href="../index.html#prompts" class="nav-back">← back to prompts</a>
-    <h2 class="article-title">Expert Content Summarizer</h2>
-    <div class="prompt-toolbar">
-      <button class="copy-prompt-btn" id="copy-btn"
-        onclick="navigator.clipboard.writeText(document.getElementById('prompt-raw').textContent); this.innerText='[ copied ]'; setTimeout(() => this.innerText='[ copy prompt ]', 2000);">[ copy prompt ]</button>
-      <button class="view-toggle-btn" id="toggle-btn" onclick="toggleView()">[ raw ]</button>
-    </div>
-
-    <!-- Hidden raw text for copy -->
-    <textarea id="prompt-raw" style="display:none;" readonly># **Expert Content Summarizer**
+---
+title: Expert Content Summarizer
+category: learning
+categories:
+  - '[[Prompts]]'
+area: Learn
+maker: '[[Dan Koe]]'
+---
+# **Expert Content Summarizer**
 
 ## **System Role**
 
@@ -164,44 +145,5 @@ Structure the output in readable headings, paragraphs, and lists with bold and i
 
 #### **Underlying Assumptions**
 
-\[Unstated premises, worldviews, or biases\]</textarea>
+\[Unstated premises, worldviews, or biases\]
 
-    <!-- Rendered markdown view -->
-    <div id="prompt-rendered" class="prompt-rendered"></div>
-
-    <!-- Raw pre view (hidden by default) -->
-    <pre id="prompt-text" class="prompt-block" style="display:none;"></pre>
-
-    <div class="prompt-footer">Maker: Dan Koe</div>
-  </div>
-
-  <script>
-    // Render markdown on load
-    const rawEl = document.getElementById('prompt-raw');
-    const renderedEl = document.getElementById('prompt-rendered');
-    const rawBlockEl = document.getElementById('prompt-text');
-
-    const rawText = rawEl.textContent;
-    rawBlockEl.textContent = rawText;
-
-    // Configure marked
-    marked.setOptions({ breaks: true, gfm: true });
-    renderedEl.innerHTML = marked.parse(rawText);
-
-    let isRaw = false;
-    function toggleView() {
-      isRaw = !isRaw;
-      const btn = document.getElementById('toggle-btn');
-      if (isRaw) {
-        renderedEl.style.display = 'none';
-        rawBlockEl.style.display = 'block';
-        btn.textContent = '[ rendered ]';
-      } else {
-        renderedEl.style.display = 'block';
-        rawBlockEl.style.display = 'none';
-        btn.textContent = '[ raw ]';
-      }
-    }
-  </script>
-</body>
-</html>

@@ -4,7 +4,9 @@
   "description": "Personal directory, writings, and active operations for **Fachry Nuzuli**.",
   "main": "index.js",
   "scripts": {
-    "build": "node build-notes.js",
+    "build": "node build-notes.js && node build-prompts.js",
+    "build:notes": "node build-notes.js",
+    "build:prompts": "node build-prompts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
