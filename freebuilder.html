@@ -27,28 +27,27 @@
 <body>
   <div class="grid-bg"></div>
 
-  <!-- SITE NAV (SHARED) -->
-  <header class="site-nav">
-    <a href="index.html">home</a>
-    <a href="freebuilder.html" class="active">freebuilder.co</a>
-    <a href="freeware.html">freeware.lab</a>
-    <a href="freewriter.html">freewriter.lab</a>
+  <header>
+    <!-- SITE NAV (SHARED GLOBALLY) -->
+    <nav class="site-nav" id="globalNav" aria-label="Global Navigation">
+      <a href="index.html">home</a>
+      <a href="freebuilder.html" class="active">freebuilder.co</a>
+      <a href="freeware.html">freeware.lab</a>
+      <a href="freewriter.html">freewriter.lab</a>
+    </nav>
+
+    <!-- PAGE NAV -->
+    <nav class="page-nav" aria-label="Page Navigation">
+      <div class="nav-logo">FREE<span>BUILDER</span></div>
+      <div class="nav-links">
+        <a href="#" data-link="socials.x">𝕏 Twitter</a>
+        <a href="#" data-link="socials.instagram">Instagram</a>
+        <a href="#" data-link="socials.linkedin">LinkedIn</a>
+        <a href="#" data-link="socials.substack">Substack</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- PAGE NAV -->
-  <nav>
-    <div class="nav-logo">FREE<span>BUILDER</span></div>
-    <button class="hamburger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"
-      aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links">
-      <a href="#" data-link="socials.x">𝕏 Twitter</a>
-      <a href="#" data-link="socials.instagram">Instagram</a>
-      <a href="#" data-link="socials.linkedin">LinkedIn</a>
-      <a href="#" data-link="socials.substack">Substack</a>
-    </div>
-  </nav>
 
   <main>
     <!-- HERO -->

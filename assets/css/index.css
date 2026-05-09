@@ -23,7 +23,7 @@
   /* Sub-brand accents (normalized to oklch) */
   --freebuilder:  oklch(0.76 0.16 75); /* #F5A623 equivalent */
   --freeware:     oklch(0.82 0.28 155); /* #00E87A equivalent */
-  --freewriter:   oklch(0.68 0.12 85); /* #C4983A equivalent */
+  --freewriter:   oklch(0.45 0.06 250); /* Elegant Editorial Blue */
 
   /* ── Typography ── */
   --mono:  'JetBrains Mono', monospace;
@@ -112,6 +112,17 @@ a:focus-visible {
   outline: var(--focus-ring);
   outline-offset: var(--focus-offset);
 }
+
+button {
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+button:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
 
 
 
@@ -282,9 +293,10 @@ h1 {
 }
 
 .tree-item {
-  padding: 5px 0 5px 20px;
+  padding: 3px 0 3px 20px;
   position: relative;
 }
+
 
 .tree-item::before {
   content: '└─';
@@ -797,34 +809,105 @@ h1 {
 
 
 /* ── Venture Cards ── */
+.venture-grid {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
 
 .venture-card {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-lg);
-  background: oklch(0.14 0.006 70 / 0.6);
+  display: grid;
+  grid-template-columns: 35% 1fr;
+  background: oklch(0.14 0.006 70 / 0.3);
   border: 1px solid var(--border);
-  border-radius: 3px;
-  transition:
-    border-color var(--t-base) ease,
-    background-color var(--t-base) ease;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all var(--t-base) var(--ease-out-expo);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: var(--space-md);
 }
 
 .venture-card:hover {
-  border-color: var(--border-hover);
-  background: oklch(0.16 0.008 70 / 0.7);
+  background: oklch(0.16 0.008 70 / 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px oklch(0 0 0 / 0.3);
 }
 
-.venture-freeware .venture-name {
-  color: var(--freeware);
+.venture-image {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--bg-raised);
+  border-right: 1px solid var(--border);
 }
 
-.venture-freebuilder .venture-name {
-  color: var(--freebuilder);
+.venture-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transition: transform var(--t-slow) var(--ease-out-expo);
+  filter: grayscale(0.1);
 }
 
-.venture-freewriter .venture-name {
-  color: var(--freewriter);
+
+
+.venture-card:hover .venture-image img {
+  transform: scale(1.03);
+  filter: grayscale(0);
 }
+
+.venture-content {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.venture-name {
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.venture-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+  max-width: 50ch;
+}
+
+.venture-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.venture-status {
+  padding: 1px 6px;
+  border-radius: 2px;
+  background: oklch(1 0 0 / 0.03);
+  border: 1px solid var(--border);
+}
+
+/* ── Brand Specific Accents ── */
+.venture-freeware:hover { border-color: var(--freeware); }
+.venture-freeware .venture-name { color: var(--freeware); }
+
+.venture-freebuilder:hover { border-color: var(--freebuilder); }
+.venture-freebuilder .venture-name { color: var(--freebuilder); }
+
+.venture-freewriter:hover { border-color: var(--freewriter); }
+.venture-freewriter .venture-name { color: var(--freewriter); }
+
 
 
 /* ── Navigation ── */

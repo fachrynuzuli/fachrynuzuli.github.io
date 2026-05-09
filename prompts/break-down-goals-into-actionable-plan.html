@@ -15,17 +15,20 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <main class="container">
     <a href="../index.html#prompts" class="nav-back">← back to prompts</a>
     <h2 class="article-title">Break Down Goals Into Actionable Plan</h2>
     <div class="prompt-toolbar">
       <button class="copy-prompt-btn" id="copy-btn"
+        aria-label="Copy prompt to clipboard"
         onclick="navigator.clipboard.writeText(document.getElementById('prompt-raw').textContent); this.innerText='[ copied ]'; setTimeout(() => this.innerText='[ copy prompt ]', 2000);">[ copy prompt ]</button>
-      <button class="view-toggle-btn" id="toggle-btn" onclick="toggleView()">[ raw ]</button>
+      <button class="view-toggle-btn" id="toggle-btn" 
+        aria-label="Toggle between raw and rendered view"
+        onclick="toggleView()">[ raw ]</button>
     </div>
 
     <!-- Hidden raw text for copy -->
-    <textarea id="prompt-raw" style="display:none;" readonly># **Break Down Goals Into Actionable Plan**
+    <textarea id="prompt-raw" style="display:none;" readonly>## **System Role**
 
 ```prompts
 

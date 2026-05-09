@@ -222,60 +222,78 @@
     <!-- VENTURES VIEW -->
     <div id="ventures" class="view" role="region" aria-labelledby="ventures-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div id="ventures-title" class="section-title" style="margin-bottom: 24px;">My Indie Operations (Founder)</div>
+      <div id="ventures-title" class="section-title" style="margin-bottom: 24px;">My Indie Operations</div>
       <p style="color: var(--muted-light); margin-bottom: 32px; font-size: 12px; max-width: 600px;">
-        Beyond my enterprise work, I run three active operations on the side. I build these entirely myself, leveraging
+        Beyond my enterprise work, I run three active operations. I build these entirely myself, leveraging
         AI to scale my output and help other non-technical founders ship faster.
       </p>
 
-      <div class="venture-card venture-freeware">
-        <div class="project-title"><span class="venture-name">freeware.lab</span> <span class="badge"
-            style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1);">AT
-            CAPACITY</span>
-        </div>
-        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Rapid MVP Sprints & Development.</strong> I help founders go from idea to working app in 48-72 hours
-          using AI-first tools. No agency markup, no monthly fees. I've delivered 3+ MVPs to real clients.
-        </div>
-        <div class="tree" style="margin-bottom: 12px;">
-          <div class="tree-item"><span style="color: var(--text);">2-Hour MVP Build</span> <span class="tree-desc">I
-              build your MVP with free AI tools</span></div>
-          <div class="tree-item"><span style="color: var(--text);">Product Sprint Week</span> <span
-              class="tree-desc">5-day sprint: 5 connected features</span></div>
-        </div>
-        <a href="freeware.html">[Visit freeware.lab →]</a>
-      </div>
+      <div class="venture-grid">
+        <!-- FREEBUILDER -->
+        <a href="freebuilder.html" class="venture-card venture-freebuilder">
+          <div class="venture-image">
+            <img src="assets/images/ventures/freebuilder.png" alt="freebuilder.co landing page mockup">
+          </div>
+          <div class="venture-content">
+            <div class="venture-name">freebuilder.co</div>
+            <div class="venture-desc">
+              <strong>Packaged AI Workflows & Education.</strong> I package my exact systems (context management, JSON profiling, vibe coding workflows) into playbooks for non-developers who want to move like power users.
+            </div>
+            <div class="tree" style="margin-bottom: 20px;">
+              <div class="tree-item"><span style="color: var(--text);">The Free Tier Playbook</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">30 prompts + workflows + tool comparisons</span></div>
+              <div class="tree-item"><span style="color: var(--text);">AI PM Toolkit</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">50+ prompts, templates, video tutorials</span></div>
+            </div>
+            <div class="venture-meta">
+              <span class="venture-status" style="color: var(--muted); border-color: var(--muted);">Coming Soon</span>
+              <span class="venture-type" style="color: var(--freebuilder);">Education</span>
+            </div>
+          </div>
+        </a>
 
-      <div class="venture-card venture-freebuilder">
-        <div class="project-title"><span class="venture-name">freebuilder.co</span> <span class="badge"
-            style="color: var(--muted); border-color: var(--border); background: rgba(120, 120, 120, 0.1);">COMING
-            SOON</span>
-        </div>
-        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Packaged AI Workflows & Education.</strong> I package my exact systems (context management, JSON
-          profiling, vibe coding workflows) into playbooks for non-developers who want to move like power users.
-        </div>
-        <div class="tree" style="margin-bottom: 12px;">
-          <div class="tree-item"><span style="color: var(--text);">The Free Tier Playbook</span> <span
-              class="tree-desc">30 prompts + workflows + tool comparisons</span></div>
-          <div class="tree-item"><span style="color: var(--text);">AI PM Toolkit</span> <span class="tree-desc">50+
-              prompts, templates, video tutorials</span></div>
-        </div>
-        <a href="freebuilder.html">[Visit freebuilder.co →]</a>
-      </div>
+        <!-- FREEWARE -->
+        <a href="freeware.html" class="venture-card venture-freeware">
+          <div class="venture-image">
+            <img src="assets/images/ventures/freeware.png" alt="freeware.lab landing page mockup">
+          </div>
+          <div class="venture-content">
+            <div class="venture-name">freeware.lab</div>
+            <div class="venture-desc">
+              <strong>Rapid MVP Sprints & Development.</strong> I help founders go from idea to working app in 48-72 hours using AI-first tools. No agency markup, no monthly fees.
+            </div>
+            <div class="tree" style="margin-bottom: 20px;">
+              <div class="tree-item"><span style="color: var(--text);">2-Hour MVP Build</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">I build your MVP with free AI tools</span></div>
+              <div class="tree-item"><span style="color: var(--text);">Product Sprint Week</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">5-day sprint: 5 connected features</span></div>
+            </div>
+            <div class="venture-meta">
+              <span class="venture-status" style="color: #ef4444; border-color: #ef4444;">At Capacity</span>
+              <span class="venture-type" style="color: var(--freeware);">Software</span>
+            </div>
+          </div>
+        </a>
 
-      <div class="venture-card venture-freewriter">
-        <div class="project-title"><span class="venture-name">freewriter.lab</span> <span class="badge"
-            style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1);">AT
-            CAPACITY</span>
-        </div>
-        <div class="project-desc" style="margin-top: 8px; margin-bottom: 12px;">
-          <strong>Ghostwriting & Personal Brand Agency.</strong> I help B2B and digital transformation leaders extract
-          their voice and build credibility on LinkedIn using AI-assisted profiling and content strategy.
-        </div>
-        <a href="freewriter.html">[Visit freewriter.lab →]</a>
+        <!-- FREEWRITER -->
+        <a href="freewriter.html" class="venture-card venture-freewriter">
+          <div class="venture-image">
+            <img src="assets/images/ventures/freewriter.png" alt="freewriter.lab landing page mockup">
+          </div>
+          <div class="venture-content">
+            <div class="venture-name">freewriter.lab</div>
+            <div class="venture-desc">
+              <strong>Ghostwriting & Personal Brand Agency.</strong> I help B2B and digital transformation leaders extract their voice and build credibility on LinkedIn using AI-assisted profiling and content strategy.
+            </div>
+            <div class="tree" style="margin-bottom: 20px;">
+              <div class="tree-item"><span style="color: var(--text);">Voice Extraction OS</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">Turning raw conversations into high-craft content</span></div>
+              <div class="tree-item"><span style="color: var(--text);">The Synthesizer Method</span> <span class="tree-desc" style="font-size: 11px; color: var(--muted);">Framework for turning notes into authority pieces</span></div>
+            </div>
+            <div class="venture-meta">
+              <span class="venture-status" style="color: #ef4444; border-color: #ef4444;">At Capacity</span>
+              <span class="venture-type" style="color: var(--freewriter);">Agency</span>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
+
 
     <!-- PROMPTS VIEW -->
     <div id="prompts" class="view" role="region" aria-labelledby="prompts-title">
@@ -321,15 +339,15 @@
 
       <div class="tools-container">
         <!-- CATEGORY: CORE INTELLIGENCE -->
-        <div class="tool-group">
-          <div class="tool-group-title">01_core_intelligence/</div>
+        <div class="tool-group" role="group" aria-labelledby="cat-core">
+          <h3 id="cat-core" class="tool-group-title">01_core_intelligence/</h3>
           
           <div class="tool-item">
             <div class="tool-name">Claude (Anthropic)</div>
             <div class="tool-desc">Primary driver for reasoning, long-form writing, and complex code architecture.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">Primary</span>
-              <a href="https://claude.ai" target="_blank" class="tool-link">[link]</a>
+              <a href="https://claude.ai" target="_blank" class="tool-link" aria-label="Visit Claude.ai">[link]</a>
             </div>
           </div>
 
@@ -338,7 +356,7 @@
             <div class="tool-desc">Secondary agent for logic cross-validation and quick task automation.</div>
             <div class="tool-meta">
               <span class="tool-status">Secondary</span>
-              <a href="https://chatgpt.com" target="_blank" class="tool-link">[link]</a>
+              <a href="https://chatgpt.com" target="_blank" class="tool-link" aria-label="Visit ChatGPT">[link]</a>
             </div>
           </div>
 
@@ -347,21 +365,21 @@
             <div class="tool-desc">Real-time research engine with direct source citations and web search.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">Search</span>
-              <a href="https://perplexity.ai" target="_blank" class="tool-link">[link]</a>
+              <a href="https://perplexity.ai" target="_blank" class="tool-link" aria-label="Visit Perplexity.ai">[link]</a>
             </div>
           </div>
         </div>
 
         <!-- CATEGORY: DEVELOPMENT -->
-        <div class="tool-group">
-          <div class="tool-group-title">02_development/</div>
+        <div class="tool-group" role="group" aria-labelledby="cat-dev">
+          <h3 id="cat-dev" class="tool-group-title">02_development/</h3>
 
           <div class="tool-item">
             <div class="tool-name">Cursor</div>
             <div class="tool-desc">AI-native code editor. Essential for solo-engineering and rapid shipping.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">IDE</span>
-              <a href="https://cursor.com" target="_blank" class="tool-link">[link]</a>
+              <a href="https://cursor.com" target="_blank" class="tool-link" aria-label="Visit Cursor.com">[link]</a>
             </div>
           </div>
 
@@ -370,7 +388,7 @@
             <div class="tool-desc">Postgres database, Auth, and Edge Functions. The standard for my backends.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">Backend</span>
-              <a href="https://supabase.com" target="_blank" class="tool-link">[link]</a>
+              <a href="https://supabase.com" target="_blank" class="tool-link" aria-label="Visit Supabase.com">[link]</a>
             </div>
           </div>
 
@@ -379,21 +397,21 @@
             <div class="tool-desc">Version control and the source of truth for all public and private builds.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">Repo</span>
-              <a href="https://github.com/fachrynuzuli" target="_blank" class="tool-link">[link]</a>
+              <a href="https://github.com/fachrynuzuli" target="_blank" class="tool-link" aria-label="Visit GitHub Profile">[link]</a>
             </div>
           </div>
         </div>
 
         <!-- CATEGORY: PROTOTYPING -->
-        <div class="tool-group">
-          <div class="tool-group-title">03_prototyping/</div>
+        <div class="tool-group" role="group" aria-labelledby="cat-proto">
+          <h3 id="cat-proto" class="tool-group-title">03_prototyping/</h3>
 
           <div class="tool-item">
             <div class="tool-name">Lovable</div>
             <div class="tool-desc">Generating functional UI components and full prototypes from natural language.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">UI Gen</span>
-              <a href="https://lovable.dev/invite/SN7AH7N" target="_blank" class="tool-link">[link]</a>
+              <a href="https://lovable.dev/invite/SN7AH7N" target="_blank" class="tool-link" aria-label="Visit Lovable.dev">[link]</a>
             </div>
           </div>
 
@@ -402,7 +420,7 @@
             <div class="tool-desc">Full-stack application development directly in the browser environment.</div>
             <div class="tool-meta">
               <span class="tool-status tool-status-primary">Fullstack</span>
-              <a href="https://bolt.new" target="_blank" class="tool-link">[link]</a>
+              <a href="https://bolt.new" target="_blank" class="tool-link" aria-label="Visit Bolt.new">[link]</a>
             </div>
           </div>
 
@@ -411,7 +429,7 @@
             <div class="tool-desc">Generating React components with shadcn/ui and TailwindCSS logic.</div>
             <div class="tool-meta">
               <span class="tool-status">React UI</span>
-              <a href="https://v0.dev" target="_blank" class="tool-link">[link]</a>
+              <a href="https://v0.dev" target="_blank" class="tool-link" aria-label="Visit v0.dev">[link]</a>
             </div>
           </div>
         </div>
