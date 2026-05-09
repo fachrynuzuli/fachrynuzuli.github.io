@@ -494,8 +494,20 @@
     // Listen for hash changes
     window.addEventListener('hashchange', route);
 
-    // Initial route load
-    window.addEventListener('DOMContentLoaded', route);
+    // Initial route load - handle both cold load and BFCache
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', route);
+    } else {
+      route();
+    }
+
+    // Handle BFCache (especially on mobile)
+    window.addEventListener('pageshow', (event) => {
+      route();
+    });
+
+    // Fallback for some mobile browsers
+    window.addEventListener('load', route);
   </script>
 </body>
 
