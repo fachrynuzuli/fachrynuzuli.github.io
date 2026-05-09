@@ -20,9 +20,9 @@
   <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
-<body>
+<body role="document">
 
-  <div class="container">
+  <main class="container">
 
     <!-- HOME VIEW -->
     <div id="home" class="view active">
@@ -34,46 +34,46 @@
         non-technical founders how to ship real products.
       </p>
 
-      <div class="tree stagger-3" style="margin-left: 0;">
-        <div class="tree-root">📁 main/</div>
-        <div class="tree-lines">
-          <div class="tree-line">
-            <span class="tree-prefix">├──</span>
+      <nav class="tree stagger-3" style="margin-left: 0;" aria-label="Directory Navigation">
+        <div class="tree-root" aria-hidden="true">📁 main/</div>
+        <ul class="tree-list">
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">├──</span>
             <a href="#notes">notes/</a>
             <span class="tree-desc">writings on product &amp; AI</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">├──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">├──</span>
             <a href="#work">works/</a>
             <span class="tree-desc">enterprise case studies &amp; portfolio</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">├──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">├──</span>
             <a href="#ventures">ventures/</a>
             <span class="tree-desc">my indie operations &amp; labs</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">├──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">├──</span>
             <span class="tree-plain">resources/</span>
             <span class="tree-desc">free stuff i use &amp; share</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">│&nbsp;&nbsp;&nbsp;├──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">│&nbsp;&nbsp;&nbsp;├──</span>
             <a href="#prompts">prompts/</a>
             <span class="tree-desc">copy-paste prompt collection</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">│&nbsp;&nbsp;&nbsp;└──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">│&nbsp;&nbsp;&nbsp;└──</span>
             <a href="#tools">tools/</a>
             <span class="tree-desc">the stack i use daily</span>
-          </div>
-          <div class="tree-line">
-            <span class="tree-prefix">└──</span>
+          </li>
+          <li class="tree-line">
+            <span class="tree-prefix" aria-hidden="true">└──</span>
             <a href="#repository">repository/</a>
             <span class="tree-desc">public repos on github</span>
-          </div>
-        </div>
-      </div>
+          </li>
+        </ul>
+      </nav>
 
       <div class="contact-line stagger-4">
         <a href="mailto:fachrynuzuli@gmail.com">fachrynuzuli@gmail.com</a> |
@@ -85,9 +85,9 @@
     </div>
 
     <!-- NOTES VIEW -->
-    <div id="notes" class="view">
+    <div id="notes" class="view" role="region" aria-labelledby="notes-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title">Writings & Essays</div>
+      <div id="notes-title" class="section-title">Writings & Essays</div>
 
       <div class="notes-announcement">
         <div class="announcement-tag">curation_log/01</div>
@@ -173,9 +173,9 @@
     </div>
 
     <!-- WORK VIEW -->
-    <div id="work" class="view">
+    <div id="work" class="view" role="region" aria-labelledby="work-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title">Enterprise & PM Portfolio</div>
+      <div id="work-title" class="section-title">Enterprise & PM Portfolio</div>
 
       <div class="project-card">
         <div class="project-title">Fleet Management Ecosystem <span class="badge badge-live">LIVE</span></div>
@@ -220,9 +220,9 @@
     </div>
 
     <!-- VENTURES VIEW -->
-    <div id="ventures" class="view">
+    <div id="ventures" class="view" role="region" aria-labelledby="ventures-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title" style="margin-bottom: 24px;">My Indie Operations (Founder)</div>
+      <div id="ventures-title" class="section-title" style="margin-bottom: 24px;">My Indie Operations (Founder)</div>
       <p style="color: var(--muted-light); margin-bottom: 32px; font-size: 12px; max-width: 600px;">
         Beyond my enterprise work, I run three active operations on the side. I build these entirely myself, leveraging
         AI to scale my output and help other non-technical founders ship faster.
@@ -278,9 +278,9 @@
     </div>
 
     <!-- PROMPTS VIEW -->
-    <div id="prompts" class="view">
+    <div id="prompts" class="view" role="region" aria-labelledby="prompts-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title" style="margin-bottom: 8px;">Prompt Collection</div>
+      <div id="prompts-title" class="section-title" style="margin-bottom: 8px;">Prompt Collection</div>
       <p style="color: var(--muted); font-size: 12px; margin-bottom: 32px;">Copy &amp;
         paste into any LLM.</p>
 
@@ -315,9 +315,9 @@
     </div>
 
     <!-- TOOLS VIEW -->
-    <div id="tools" class="view">
+    <div id="tools" class="view" role="region" aria-labelledby="tools-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title">System Inventory</div>
+      <div id="tools-title" class="section-title">System Inventory</div>
 
       <div class="tools-container">
         <!-- CATEGORY: CORE INTELLIGENCE -->
@@ -419,15 +419,15 @@
     </div>
 
     <!-- REPOSITORY VIEW (GitHub API) -->
-    <div id="repository" class="view">
+    <div id="repository" class="view" role="region" aria-labelledby="repository-title">
       <a href="#home" class="nav-back">← main directory</a>
-      <div class="section-title">Public Repositories</div>
+      <div id="repository-title" class="section-title">Public Repositories</div>
       <p style="color: var(--muted-light); margin-bottom: 24px; font-size: 12px;">Fetched live from <a
           href="https://github.com/fachrynuzuli" target="_blank">github.com/fachrynuzuli</a></p>
       <div id="repo-list" style="color: var(--muted);">loading repos...</div>
     </div>
 
-  </div>
+  </main>
 
   <script>
     // Simple Hash Router for SPA functionality

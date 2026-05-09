@@ -18,13 +18,12 @@
   --gold:         oklch(0.74 0.10 75);
   --green:        oklch(0.70 0.12 160);
   --orange:       oklch(0.70 0.15 45);
-  --orange:       oklch(0.70 0.12 160);
   --coral:        oklch(0.68 0.14 30);
 
-  /* Sub-brand accents (kept as-is for venture cards) */
-  --freebuilder:  #F5A623;
-  --freeware:     #00E87A;
-  --freewriter:   #C4983A;
+  /* Sub-brand accents (normalized to oklch) */
+  --freebuilder:  oklch(0.76 0.16 75); /* #F5A623 equivalent */
+  --freeware:     oklch(0.82 0.28 155); /* #00E87A equivalent */
+  --freewriter:   oklch(0.68 0.12 85); /* #C4983A equivalent */
 
   /* ── Typography ── */
   --mono:  'JetBrains Mono', monospace;
@@ -37,6 +36,10 @@
   --space-lg:  24px;
   --space-xl:  48px;
   --space-2xl: 72px;
+
+  /* ── Focus ── */
+  --focus-ring: 2px solid var(--gold);
+  --focus-offset: 4px;
 
   /* ── Transitions ── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -96,6 +99,7 @@ a {
     color var(--t-fast) ease,
     text-underline-offset var(--t-base) var(--ease-out-expo);
   cursor: pointer;
+  border-radius: 2px;
 }
 
 a:hover {
@@ -103,6 +107,12 @@ a:hover {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+
+a:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
 
 
 /* ── Container ── */
@@ -318,8 +328,9 @@ h1 {
 }
 
 /* ── Flat tree (home view) ── */
-
-.tree-lines {
+.tree-list {
+  list-style: none;
+  padding: 0;
   margin-top: var(--space-sm);
 }
 
@@ -337,7 +348,9 @@ h1 {
   white-space: pre;
   flex-shrink: 0;
   user-select: none;
+  pointer-events: none;
 }
+
 
 .tree-plain {
   color: var(--text-dim);

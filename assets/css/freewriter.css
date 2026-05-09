@@ -1,17 +1,32 @@
     :root {
-      --cream: #FAF6EE;
-      --cream-mid: #F2EBD9;
-      --cream-dark: #E8DFC8;
-      --navy: #1B1F3B;
-      --navy-light: #262B4A;
-      --gold: #C4983A;
-      --gold-light: #DDB96A;
-      --gold-glow: rgba(196,152,58,0.15);
-      --text: #1B1F3B;
-      --text-muted: #7A7E93;
-      --border: #D5CCB8;
+      /* ── Color: OKLCH ── */
+      --cream:        oklch(0.97 0.012 85);  /* #FAF6EE equivalent */
+      --cream-mid:    oklch(0.94 0.015 85);  /* #F2EBD9 equivalent */
+      --cream-dark:   oklch(0.89 0.02 85);   /* #E8DFC8 equivalent */
+      --navy:         oklch(0.25 0.04 260);  /* #1B1F3B equivalent */
+      --navy-light:   oklch(0.32 0.05 260);  /* #262B4A equivalent */
+      --gold:         oklch(0.68 0.12 85);   /* #C4983A equivalent */
+      --gold-light:   oklch(0.78 0.14 85);   /* #DDB96A equivalent */
+      --gold-glow:    oklch(0.68 0.12 85 / 0.15);
+      
+      --text:         var(--navy);
+      --text-muted:   oklch(0.55 0.02 260); /* #7A7E93 equivalent */
+      --border:       oklch(0.85 0.02 85);  /* #D5CCB8 equivalent */
+      
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Jost', sans-serif;
+
+      /* ── Spacing ── */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 48px;
+      --space-2xl: 88px;
+
+      /* ── Focus ── */
+      --focus-ring: 2px solid var(--gold);
+      --focus-offset: 4px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -21,7 +36,9 @@
       font-family: var(--font-sans);
       overflow-x: hidden;
       transition: margin-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      -webkit-font-smoothing: antialiased;
     }
+
     body:has(.site-nav.force-show) {
       margin-top: 40px;
     }
@@ -56,11 +73,17 @@
       text-decoration: none; padding: 14px 24px;
       color: var(--text-muted); transition: color 0.2s;
       position: relative;
+      border-radius: 2px;
     }
     .site-nav a:hover { color: var(--gold); }
+    .site-nav a:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: -2px;
+    }
     .site-nav a.active {
       color: var(--gold);
     }
+
     .site-nav a.active::after {
       content: ''; position: absolute;
       bottom: 0; left: 24px; right: 24px;
@@ -91,8 +114,14 @@
       text-transform: uppercase; text-decoration: none;
       transition: all 0.25s;
       min-height: 44px; display: inline-flex; align-items: center;
+      border-radius: 2px;
     }
     .nav-cta:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
+    .nav-cta:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-offset);
+    }
+
 
     /* ── HAMBURGER ── */
     .hamburger {
