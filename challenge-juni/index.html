@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Juni — Threads Topic 2026</title>
+  <meta name="description" content="30 hari posting challenge di Threads. Satu hal yang lo pelajari setiap harinya. 1–30 Juni 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #F4EDE3;
+      --bg-card:      #FAF7F3;
+      --text:         #1A0E08;
+      --accent:       #BF5828;
+      --accent-light: #EDD3BC;
+      --accent-deep:  #8C3A15;
+      --border:       #D4AD8C;
+      --muted:        #8A6A52;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--text);
+      color: var(--bg);
+      padding: 80px 32px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -100px;
+      width: 380px; height: 380px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -80px;
+      width: 240px; height: 240px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(54px, 10vw, 100px);
+      line-height: 0.9;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+    .hero-topic {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(18px, 3.5vw, 26px);
+      color: rgba(244,237,227,0.55);
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .hero-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+    }
+    .hero-pill {
+      background: rgba(244,237,227,0.08);
+      border: 1px solid rgba(244,237,227,0.18);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(244,237,227,0.75);
+    }
+    .hero-pill strong { color: var(--accent-light); font-weight: 600; }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .container + .container { padding-top: 0; }
+
+    .sep {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.45;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 5vw, 36px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #3A2015;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 600; }
+
+    /* ─── RULES ─── */
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .rule-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .rule-num {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 15px;
+      margin-top: 1px;
+    }
+    .rule-text { font-size: 15px; }
+    .rule-text strong {
+      display: block;
+      margin-bottom: 3px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .rule-text span { color: #5A3825; font-size: 14px; }
+
+    /* ─── TOPICS GRID ─── */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .topic-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .topic-chip::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .guide-link {
+      margin-top: 22px;
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .guide-link p {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #5A3825;
+    }
+    .guide-link a {
+      color: var(--accent-deep);
+      font-weight: 700;
+      text-decoration-color: rgba(140,58,21,0.35);
+      text-underline-offset: 4px;
+    }
+
+    /* ─── CALLOUT ─── */
+    .callout {
+      background: var(--accent);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .callout h2 {
+      color: white;
+      font-size: clamp(30px, 5vw, 44px);
+      margin-bottom: 10px;
+    }
+    .callout p {
+      color: rgba(255,255,255,0.82);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .callout-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 28px;
+      border-radius: 100px;
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: white;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── STEPS ─── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 28px;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--accent-light);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-n {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent);
+      width: 24px;
+      flex-shrink: 0;
+      padding-top: 2px;
+      text-align: right;
+    }
+    .step-text { font-size: 15px; color: #3A2015; }
+
+    /* ─── FAQ ─── */
+    .faq {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 28px;
+    }
+    .faq-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--accent-light);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .faq-a { font-size: 14px; color: var(--muted); margin: 0; }
+
+    /* ─── ORGANIZER ─── */
+    .org-card {
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 16px;
+      padding: 12px;
+      margin-top: 28px;
+    }
+    .org-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      color: rgba(244,237,227,0.38);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    footer a { color: var(--accent-light); text-decoration: none; }
+
+    @media (max-width: 580px) {
+      .topics-grid { grid-template-columns: 1fr; }
+      .hero { padding: 64px 20px 48px; }
+      .container { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Fachry Nuzuli · Juni 2026</p>
+    <h1>Challenge<br><em>Juni</em></h1>
+    <p class="hero-topic">Topic: ChallengeJuni</p>
+    <div class="hero-pills">
+      <span class="hero-pill"><strong>30 hari</strong></span>
+      <span class="hero-pill">1 – 30 Juni 2026</span>
+      <span class="hero-pill">Platform Threads</span>
+      <span class="hero-pill">Gratis & Terbuka</span>
+    </div>
+  </section>
+
+  <!-- WHAT -->
+  <div class="container">
+    <p class="eyebrow">Apa ini?</p>
+    <h2>Posting satu hal yang kamu pelajari, setiap hari.</h2>
+    <p>Challenge Juni adalah tantangan posting 30 hari di Threads. Satu post per hari. Satu hal yang kamu pelajari, coba, amati, atau sadari di hari itu.</p>
+    <p>Topiknya bebas. Panjangnya bebas. Formatnya bebas. Yang tidak bebas: skip setiap hari.</p>
+    <p>Terinspirasi dari <strong>MayLearnings</strong> yang diinisiasi @narawastu pada Mei 2024, Challenge Juni adalah versi Juni-nya. 30 hari, spirit yang sama.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- RULES -->
+  <div class="container">
+    <p class="eyebrow">Aturan Main</p>
+    <h2>Simple. Tidak ada excuse untuk tidak paham.</h2>
+    <ul class="rules-list">
+      <li class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-text">
+          <strong>Post setiap hari</strong>
+          <span>Dari 1 sampai 30 Juni 2026. Satu post per hari, minimal.</span>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-text">
+          <strong>Pakai topic ChallengeJuni</strong>
+          <span>Di setiap post Threads, tambahkan topic <strong>ChallengeJuni</strong>. Nanti tampil seperti: fachrynuzuli &gt; ChallengeJuni.</span>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-text">
+          <strong>Topik bebas total</strong>
+          <span>Kerjaan, hobi, buku, film, observasi acak, self-reflection. Semua boleh.</span>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div class="rule-num">4</div>
+        <div class="rule-text">
+          <strong>Skip itu boleh, tapi lanjut terus</strong>
+          <span>Tidak ada denda atau diskualifikasi. Skip satu hari? Posting dua besoknya, atau lanjut biasa. Yang penting tidak berhenti total.</span>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div class="rule-num">5</div>
+        <div class="rule-text">
+          <strong>Jujur, bukan sempurna</strong>
+          <span>Post yang jujur lebih berguna dari post yang bagus. Tidak perlu nunggu insight besar.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- TOPICS -->
+  <div class="container">
+    <p class="eyebrow">Inspirasi Topik</p>
+    <h2>Kehabisan ide? Mulai dari sini.</h2>
+    <p>Ini bukan template wajib. Ini pintu masuk untuk hari-hari yang rasanya "gue ga belajar apa-apa hari ini."</p>
+    <div class="topics-grid">
+      <div class="topic-chip">Hal baru dari kerjaan</div>
+      <div class="topic-chip">Buku / artikel yang baru selesai</div>
+      <div class="topic-chip">Skill yang lagi dipelajari</div>
+      <div class="topic-chip">Kesalahan dan pelajarannya</div>
+      <div class="topic-chip">Observasi random yang bikin mikir</div>
+      <div class="topic-chip">Tool / app baru yang dicoba</div>
+      <div class="topic-chip">Pertanyaan yang belum terjawab</div>
+      <div class="topic-chip">Habit baru yang lagi diuji</div>
+      <div class="topic-chip">Percakapan yang berkesan</div>
+      <div class="topic-chip">Insight dari film / podcast</div>
+    </div>
+    <div class="guide-link">
+      <p>Mau versi lengkapnya biar gampang dibagikan ke orang lain?</p>
+      <a href="https://fachrynuzuli.notion.site/30-Hari-Posting-Challenge-ChallengeJuni-3723ecb6ef0681f29e0fdaf280f6b665">Baca panduan lengkap Challenge Juni di Notion</a>
+    </div>
+  </div>
+
+  <!-- CALLOUT -->
+  <section class="callout">
+    <h2>Cara Ikut</h2>
+    <p>Tidak perlu form. Tidak perlu DM dulu. Langsung posting di Threads.</p>
+    <span class="callout-tag">ChallengeJuni</span>
+  </section>
+
+  <!-- STEPS -->
+  <div class="container">
+    <p class="eyebrow">Langkah-langkah</p>
+    <h2>Segitu doang caranya.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">01.</span>
+        <span class="step-text">Buka Threads dan tulis post pertama lo hari ini.</span>
+      </div>
+      <div class="step">
+        <span class="step-n">02.</span>
+        <span class="step-text">Tulis satu hal yang lo pelajari, sadari, atau lakukan hari ini. Bebas panjang-pendeknya.</span>
+      </div>
+      <div class="step">
+        <span class="step-n">03.</span>
+        <span class="step-text">Tambahkan topic <strong>ChallengeJuni</strong> di post-nya. Ini yang bikin lo resmi ikut.</span>
+      </div>
+      <div class="step">
+        <span class="step-n">04.</span>
+        <span class="step-text">Tag atau mention <strong>@fachrynuzuli</strong> di Threads kalau mau dikonfirmasi dan difollow progress-nya.</span>
+      </div>
+      <div class="step">
+        <span class="step-n">05.</span>
+        <span class="step-text">Ulangi setiap hari sampai 30 Juni. Selesai.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- FAQ -->
+  <div class="container">
+    <p class="eyebrow">FAQ</p>
+    <h2>Pertanyaan yang biasanya muncul.</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <p class="faq-q">Harus posting setiap hari tanpa terkecuali?</p>
+        <p class="faq-a">Idealnya iya. Tapi ini bukan ujian. Skip satu hari, lanjut besoknya. Yang penting tidak nyerah di tengah jalan.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Post-nya harus panjang?</p>
+        <p class="faq-a">Tidak. Satu kalimat cukup. Tiga paragraf juga boleh. Format bebas, panjang bebas.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Boleh pakai bahasa apa saja?</p>
+        <p class="faq-a">Bebas. Indonesia, Inggris, campur, Jawa, Minang — semua boleh. Asal bisa dibaca manusia.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Ada hadiah atau sertifikat?</p>
+        <p class="faq-a">Reward utamanya adalah konsistensi dan koneksi yang lo bangun sepanjang bulan ini. Tapi siapa tau ada surprise di akhir.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Temanya harus soal belajar formal?</p>
+        <p class="faq-a">"Belajar" di sini artinya luas: observasi, trial and error, kejadian, percakapan. Apapun yang bikin lo lebih paham sesuatu.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Boleh mulai di tengah bulan?</p>
+        <p class="faq-a">Boleh. Late join lebih baik dari tidak join. Posting dari hari masuk lo sampai 30 Juni.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ORGANIZER -->
+  <div class="container">
+    <p class="eyebrow">Tentang Penggagas</p>
+    <h2>Siapa yang bikin ini?</h2>
+    <div class="org-card">
+      <img src="fachry-threads-profile.png" alt="Profil Threads Fachry Nuzuli">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Challenge Juni 2026 oleh <a href="https://www.threads.net/@fachrynuzuli">@fachrynuzuli</a><br>
+    Gratis. Terbuka. Tidak ada affiliasi apapun.<br>
+    Terinspirasi dari MayLearnings oleh <a href="https://x.com/narawastu">@narawastu</a>.
+  </footer>
+
+</body>
+</html>
