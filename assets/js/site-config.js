@@ -15,8 +15,8 @@ const CONFIG = {
     email: 'mailto:fachrynuzuli@gmail.com',
     booking: 'https://cal.com/fachrynuzuli/discovery',
     sprint: 'https://cal.com/fachrynuzuli/discovery',
-    prompts: 'javascript:void(0)',
-    freeware_lab: 'javascript:void(0)'
+    prompts: 'mailto:fachrynuzuli@gmail.com?subject=Prompt%20pack%20waitlist',
+    freeware_lab: 'https://cal.com/fachrynuzuli/discovery'
   },
   // Legacy/Alternate keys found in HTML
   links: {
@@ -26,12 +26,12 @@ const CONFIG = {
     email: 'mailto:fachrynuzuli@gmail.com',
     bookCall: 'https://cal.com/fachrynuzuli/discovery',
     sprintCTA: 'https://cal.com/fachrynuzuli/discovery',
-    contentPack: 'javascript:void(0)',
-    contextPack: 'javascript:void(0)',
-    vibeCoding: 'javascript:void(0)',
-    seoPack: 'javascript:void(0)',
-    bundleCTA: 'javascript:void(0)',
-    runbookCTA: 'javascript:void(0)'
+    contentPack: 'mailto:fachrynuzuli@gmail.com?subject=Freebuilder%20waitlist%3A%20Content%20Creation%20Pack',
+    contextPack: 'mailto:fachrynuzuli@gmail.com?subject=Freebuilder%20waitlist%3A%20Context%20Management%20Pack',
+    vibeCoding: 'mailto:fachrynuzuli@gmail.com?subject=Freebuilder%20waitlist%3A%20Vibe%20Coding%20Starter',
+    seoPack: 'mailto:fachrynuzuli@gmail.com?subject=Freebuilder%20waitlist%3A%20SEO%20and%20Automation%20Pack',
+    bundleCTA: 'mailto:fachrynuzuli@gmail.com?subject=Freebuilder%20waitlist%3A%20Complete%20Bundle',
+    runbookCTA: 'https://fachry.substack.com'
   },
   meta: {
     year: new Date().getFullYear(),
