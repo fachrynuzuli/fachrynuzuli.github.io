@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/index.css?v=12">
+  <link rel="stylesheet" href="assets/css/index.css?v=13">
 
   <!-- Structured Data for Search Engines & AI Knowledge Graphs -->
   <script type="application/ld+json">
@@ -526,80 +526,123 @@
       </ol>
     </section>
 
-    <!-- iii. WORKS (CLICKABLE APP PROTOTYPES ONLY) -->
+    <!-- iii. WORKS (11 PROJECTS: MAC IFRAME APPS + MAC SKILL INSPECTOR) -->
     <section id="works" class="dossier-section" data-section-label="iii. works">
       <div class="section-head">
         <h2 class="section-heading">Works</h2>
       </div>
 
       <p class="prose" style="margin-bottom: 1.25rem;">
-        Live app prototypes, rebuilt operational concepts, and open coding-agent skills shipped with AI tools.
+        Live web apps, operational prototypes, and coding-agent skills shipped with AI tools. Click any card to open it directly inside this Macintosh window.
       </p>
 
-      <div class="works-filter-bar" role="group" aria-label="Filter prototypes">
-        <button type="button" class="filter-pill" data-work-filter="all" aria-pressed="true">All (8)</button>
-        <button type="button" class="filter-pill" data-work-filter="logistics" aria-pressed="false">Logistics &amp; Ops</button>
-        <button type="button" class="filter-pill" data-work-filter="apps" aria-pressed="false">AI Apps</button>
-        <button type="button" class="filter-pill" data-work-filter="skills" aria-pressed="false">Agent Skills</button>
+      <div class="works-filter-bar" role="group" aria-label="Filter projects">
+        <button type="button" class="filter-pill" data-work-filter="all" aria-pressed="true">All (11)</button>
+        <button type="button" class="filter-pill" data-work-filter="logistics" aria-pressed="false">Logistics &amp; Ops (2)</button>
+        <button type="button" class="filter-pill" data-work-filter="apps" aria-pressed="false">AI Apps (6)</button>
+        <button type="button" class="filter-pill" data-work-filter="skills" aria-pressed="false">Agent Skills (3)</button>
       </div>
 
       <ul class="works-grid">
+        <!-- Logistics & Ops (2) -->
         <li class="work-card" data-work-cat="logistics">
           <div class="work-card-head">
             <h3 class="work-name">FLS Dashboard</h3>
-            <span class="work-badge work-badge-live">Live Prototype</span>
+            <span class="work-badge work-badge-live">Live App</span>
           </div>
-          <p class="work-desc">Real-time performance monitoring dashboard prototype for port cargo loading operations, surfacing throughput metrics for operational decisions.</p>
+          <p class="work-desc">Real-time performance monitoring dashboard for port cargo loading operations, surfacing throughput metrics for operational decisions.</p>
           <div class="work-links">
-            <a href="https://fachrynuzuli.github.io/fls-dashboard" target="_blank" rel="noopener noreferrer" aria-label="Open prototype for FLS Dashboard">Open prototype ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="fls-dashboard">Open in Mac ↗</button>
             <a href="https://github.com/fachrynuzuli/fls-dashboard" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for FLS Dashboard">GitHub ↗</a>
           </div>
         </li>
 
         <li class="work-card" data-work-cat="logistics">
           <div class="work-card-head">
-            <h3 class="work-name">Dispatch System</h3>
-            <span class="work-badge">Prototype</span>
+            <h3 class="work-name">Dispatch System (FDS)</h3>
+            <span class="work-badge work-badge-live">Static Demo</span>
           </div>
           <p class="work-desc">AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/dispatch-system" target="_blank" rel="noopener noreferrer" aria-label="View prototype repo for Dispatch System">View prototype repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="dispatch-system">Open in Mac ↗</button>
+            <a href="https://github.com/fachrynuzuli/dispatch-system" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Dispatch System">GitHub ↗</a>
           </div>
         </li>
 
-        <li class="work-card" data-work-cat="logistics">
+        <!-- AI Apps (6) -->
+        <li class="work-card" data-work-cat="apps">
           <div class="work-card-head">
-            <h3 class="work-name">3D Logistics</h3>
-            <span class="work-badge">Prototype</span>
+            <h3 class="work-name">Profilemu</h3>
+            <span class="work-badge work-badge-live">Live App</span>
           </div>
-          <p class="work-desc">Interactive 3D operational visualization experiment exploring spatial fleet and yard modeling in the browser.</p>
+          <p class="work-desc">AI digital twin web app letting professionals publish an interactive persona trained on their background and expertise.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/3d-logistics" target="_blank" rel="noopener noreferrer" aria-label="View prototype repo for 3D Logistics">View prototype repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="profilemu">Open in Mac ↗</button>
+            <a href="https://github.com/fachrynuzuli/profilemu" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Profilemu">GitHub ↗</a>
           </div>
         </li>
 
         <li class="work-card" data-work-cat="apps">
           <div class="work-card-head">
-            <h3 class="work-name">Profilemu</h3>
-            <span class="work-badge">AI App</span>
+            <h3 class="work-name">Guru Nyanyi (Vocalist)</h3>
+            <span class="work-badge work-badge-live">Live App</span>
           </div>
-          <p class="work-desc">Lovable-built app that lets professionals create an AI digital twin trained on their background and expertise so visitors can converse directly.</p>
+          <p class="work-desc">Beginner-friendly vocal practice web app built for shy learners taking their first singing steps.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/profilemu" target="_blank" rel="noopener noreferrer" aria-label="View prototype repo for Profilemu">View prototype repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="guru-nyanyi">Open in Mac ↗</button>
+            <a href="https://github.com/fachrynuzuli/guru-nyanyi" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Guru Nyanyi">GitHub ↗</a>
           </div>
         </li>
 
         <li class="work-card" data-work-cat="apps">
           <div class="work-card-head">
             <h3 class="work-name">Knock-Knock</h3>
-            <span class="work-badge">Web App</span>
+            <span class="work-badge work-badge-live">Static Demo</span>
           </div>
           <p class="work-desc">Gamified team management and weekly task reporting app that turns dry status updates into an interactive neighborhood experience.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/knock-knock" target="_blank" rel="noopener noreferrer" aria-label="View prototype repo for Knock-Knock">View prototype repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="knock-knock">Open in Mac ↗</button>
+            <a href="https://github.com/fachrynuzuli/knock-knock" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Knock-Knock">GitHub ↗</a>
           </div>
         </li>
 
+        <li class="work-card" data-work-cat="apps">
+          <div class="work-card-head">
+            <h3 class="work-name">Household</h3>
+            <span class="work-badge work-badge-live">Live App</span>
+          </div>
+          <p class="work-desc">Mobile-first household organizer and daily family coordination web app built for calm shared routines.</p>
+          <div class="work-links">
+            <button type="button" class="work-launch-btn" data-work-slug="household">Open in Mac ↗</button>
+            <a href="https://house.fachrynuzuli.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Household in new tab">New tab ↗</a>
+          </div>
+        </li>
+
+        <li class="work-card" data-work-cat="apps">
+          <div class="work-card-head">
+            <h3 class="work-name">Scaler</h3>
+            <span class="work-badge work-badge-live">Live App</span>
+          </div>
+          <p class="work-desc">Interactive business and career scaling companion web app designed to model leverage and repeatable growth moves.</p>
+          <div class="work-links">
+            <button type="button" class="work-launch-btn" data-work-slug="scaler">Open in Mac ↗</button>
+            <a href="https://scaler.fachrynuzuli.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Scaler in new tab">New tab ↗</a>
+          </div>
+        </li>
+
+        <li class="work-card" data-work-cat="apps">
+          <div class="work-card-head">
+            <h3 class="work-name">Find 'N Keep</h3>
+            <span class="work-badge work-badge-live">Live App</span>
+          </div>
+          <p class="work-desc">Lightweight web app for capturing, organizing, and retrieving high-signal discoveries before they vanish in bookmarks.</p>
+          <div class="work-links">
+            <button type="button" class="work-launch-btn" data-work-slug="find-n-keep">Open in Mac ↗</button>
+            <a href="https://findandkeep.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Find 'N Keep in new tab">New tab ↗</a>
+          </div>
+        </li>
+
+        <!-- Agent Skills (3) -->
         <li class="work-card" data-work-cat="skills">
           <div class="work-card-head">
             <h3 class="work-name">BRD Builder</h3>
@@ -607,29 +650,31 @@
           </div>
           <p class="work-desc">Coding-agent skill that interviews stakeholders step-by-step and generates clean, styled Business Requirement Documents.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/brd-builder" target="_blank" rel="noopener noreferrer" aria-label="View skill repo for BRD Builder">View skill repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="brd-builder">Inspect SKILL.md ↗</button>
+            <a href="https://github.com/fachrynuzuli/brd-builder" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for BRD Builder">GitHub ↗</a>
           </div>
         </li>
 
         <li class="work-card" data-work-cat="skills">
           <div class="work-card-head">
             <h3 class="work-name">Sharemaxxing</h3>
-            <span class="work-badge">Claude Skill</span>
+            <span class="work-badge">Agent Skill</span>
           </div>
-          <p class="work-desc">Claude skill encoding persuasion and clarity patterns to rewrite drafts, threads, and scripts into high-influence public writing.</p>
+          <p class="work-desc">Persuasion and clarity skill encoding the Shareability Engine and Voice DNA rules to rewrite drafts into high-influence public writing.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/sharemaxxing" target="_blank" rel="noopener noreferrer" aria-label="View skill repo for Sharemaxxing">View skill repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="sharemaxxing">Inspect SKILL.md ↗</button>
+            <a href="https://github.com/fachrynuzuli/sharemaxxing" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Sharemaxxing">GitHub ↗</a>
           </div>
         </li>
 
-        <li class="work-card" data-work-cat="apps">
+        <li class="work-card" data-work-cat="skills">
           <div class="work-card-head">
-            <h3 class="work-name">Guru Nyanyi</h3>
-            <span class="work-badge">Web App</span>
+            <h3 class="work-name">Lovable Framework</h3>
+            <span class="work-badge">149-Entry Skill</span>
           </div>
-          <p class="work-desc">Beginner-friendly vocal practice web app prototype built for shy learners taking their first singing steps.</p>
+          <p class="work-desc">Full-lifecycle coding-agent skill built on the 149-entry Lovable Prompt Library: 17 Prompting Strategy guides, 78 Design recipes, and 54 Functionality recipes.</p>
           <div class="work-links">
-            <a href="https://github.com/fachrynuzuli/guru-nyanyi" target="_blank" rel="noopener noreferrer" aria-label="View prototype repo for Guru Nyanyi">View prototype repo ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="lovable-framework">Inspect SKILL.md ↗</button>
           </div>
         </li>
       </ul>
@@ -1723,7 +1768,216 @@
         }
       }
 
-      // Delegate clicks inside the Mac popup for writings, prompts, back links, & copy buttons
+      const WORK_CATALOG = {
+        'fls-dashboard': {
+          title: 'FLS Dashboard',
+          kind: 'iframe',
+          url: 'https://fachrynuzuli.github.io/fls-dashboard/',
+          displayUrl: 'fachrynuzuli.github.io/fls-dashboard',
+          github: 'https://github.com/fachrynuzuli/fls-dashboard',
+          category: 'Logistics & Ops',
+        },
+        'dispatch-system': {
+          title: 'Dispatch System (FDS)',
+          kind: 'iframe',
+          url: 'demos/dispatch-system/index.html',
+          displayUrl: 'fachrynuzuli.com/demos/dispatch-system',
+          github: 'https://github.com/fachrynuzuli/dispatch-system',
+          category: 'Logistics & Ops',
+        },
+        'profilemu': {
+          title: 'Profilemu',
+          kind: 'iframe',
+          url: 'https://profile.fachrynuzuli.com/',
+          displayUrl: 'profile.fachrynuzuli.com',
+          github: 'https://github.com/fachrynuzuli/profilemu',
+          category: 'AI App',
+        },
+        'guru-nyanyi': {
+          title: 'Guru Nyanyi (Vocalist)',
+          kind: 'iframe',
+          url: 'https://sing.fachrynuzuli.com/',
+          displayUrl: 'sing.fachrynuzuli.com',
+          github: 'https://github.com/fachrynuzuli/guru-nyanyi',
+          category: 'AI App',
+        },
+        'knock-knock': {
+          title: 'Knock-Knock',
+          kind: 'iframe',
+          url: 'demos/knock-knock/index.html',
+          displayUrl: 'fachrynuzuli.com/demos/knock-knock',
+          github: 'https://github.com/fachrynuzuli/knock-knock',
+          category: 'AI App',
+        },
+        'household': {
+          title: 'Household',
+          kind: 'iframe',
+          url: 'https://house.fachrynuzuli.com/',
+          displayUrl: 'house.fachrynuzuli.com',
+          category: 'AI App',
+        },
+        'scaler': {
+          title: 'Scaler',
+          kind: 'iframe',
+          url: 'https://scaler.fachrynuzuli.com/',
+          displayUrl: 'scaler.fachrynuzuli.com',
+          category: 'AI App',
+        },
+        'find-n-keep': {
+          title: "Find 'N Keep",
+          kind: 'iframe',
+          url: 'https://findandkeep.netlify.app/',
+          displayUrl: 'findandkeep.netlify.app',
+          category: 'AI App',
+        },
+        'brd-builder': {
+          title: 'BRD Builder',
+          kind: 'skill',
+          skillUrl: 'skills/brd-builder.md',
+          github: 'https://github.com/fachrynuzuli/brd-builder',
+          badges: ['Agent Skill', 'Stakeholder Interview', 'Styled BRD Output'],
+          summary: 'Coding-agent skill that interviews stakeholders step-by-step and generates clean, styled Business Requirement Documents.',
+        },
+        'sharemaxxing': {
+          title: 'Sharemaxxing',
+          kind: 'skill',
+          skillUrl: 'skills/sharemaxxing.md',
+          github: 'https://github.com/fachrynuzuli/sharemaxxing',
+          badges: ['Agent Skill', 'Shareability Engine', 'Voice DNA'],
+          summary: 'Persuasion and clarity skill encoding opinion flex, proxy boldness, wit signaling, and strict Voice DNA rules for high-influence writing.',
+        },
+        'lovable-framework': {
+          title: 'Lovable Framework',
+          kind: 'skill',
+          skillUrl: 'skills/lovable-framework.md',
+          badges: ['149-Entry Library', '17 Prompting Strategy', '78 Design Recipes', '54 Functionality Recipes'],
+          summary: 'Full-lifecycle assistant, auditor, and recipe engine built on the 149-entry Lovable Prompt Library Framework.',
+        },
+      };
+      const skillCache = new Map();
+
+      function escapeHtmlText(str) {
+        return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+      }
+
+      async function openWorkPopup(slug, direction = 'next') {
+        const work = WORK_CATALOG[slug];
+        if (!work) return;
+
+        const hashPath = `#works/${slug}`;
+        activeSection = 'works';
+        setTabStates('works');
+        dialogTitle.textContent = work.title;
+        document.title = `${work.title} | Fachry Nuzuli Kamal`;
+        dialogStatus.textContent = `fachrynuzuli.com/${hashPath}`;
+
+        if (window.location.hash !== hashPath) {
+          history.replaceState(null, '', hashPath);
+        }
+
+        if (!dialog.open) {
+          dialog.removeAttribute('data-closing');
+          dialog.showModal();
+          closeBtn.focus({ preventScroll: true });
+        }
+
+        triggerScanSweep();
+
+        const stage = document.createElement('div');
+        stage.className = `mac-section-stage dir-${direction}`;
+
+        if (work.kind === 'iframe') {
+          const githubBtn = work.github
+            ? `<a class="work-bar-link" href="${work.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`
+            : '';
+          stage.innerHTML = `
+            <div class="work-viewer">
+              <div class="work-viewer-bar">
+                <button type="button" class="work-back-btn" data-reader-back="works">← back to works</button>
+                <span class="work-url-pill" title="${escapeHtmlText(work.displayUrl)}">${escapeHtmlText(work.displayUrl)}</span>
+                <div class="work-bar-actions">
+                  ${githubBtn}
+                  <a class="work-bar-link work-bar-link-primary" href="${work.url}" target="_blank" rel="noopener noreferrer">Open full tab ↗</a>
+                </div>
+              </div>
+              <div class="work-iframe-shell">
+                <iframe
+                  class="work-iframe"
+                  src="${work.url}"
+                  title="${escapeHtmlText(work.title)} live preview"
+                  loading="eager"
+                  allow="clipboard-read; clipboard-write; microphone"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+            </div>
+          `;
+          dialogBody.replaceChildren(stage);
+          dialogBody.scrollTop = 0;
+          return;
+        }
+
+        // Mac Skill Inspector mode
+        const githubBtn = work.github
+          ? `<a class="work-bar-link" href="${work.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`
+          : '';
+        const badgesHtml = (work.badges || [])
+          .map((b) => `<span class="skill-stat-chip">${escapeHtmlText(b)}</span>`)
+          .join('');
+
+        stage.innerHTML = `
+          <div class="skill-inspector">
+            <div class="work-viewer-bar">
+              <button type="button" class="work-back-btn" data-reader-back="works">← back to works</button>
+              <span class="work-url-pill">SKILL.md · ${escapeHtmlText(slug)}</span>
+              <div class="work-bar-actions">
+                ${githubBtn}
+                <button type="button" class="work-bar-link work-bar-link-primary" id="skill-copy-btn">Copy SKILL.md</button>
+              </div>
+            </div>
+            <div class="skill-meta-card">
+              <p class="skill-meta-summary">${escapeHtmlText(work.summary)}</p>
+              <div class="skill-stat-row">${badgesHtml}</div>
+            </div>
+            <pre class="skill-code-view" id="skill-code-view"><code>Loading SKILL.md...</code></pre>
+          </div>
+        `;
+        dialogBody.replaceChildren(stage);
+        dialogBody.scrollTop = 0;
+
+        try {
+          let md = skillCache.get(work.skillUrl);
+          if (!md) {
+            const res = await fetch(work.skillUrl);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            md = await res.text();
+            skillCache.set(work.skillUrl, md);
+          }
+          const codeEl = stage.querySelector('#skill-code-view code');
+          if (codeEl) codeEl.textContent = md;
+
+          const copyBtn = stage.querySelector('#skill-copy-btn');
+          if (copyBtn) {
+            copyBtn.addEventListener('click', async () => {
+              const original = copyBtn.textContent;
+              try {
+                await navigator.clipboard.writeText(md);
+                copyBtn.textContent = 'Copied SKILL.md';
+                announcer.textContent = `Copied ${work.title} SKILL.md to clipboard.`;
+              } catch {
+                copyBtn.textContent = 'Copy failed';
+                announcer.textContent = 'Could not copy SKILL.md to clipboard.';
+              }
+              window.setTimeout(() => { copyBtn.textContent = original; }, 1800);
+            });
+          }
+        } catch {
+          const codeEl = stage.querySelector('#skill-code-view code');
+          if (codeEl) codeEl.textContent = 'Could not load SKILL.md preview.';
+        }
+      }
+
+      // Delegate clicks inside the Mac popup for writings, prompts, works popups, back links, & copy buttons
       dialogBody.addEventListener('click', (e) => {
         // Allow modifier-clicks (Cmd/Ctrl/middle click) to open standalone page in new tab
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -1732,6 +1986,13 @@
         if (backLink) {
           e.preventDefault();
           renderSectionIntoDialog(backLink.dataset.readerBack, 'prev');
+          return;
+        }
+
+        const workBtn = e.target.closest('[data-work-slug]');
+        if (workBtn) {
+          e.preventDefault();
+          openWorkPopup(workBtn.dataset.workSlug, 'next');
           return;
         }
 
@@ -1807,6 +2068,10 @@
       dialog.addEventListener('close', () => {
         dialog.returnValue = '';
         activeSection = null;
+        // Clear any embedded iframe so background apps stop cleanly on dialog close
+        if (dialogBody.querySelector('.work-iframe')) {
+          dialogBody.replaceChildren();
+        }
         if (activeChart) {
           activeChart.destroy();
           activeChart = null;
@@ -1835,6 +2100,11 @@
 
         const [rawSection, slug] = rawHash.split('/');
         const section = SECTION_ALIASES[rawSection] || rawSection;
+
+        if (slug && section === 'works' && WORK_CATALOG[slug]) {
+          window.setTimeout(() => openWorkPopup(slug, 'open'), immediate ? 0 : (reducedMotion ? 0 : 850));
+          return;
+        }
 
         if (slug && (section === 'writings' || section === 'resources')) {
           const type = section === 'resources' ? 'prompt' : 'note';

@@ -19,6 +19,8 @@ const PUBLIC_DIRS = [
   'notes',
   'prompts',
   'challenge-juni',
+  'demos',
+  'skills',
 ];
 
 fs.rmSync(DIST, { recursive: true, force: true });

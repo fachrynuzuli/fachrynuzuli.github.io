@@ -15,16 +15,19 @@ Based in Riau, Indonesia. Sr Product Manager (Digital Transformation Lead), APRI
 - [Mini-essay (fachry.bearblog.dev)](https://fachry.bearblog.dev/): Minimal, fast essays on career strategy, product work, and mental models.
 - [Newsletter (fachry.substack.com)](https://fachry.substack.com/): Long-form newsletter archive on AI building, influence, and personal leverage.
 
-## Live Prototypes & Open Skills
+## Live Apps, Prototypes & Agent Skills (11 Projects)
 
-- [FLS Dashboard (Live Prototype)](https://fachrynuzuli.github.io/fls-dashboard): Real-time performance monitoring dashboard prototype for port cargo loading operations ([Repo](https://github.com/fachrynuzuli/fls-dashboard)).
-- [Dispatch System](https://github.com/fachrynuzuli/dispatch-system): AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini.
-- [3D Logistics](https://github.com/fachrynuzuli/3d-logistics): Interactive 3D operational visualization experiment.
-- [Profilemu](https://github.com/fachrynuzuli/profilemu): Lovable-built AI digital twin app letting visitors converse directly with a professional's expertise.
-- [Knock-Knock](https://github.com/fachrynuzuli/knock-knock): Gamified team management and weekly task reporting app framed as a neighborhood.
-- [BRD Builder](https://github.com/fachrynuzuli/brd-builder): Coding-agent skill that interviews stakeholders and generates styled Business Requirement Documents.
-- [Sharemaxxing](https://github.com/fachrynuzuli/sharemaxxing): Claude skill rewriting drafts into high-influence, shareable writing.
-- [Guru Nyanyi](https://github.com/fachrynuzuli/guru-nyanyi): Beginner-friendly vocal practice web app prototype.
+- [FLS Dashboard](https://fachrynuzuli.com/#works/fls-dashboard): Real-time performance monitoring dashboard for port cargo loading operations ([Live](https://fachrynuzuli.github.io/fls-dashboard/) | [Repo](https://github.com/fachrynuzuli/fls-dashboard)).
+- [Dispatch System (FDS)](https://fachrynuzuli.com/#works/dispatch-system): AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini ([Demo](https://fachrynuzuli.com/demos/dispatch-system/) | [Repo](https://github.com/fachrynuzuli/dispatch-system)).
+- [Profilemu](https://fachrynuzuli.com/#works/profilemu): AI digital twin web app letting visitors converse directly with a professional's background and expertise ([Live](https://profile.fachrynuzuli.com/) | [Repo](https://github.com/fachrynuzuli/profilemu)).
+- [Guru Nyanyi (Vocalist)](https://fachrynuzuli.com/#works/guru-nyanyi): Beginner-friendly vocal practice web app built for shy learners ([Live](https://sing.fachrynuzuli.com/) | [Repo](https://github.com/fachrynuzuli/guru-nyanyi)).
+- [Knock-Knock](https://fachrynuzuli.com/#works/knock-knock): Gamified team management and weekly task reporting app styled as an interactive neighborhood ([Demo](https://fachrynuzuli.com/demos/knock-knock/) | [Repo](https://github.com/fachrynuzuli/knock-knock)).
+- [Household](https://fachrynuzuli.com/#works/household): Mobile-first household organizer and daily family coordination web app ([Live](https://house.fachrynuzuli.com/)).
+- [Scaler](https://fachrynuzuli.com/#works/scaler): Interactive business and career scaling companion web app ([Live](https://scaler.fachrynuzuli.com/)).
+- [Find 'N Keep](https://fachrynuzuli.com/#works/find-n-keep): Lightweight discovery capture and retrieval web app ([Live](https://findandkeep.netlify.app/)).
+- [BRD Builder](https://fachrynuzuli.com/#works/brd-builder): Coding-agent skill interviewing stakeholders and generating styled Business Requirement Documents ([SKILL.md](https://fachrynuzuli.com/skills/brd-builder.md) | [Repo](https://github.com/fachrynuzuli/brd-builder)).
+- [Sharemaxxing](https://fachrynuzuli.com/#works/sharemaxxing): Agent skill encoding the Shareability Engine and Voice DNA rules for high-influence writing ([SKILL.md](https://fachrynuzuli.com/skills/sharemaxxing.md) | [Repo](https://github.com/fachrynuzuli/sharemaxxing)).
+- [Lovable Framework](https://fachrynuzuli.com/#works/lovable-framework): 149-entry Lovable Prompt Library coding-agent skill covering 17 Prompting Strategy guides, 78 Design recipes, and 54 Functionality recipes ([SKILL.md](https://fachrynuzuli.com/skills/lovable-framework.md)).
 
 ## Curated Notes Archive
 

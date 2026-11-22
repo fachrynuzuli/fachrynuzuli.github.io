@@ -1,7 +1,11 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
+
+/skills/*
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300, must-revalidate
 
 /assets/images/hero-mac-meadow-v2*
   Cache-Control: public, max-age=31536000, immutable

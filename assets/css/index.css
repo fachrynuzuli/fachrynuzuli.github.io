@@ -2940,3 +2940,211 @@ body.reader-standalone {
     min-block-size: 40px;
   }
 }
+
+/* ── Mac-Style Project Iframe Viewer & Skill Inspector (#works/<slug>) ──── */
+
+.work-launch-btn {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 30px;
+  padding: 0.25rem 0.65rem;
+  border: 1.5px solid var(--dusk);
+  border-radius: 3px;
+  background: var(--dusk);
+  color: var(--dusk-ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.work-launch-btn:hover {
+  background: var(--sienna-deep);
+  border-color: var(--sienna-deep);
+  color: var(--paper-raised);
+}
+
+.work-viewer,
+.skill-inspector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.work-viewer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 5px;
+  background: var(--paper-sunken);
+}
+
+.work-back-btn {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 32px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--t-fast) ease, background-color var(--t-fast) ease;
+}
+
+.work-back-btn:hover {
+  border-color: var(--ink);
+  background: var(--paper);
+}
+
+.work-url-pill {
+  flex: 1 1 160px;
+  min-width: 0;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.work-bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.work-bar-link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 32px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--t-fast) ease, background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+
+.work-bar-link:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.work-bar-link-primary {
+  background: var(--dusk);
+  border-color: var(--dusk);
+  color: var(--dusk-ink);
+}
+
+.work-bar-link-primary:hover {
+  background: var(--sienna-deep);
+  border-color: var(--sienna-deep);
+  color: var(--paper-raised);
+}
+
+.work-iframe-shell {
+  width: 100%;
+  height: min(64dvh, 580px);
+  min-height: 360px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper-raised);
+  box-shadow: inset 0 1px 4px oklch(0.2 0.02 50 / 0.08);
+}
+
+.work-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.skill-meta-card {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--paper-raised);
+  display: grid;
+  gap: 0.65rem;
+}
+
+.skill-meta-summary {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.skill-stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-stat-chip {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--paper-sunken);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.skill-code-view {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  max-height: min(56dvh, 500px);
+  overflow: auto;
+  border: 1.5px solid var(--dusk);
+  border-radius: 6px;
+  background: var(--dusk);
+  color: var(--dusk-ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.62;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .work-iframe-shell {
+    height: min(60dvh, 460px);
+    min-height: 320px;
+  }
+
+  .work-url-pill {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+@media (pointer: coarse) {
+  .work-launch-btn,
+  .work-back-btn,
+  .work-bar-link {
+    min-block-size: 40px;
+  }
+}

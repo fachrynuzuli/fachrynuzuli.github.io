@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fleet Dispatch System (FDS)</title>
+    <meta name="description" content="AI-first fleet dispatch and logistics command center for heavy-haul supply chain operations." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Spectral:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['var(--font-sans)', 'sans-serif'],
+              display: ['var(--font-display)', 'serif'],
+              mono: ['var(--font-mono)', 'monospace'],
+            },
+            colors: {
+              brand: {
+                50: 'var(--brand-50)',
+                100: 'var(--brand-100)',
+                200: 'var(--brand-200)',
+                300: 'var(--brand-300)',
+                400: 'var(--brand-400)',
+                500: 'var(--brand-500)',
+                600: 'var(--brand-600)',
+                700: 'var(--brand-700)',
+                800: 'var(--brand-800)',
+                900: 'var(--brand-900)',
+              },
+              slate: {
+                50: '#faf9f8',
+                100: '#f4f2f0',
+                200: '#e8e5e1',
+                300: '#d6d2cd',
+                400: '#b5b0a8',
+                500: '#948f87',
+                600: '#736e66',
+                700: '#5c5852',
+                800: '#4a4642',
+                900: '#3d3a36',
+                950: '#292724',
+              }
+            },
+            boxShadow: {
+              'soft-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+              'soft-md': '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+              'soft-xl': '0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+              'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.04)',
+              'hard': 'none',
+              'hard-lg': 'none',
+            },
+            animation: {
+              'bell-shake': 'bell-shake 0.5s ease-in-out both',
+            },
+            keyframes: {
+              'bell-shake': {
+                '0%, 100%': { transform: 'rotate(0deg)' },
+                '20%': { transform: 'rotate(-15deg)' },
+                '40%': { transform: 'rotate(10deg)' },
+                '60%': { transform: 'rotate(-5deg)' },
+                '80%': { transform: 'rotate(2deg)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+
+
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.5.1",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "pigeon-maps": "https://esm.sh/pigeon-maps@0.21.3"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-Br_hkwv5.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CuOIcUSP.css">
+</head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div id="root"></div>
+</body>
+</html>
