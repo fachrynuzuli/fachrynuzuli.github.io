@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/index.css?v=13">
+  <link rel="stylesheet" href="assets/css/index.css?v=14">
 
   <!-- Structured Data for Search Engines & AI Knowledge Graphs -->
   <script type="application/ld+json">
@@ -1676,6 +1676,7 @@
         clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
         stage.appendChild(clone);
 
+        dialogBody.classList.remove('is-work-viewer');
         dialogBody.replaceChildren(stage);
         dialogBody.scrollTop = 0;
 
@@ -1791,7 +1792,8 @@
           const stage = document.createElement('div');
           stage.className = `mac-section-stage dir-${direction}`;
           stage.appendChild(document.importNode(article, true));
-          dialogBody.replaceChildren(stage);
+          dialogBody.classList.remove('is-work-viewer');
+        dialogBody.replaceChildren(stage);
           dialogBody.scrollTop = 0;
 
           if (type === 'prompt') {
@@ -1965,8 +1967,24 @@
               </div>
             </div>
           `;
+          dialogBody.classList.add('is-work-viewer');
           dialogBody.replaceChildren(stage);
-          dialogBody.scrollTop = 0;
+          const resetViewportScroll = () => {
+            dialogBody.scrollTop = 0;
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+          };
+          const iframeEl = stage.querySelector('.work-iframe');
+          if (iframeEl) {
+            iframeEl.addEventListener('load', () => {
+              resetViewportScroll();
+              setTimeout(resetViewportScroll, 120);
+              setTimeout(resetViewportScroll, 450);
+              setTimeout(resetViewportScroll, 1000);
+            });
+          }
+          resetViewportScroll();
           return;
         }
 
@@ -1995,6 +2013,7 @@
             <pre class="skill-code-view" id="skill-code-view"><code>Loading SKILL.md...</code></pre>
           </div>
         `;
+        dialogBody.classList.remove('is-work-viewer');
         dialogBody.replaceChildren(stage);
         dialogBody.scrollTop = 0;
 
@@ -2122,9 +2141,13 @@
         dialog.returnValue = '';
         activeSection = null;
         // Clear any embedded iframe so background apps stop cleanly on dialog close
+        dialogBody.classList.remove('is-work-viewer');
         if (dialogBody.querySelector('.work-iframe')) {
           dialogBody.replaceChildren();
         }
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
         if (activeChart) {
           activeChart.destroy();
           activeChart = null;
