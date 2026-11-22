@@ -56,11 +56,11 @@ Three core theses:
 - Helped improve 30-day subscriber retention from 15% to 25%.
 - Launched two educational cohorts and published an archive of ~17 Indonesian equity research essays grounded in margin of safety, business quality, and capital allocation.
 
-### Sep 2021 to May 2022 | Operations Analyst | APRIL Group
+### Sep 2021 to May 2022 | Operations Analyst, Transport Division | APRIL Group
 - Built SQL and SAP analytical workflows covering 150+ daily operational transactions.
 - Identified operational bottlenecks contributing to a 15% reduction in downtime.
 
-### May 2022 onward | Senior Product Manager & Digital Transformation Lead | APRIL Group
+### May 2022 onward | Sr Product Manager (Digital Transformation Lead), Transport Division | APRIL Group
 - Progressed from delivering individual digital projects to owning full product direction for the Fleet Management System suite and leading cross-site transformation across fleet, tyre, and woodhandling operations.
 
 ## Verified Proof & Impact Numbers
