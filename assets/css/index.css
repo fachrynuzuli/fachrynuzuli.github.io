@@ -2111,8 +2111,8 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
 
 .connect-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
-  gap: clamp(1.4rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.92fr);
+  gap: clamp(1.25rem, 2.8vw, 2.2rem);
   align-items: start;
 }
 
@@ -2129,7 +2129,7 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   padding-block: 0.55rem;
   border-bottom: 1px solid var(--rule);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 
 .connect-row a,
@@ -2144,14 +2144,19 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  flex-shrink: 0;
 }
 
 .connect-value {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.42rem;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.connect-value-inline a {
+  white-space: nowrap;
 }
 
 .copy-inline-btn {
