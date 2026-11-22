@@ -213,44 +213,131 @@ a:hover {
 
 .ambient-clouds {
   z-index: 2;
-  height: 46%;
+  height: 50%;
   bottom: auto;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+}
+
+.cloud-photo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 200%;
+  will-change: transform;
+}
+
+.cloud-photo-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cloud-photo-left {
+  -webkit-mask-image: radial-gradient(24% 22% at 13% 26%, #000 28%, transparent 76%);
+  mask-image: radial-gradient(24% 22% at 13% 26%, #000 28%, transparent 76%);
+}
+
+.cloud-photo-right {
+  -webkit-mask-image: radial-gradient(28% 26% at 86% 20%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(28% 26% at 86% 20%, #000 30%, transparent 78%);
 }
 
 .cloud-band {
   position: absolute;
-  inset: -10% -35%;
-  opacity: 0.14;
+  inset: -12% -40%;
   mix-blend-mode: screen;
+  will-change: transform, opacity;
 }
 
 .cloud-band-a {
+  opacity: 0.34;
   background:
-    radial-gradient(32% 42% at 22% 48%, oklch(0.86 0.13 62 / 0.72) 0%, transparent 72%),
-    radial-gradient(28% 36% at 64% 38%, oklch(0.76 0.11 46 / 0.58) 0%, transparent 72%),
-    radial-gradient(24% 32% at 88% 54%, oklch(0.72 0.09 36 / 0.45) 0%, transparent 70%);
+    radial-gradient(26% 36% at 18% 48%, oklch(0.90 0.14 66 / 0.85) 0%, transparent 70%),
+    radial-gradient(24% 30% at 46% 30%, oklch(0.84 0.12 56 / 0.68) 0%, transparent 72%),
+    radial-gradient(28% 36% at 72% 40%, oklch(0.80 0.12 46 / 0.72) 0%, transparent 72%),
+    radial-gradient(22% 28% at 92% 32%, oklch(0.76 0.10 38 / 0.58) 0%, transparent 70%);
 }
 
 .cloud-band-b {
-  opacity: 0.09;
+  opacity: 0.24;
   background:
-    radial-gradient(36% 30% at 38% 28%, oklch(0.90 0.08 72 / 0.55) 0%, transparent 74%),
-    radial-gradient(30% 34% at 78% 24%, oklch(0.68 0.10 40 / 0.52) 0%, transparent 72%);
+    radial-gradient(30% 24% at 32% 22%, oklch(0.92 0.08 74 / 0.68) 0%, transparent 74%),
+    radial-gradient(26% 26% at 62% 18%, oklch(0.82 0.10 50 / 0.62) 0%, transparent 72%),
+    radial-gradient(24% 28% at 84% 44%, oklch(0.74 0.10 40 / 0.58) 0%, transparent 72%);
+}
+
+.ambient-sun {
+  z-index: 3;
+}
+
+.sun-corona {
+  position: absolute;
+  inset: -8%;
+  mix-blend-mode: screen;
+  transform-origin: 3% 49%;
+  will-change: transform, opacity;
+  background:
+    radial-gradient(24% 34% at 3% 49%, oklch(0.98 0.10 82 / 0.78) 0%, oklch(0.86 0.16 64 / 0.38) 36%, transparent 72%),
+    radial-gradient(46% 42% at 6% 52%, oklch(0.84 0.15 58 / 0.24) 0%, transparent 70%);
+  opacity: 0.58;
+}
+
+.sun-rays {
+  position: absolute;
+  left: -38%;
+  top: -28%;
+  width: 112%;
+  height: 156%;
+  transform-origin: 36% 49%;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  opacity: 0.24;
+  background: conic-gradient(
+    from 48deg at 36% 49%,
+    transparent 0deg,
+    oklch(0.92 0.14 70 / 0.42) 10deg,
+    transparent 24deg,
+    oklch(0.88 0.15 62 / 0.34) 38deg,
+    transparent 52deg,
+    oklch(0.94 0.12 74 / 0.38) 68deg,
+    transparent 88deg,
+    transparent 360deg
+  );
+  -webkit-mask-image: radial-gradient(54% 52% at 36% 49%, #000 8%, oklch(0 0 0 / 0.5) 42%, transparent 76%);
+  mask-image: radial-gradient(54% 52% at 36% 49%, #000 8%, oklch(0 0 0 / 0.5) 42%, transparent 76%);
 }
 
 .ambient-shadows {
   z-index: 3;
 }
 
+.cloud-shadow-sweep {
+  position: absolute;
+  left: -35%;
+  right: -35%;
+  top: 46%;
+  bottom: 0;
+  will-change: transform, opacity;
+  opacity: 0.58;
+  background:
+    radial-gradient(30% 62% at 30% 56%, oklch(0.14 0.045 258 / 0.42) 0%, transparent 72%),
+    radial-gradient(28% 58% at 74% 62%, oklch(0.13 0.04 256 / 0.36) 0%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+}
+
 .shadow-veil {
   position: absolute;
   inset: -6%;
+  will-change: transform, opacity;
   background:
-    radial-gradient(52% 65% at 8% 52%, oklch(0.84 0.16 64 / 0.11) 0%, transparent 62%),
-    radial-gradient(58% 68% at 92% 42%, oklch(0.16 0.045 258 / 0.16) 0%, transparent 66%);
-  opacity: 0.7;
+    radial-gradient(48% 58% at 8% 52%, oklch(0.86 0.16 66 / 0.22) 0%, transparent 62%),
+    radial-gradient(32% 40% at 69% 64%, oklch(0.14 0.048 258 / 0.34) 0%, transparent 68%),
+    radial-gradient(56% 66% at 94% 42%, oklch(0.15 0.045 258 / 0.28) 0%, transparent 66%);
+  opacity: 0.72;
 }
 
 .ambient-flowers {
@@ -318,17 +405,26 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .cloud-band-a { animation: cloud-drift-a 48s linear infinite alternate; }
-  .cloud-band-b { animation: cloud-drift-b 68s linear infinite alternate; }
-  .shadow-veil { animation: sunset-shadow-breathe 16s ease-in-out infinite; }
-  .meadow-breeze-sheen { animation: meadow-sheen-glide 13s ease-in-out infinite; }
+  .cloud-photo-left { animation: cloud-photo-drift-a 18s ease-in-out infinite alternate; }
+  .cloud-photo-right { animation: cloud-photo-drift-b 22s ease-in-out infinite alternate; }
+  .cloud-band-a { animation: cloud-drift-a 22s linear infinite alternate; }
+  .cloud-band-b { animation: cloud-drift-b 31s linear infinite alternate; }
+  .sun-corona { animation: sun-corona-breathe 8.5s ease-in-out infinite; }
+  .sun-rays { animation: sun-rays-sweep 12s ease-in-out infinite; }
+  .cloud-shadow-sweep { animation: cloud-shadow-glide 16s ease-in-out infinite alternate; }
+  .shadow-veil { animation: sunset-shadow-breathe 11s ease-in-out infinite; }
+  .meadow-breeze-sheen { animation: meadow-sheen-glide 11s ease-in-out infinite; }
   .flower-sway-left { animation: flower-sway-a 7.8s ease-in-out infinite; }
   .flower-sway-right { animation: flower-sway-b 9.4s ease-in-out infinite; }
   .flower-sway-front { animation: flower-sway-c 6.6s ease-in-out infinite; }
   .ambient-dither { animation: dither-scramble 1.15s steps(1, end) infinite; }
 }
 
+.motion-paused .cloud-photo-layer,
 .motion-paused .cloud-band,
+.motion-paused .sun-corona,
+.motion-paused .sun-rays,
+.motion-paused .cloud-shadow-sweep,
 .motion-paused .shadow-veil,
 .motion-paused .meadow-breeze-sheen,
 .motion-paused .flower-sway-layer,
@@ -336,19 +432,59 @@ a:hover {
   animation-play-state: paused !important;
 }
 
+@media (max-aspect-ratio: 4/5) {
+  .cloud-photo-left,
+  .cloud-photo-right,
+  .flower-sway-left,
+  .flower-sway-right {
+    display: none;
+  }
+
+  .ambient-dither {
+    mix-blend-mode: normal;
+    opacity: 0.018;
+  }
+}
+
+@keyframes cloud-photo-drift-a {
+  0%   { transform: translate3d(-1.6%, 0, 0) scale(1.015); }
+  100% { transform: translate3d(1.8%, -0.4%, 0) scale(1.025); }
+}
+
+@keyframes cloud-photo-drift-b {
+  0%   { transform: translate3d(1.8%, -0.3%, 0) scale(1.02); }
+  100% { transform: translate3d(-1.8%, 0.4%, 0) scale(1.015); }
+}
+
 @keyframes cloud-drift-a {
-  0%   { transform: translate3d(-4%, 0, 0); }
-  100% { transform: translate3d(5%, -1.5%, 0); }
+  0%   { transform: translate3d(-14%, 0, 0); }
+  100% { transform: translate3d(16%, -2%, 0); }
 }
 
 @keyframes cloud-drift-b {
-  0%   { transform: translate3d(4%, -1%, 0); }
-  100% { transform: translate3d(-5%, 1.2%, 0); }
+  0%   { transform: translate3d(12%, -1.5%, 0); }
+  100% { transform: translate3d(-14%, 1.5%, 0); }
+}
+
+@keyframes sun-corona-breathe {
+  0%, 100% { transform: scale(0.94); opacity: 0.44; }
+  50%      { transform: scale(1.1);  opacity: 0.84; }
+}
+
+@keyframes sun-rays-sweep {
+  0%, 100% { transform: rotate(-1.8deg) scale(0.98); opacity: 0.16; }
+  50%      { transform: rotate(2.2deg)  scale(1.05); opacity: 0.36; }
+}
+
+@keyframes cloud-shadow-glide {
+  0%   { transform: translate3d(-22%, 0, 0); opacity: 0.42; }
+  50%  { opacity: 0.78; }
+  100% { transform: translate3d(26%, 0, 0); opacity: 0.48; }
 }
 
 @keyframes sunset-shadow-breathe {
-  0%, 100% { opacity: 0.62; transform: translate3d(0, 0, 0); }
-  50%      { opacity: 0.95; transform: translate3d(1.2%, -0.5%, 0); }
+  0%, 100% { opacity: 0.56; transform: translate3d(-1.4%, 0, 0); }
+  50%      { opacity: 0.96; transform: translate3d(1.8%, -0.6%, 0); }
 }
 
 @keyframes meadow-sheen-glide {

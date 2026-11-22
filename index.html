@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/index.css?v=10">
+  <link rel="stylesheet" href="assets/css/index.css?v=11">
 
   <!-- Structured Data for Search Engines & AI Knowledge Graphs -->
   <script type="application/ld+json">
@@ -143,14 +143,29 @@
             class="scene-img">
         </picture>
 
-        <!-- Ambient Layer 1: Subtle drifting sunset clouds -->
+        <!-- Ambient Layer 1: Drifting real sunset clouds & sunlit sky wisps -->
         <div class="ambient-layer ambient-clouds" aria-hidden="true">
+          <picture class="cloud-photo-layer cloud-photo-left">
+            <source type="image/webp" srcset="assets/images/hero-mac-meadow-v2-sm.webp 860w, assets/images/hero-mac-meadow-v2.webp 1376w" sizes="100vw">
+            <img src="assets/images/hero-mac-meadow-v2.jpg" alt="" width="1376" height="768" decoding="async">
+          </picture>
+          <picture class="cloud-photo-layer cloud-photo-right">
+            <source type="image/webp" srcset="assets/images/hero-mac-meadow-v2-sm.webp 860w, assets/images/hero-mac-meadow-v2.webp 1376w" sizes="100vw">
+            <img src="assets/images/hero-mac-meadow-v2.jpg" alt="" width="1376" height="768" decoding="async">
+          </picture>
           <div class="cloud-band cloud-band-a"></div>
           <div class="cloud-band cloud-band-b"></div>
         </div>
 
-        <!-- Ambient Layer 2: Subtle shifting golden-hour light & dusk shadows -->
+        <!-- Ambient Layer 2: Breathing golden-hour sun corona & volumetric sun rays -->
+        <div class="ambient-layer ambient-sun" aria-hidden="true">
+          <div class="sun-corona"></div>
+          <div class="sun-rays"></div>
+        </div>
+
+        <!-- Ambient Layer 3: Traveling cloud shadows across meadow & dusk shift -->
         <div class="ambient-layer ambient-shadows" aria-hidden="true">
+          <div class="cloud-shadow-sweep"></div>
           <div class="shadow-veil"></div>
         </div>
 
