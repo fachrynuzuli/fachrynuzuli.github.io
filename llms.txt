@@ -18,6 +18,7 @@ Based in Riau, Indonesia. Sr Product Manager (Digital Transformation Lead), APRI
 ## Live Apps, Prototypes & Agent Skills (11 Projects)
 
 - [FLS Dashboard](https://fachrynuzuli.com/#works/fls-dashboard): Real-time performance monitoring dashboard for port cargo loading operations ([Live](https://fachrynuzuli.github.io/fls-dashboard/) | [Repo](https://github.com/fachrynuzuli/fls-dashboard)).
+- [Device Movement Tracker](https://fachrynuzuli.com/#works/device-tracker): Fleet hardware custody register tracking tablets, fatigue wearables, and handhelds across haul trucks and bays with timeline playback ([Sanitized Demo](https://fachrynuzuli.com/demos/device-tracker/)).
 - [Haulyard](https://fachrynuzuli.com/#works/haulyard): First-mile logistics dispatch simulation game for practicing timely fleet assignment and routing trade-offs ([Live](https://haulyard-games.lovable.app/)).
 - [Profilemu](https://fachrynuzuli.com/#works/profilemu): AI digital twin web app letting visitors converse directly with a professional's background and expertise ([Live](https://profile.fachrynuzuli.com/p/fachry) | [Repo](https://github.com/fachrynuzuli/profilemu)).
 - [Guru Nyanyi (Vocalist)](https://fachrynuzuli.com/#works/guru-nyanyi): Beginner-friendly vocal practice web app built for shy learners ([Live](https://sing.fachrynuzuli.com/) | [Repo](https://github.com/fachrynuzuli/guru-nyanyi)).
@@ -25,6 +26,7 @@ Based in Riau, Indonesia. Sr Product Manager (Digital Transformation Lead), APRI
 - [Scaler](https://fachrynuzuli.com/#works/scaler): Interactive business and career scaling companion web app ([Live](https://scaler.fachrynuzuli.com/)).
 - [Find 'N Keep](https://fachrynuzuli.com/#works/find-n-keep): Lightweight discovery capture and retrieval web app ([Live](https://findandkeep.lovable.app/)).
 - [Kejar Lailatul Qadar](https://fachrynuzuli.com/#works/kejar-lailatul-qadar): Last-10-nights Ramadan worship and dhikr tracker without sign-up friction ([Live](https://amalramadan.lovable.app/)).
+- [Qadha](https://fachrynuzuli.com/#works/qadha): Offline-first gradual paydown tracker for steadily making up past missed prayers down to zero ([Live](https://qadhalist.lovable.app/)).
 - [BRD Builder](https://fachrynuzuli.com/#works/brd-builder): Coding-agent skill interviewing stakeholders and generating styled Business Requirement Documents ([SKILL.md](https://fachrynuzuli.com/skills/brd-builder.md) | [Repo](https://github.com/fachrynuzuli/brd-builder)).
 - [Sharemaxxing](https://fachrynuzuli.com/#works/sharemaxxing): Agent skill encoding the Shareability Engine and Voice DNA rules for high-influence writing ([SKILL.md](https://fachrynuzuli.com/skills/sharemaxxing.md) | [Repo](https://github.com/fachrynuzuli/sharemaxxing)).
 - [Lovable Framework](https://fachrynuzuli.com/#works/lovable-framework): 149-entry Lovable Prompt Library coding-agent skill covering 17 Prompting Strategy guides, 78 Design recipes, and 54 Functionality recipes ([SKILL.md](https://fachrynuzuli.com/skills/lovable-framework.md)).
