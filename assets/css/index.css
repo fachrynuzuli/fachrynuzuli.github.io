@@ -2000,6 +2000,31 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   margin-right: 0.45rem;
 }
 
+.book-part-link {
+  display: inline-block;
+  margin-left: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--dusk-amber);
+  text-decoration: none;
+  border-bottom: 1px solid oklch(0.78 0.145 64 / 0.45);
+  white-space: nowrap;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.book-part-link:hover {
+  color: var(--dusk-ink);
+  border-bottom-color: var(--dusk-ink);
+  text-decoration: none;
+}
+
+.book-part-link:focus-visible {
+  outline: 2px solid var(--dusk-amber);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* Stacked channel strips for Mini-essay and Newsletter */
 .pub-strip {
   display: grid;
