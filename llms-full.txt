@@ -40,12 +40,12 @@ Fachry teaches non-technical professionals the practical habits, product thinkin
 He has trained 200+ non-technical professionals in practical AI workflows.
 
 ### 3. Live Publication: In This Economy (https://in.thisecono.my/)
-In This Economy is a live static website structured as a book (available in English at https://in.thisecono.my/ and Bahasa Indonesia at https://in.thisecono.my/id; AI summary at https://in.thisecono.my/llms.txt).
+In This Economy is a live static website structured as a book using the "The Art and Business of [X]" framework (English at https://in.thisecono.my/, Bahasa Indonesia at https://in.thisecono.my/id, AI summary at https://in.thisecono.my/llms.txt).
 
 Three core parts:
-1. **The economy** (https://in.thisecono.my/#part-one): Short-term macro headwinds are real, yet AI, content, and marketing unlock rare asymmetric upside.
-2. **The Control Gap** (https://in.thisecono.my/#part-two): Close the distance between what your work creates and the choices you own afterward.
-3. **The practical guide** (https://in.thisecono.my/#part-three): Concrete frameworks for earning cash flow today while steadily building equity and optionality.
+1. **Part I: What is In This Economy** (https://in.thisecono.my/#part-one): The economy is hard in the short term (political and macro headwinds), yet holds high long-term hopes through AI, content, marketing, a permanent upper class, and the singularity.
+2. **Part II: The Art of In This Economy** (https://in.thisecono.my/#part-two): Own a piece of a business, either by building one or by investing in one.
+3. **Part III: The Business of In This Economy** (https://in.thisecono.my/#part-three): How to own a piece of a business and earn money while doing it.
 
 ## Chronological Journey (2020 to Now)
 
