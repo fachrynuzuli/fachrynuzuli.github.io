@@ -18,15 +18,15 @@ Product builder teaching non-technical people how to build in this economy
 
 ## What He Does (Now)
 
-### 1. Enterprise Product Leadership (APRIL Group, May 2022 onward)
+### 1. Enterprise Product Leadership (APRIL Group, Transport Division, May 2022 onward)
 - Owns product direction and approves all change requests for the Fleet Management System (FMS) product suite, integrating Driver Management, Fuel Management, and Workshop Management alongside core dispatch and fleet operations.
 - Leads digital transformation initiatives across fleet, tyre, and woodhandling operations.
 - Drives organization-wide AI enablement, growing adoption from an initial team of 5 people to up to 900 people across operational shifts.
 
-### 2. Teaching Non-Technical People to Break Into Tech
-Fachry teaches the practical skills and mental quirks non-technical professionals need to ship real products and operate inside tech:
+### 2. Teaching Non-Technical People How to Build in This Economy
+Fachry teaches non-technical professionals the practical habits, product thinking, and AI workflows needed to ship real products and build durable leverage:
 
-- **AI-assisted development & product thinking**: Vibe-coding with AI tools (Lovable, Bolt, Gemini, Claude), backed by 1,000+ hours of hands-on building since late 2024. Covers PRDs, user stories, prioritization, and roadmaps. Created the `lovable-framework` skill to systematize prompt-to-product execution.
+- **AI-assisted building & product craft**: Shipping real software with Claude, Gemini, ChatGPT, Claude Code, Antigravity, Codex, and Lovable, backed by 1,000+ hours of hands-on building since late 2024, alongside PRDs, user stories, prioritization, and roadmaps. Created the `lovable-framework` skill to systematize prompt-to-product execution.
 - **Philosophy and mindset**: Schools of thought, first-principles reasoning, and durable mental models.
 - **Economics, finance, and business literacy**: Enough finance and unit economics to read how money moves through a company, backed by prior buy-side/research experience as a Senior Equity Research Analyst.
 - **Influence without authority**: Persuasion, managing up, stakeholder alignment, and leading without formal title. Created the `Sharemaxxing` skill to teach AI how to sharpen the clarity and influence of public writing.
@@ -40,14 +40,17 @@ Fachry teaches the practical skills and mental quirks non-technical professional
 He has trained 200+ non-technical professionals in practical AI workflows.
 
 ### 3. Live Publication: In This Economy (https://in.thisecono.my/)
-In This Economy is a live static website designed as a book. It guides readers, especially Indonesians navigating political and macroeconomic turbulence, through clear analysis and actionable positioning.
+In This Economy is a live static website structured as a book.
 
 Three core theses:
-1. The economy is difficult in the short term (political and macro headwinds), while simultaneously offering rare long-term upside through AI, content, marketing, and asymmetric leverage.
-2. Own a piece of a business, either by building one or by investing in one.
-3. Practical methods to acquire ownership and earn income while building toward it.
+1. **Hard now, asymmetric later**: Short-term macro headwinds are real, yet AI, content, and marketing unlock rare asymmetric upside.
+2. **Own a piece of a business**: Own a piece of a business, either by building one yourself or investing in one with discipline.
+3. **Earn cash, buy equity**: Concrete frameworks for earning cash flow today while steadily acquiring equity and optionality.
 
-## What He Did (Then): Career Arc
+## Chronological Journey (2020 to Now)
+
+### 2020 | Bachelor of Economics (Accounting) | Universitas Sumatera Utara (USU)
+- Formal grounding in financial statements, cost accounting, and capital flows that shapes how he scopes software products and measures operational return on investment.
 
 ### Apr 2021 to Sep 2021 | Senior Analyst (Mining, Tech, Consumer, FMCG) | INVESTABOOK
 - Covered Indonesian public equities across Mining, Technology, Consumer, and FMCG sectors for a financial research startup with an audience of 80,000+ retail investors.
@@ -97,10 +100,15 @@ These nine systems represent the operational problem spaces Fachry has owned and
 
 ## Writings, Skills & Public Resources
 
-### Publications & Blogs
-- In This Economy (live web book): https://in.thisecono.my/
-- Bearblog: https://fachry.bearblog.dev/
-- Substack: https://fachry.substack.com/
+### Publications & Channels
+- **In This Economy**: https://in.thisecono.my/
+- **Mini-essay** (Bearblog): https://fachry.bearblog.dev/ (minimal, fast essays on career strategy, product work, and mental models)
+- **Newsletter** (Substack): https://fachry.substack.com/ (long-form newsletter archive on AI building, influence, and personal leverage)
+
+### Daily Stack
+- **intelligence/**: Claude (primary model), Gemini (research & multimodal), ChatGPT (secondary model)
+- **build/**: Claude Code (terminal agent), Antigravity (agentic IDE), Codex (coding agent), Lovable (AI app builder)
+- **workspace/**: Obsidian (knowledge vault), Bearblog (essays), Substack (newsletter)
 
 ### Live App Prototypes & Open Skills (Works)
 - **FLS Dashboard** (Live Prototype: https://fachrynuzuli.github.io/fls-dashboard | Repo: https://github.com/fachrynuzuli/fls-dashboard): Real-time performance monitoring dashboard prototype for port cargo loading operations.

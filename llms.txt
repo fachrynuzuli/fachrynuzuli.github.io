@@ -6,7 +6,7 @@ Based in Riau, Indonesia. Sr Product Manager (Digital Transformation Lead), APRI
 
 ## Complete Dossier (Single-File Context)
 
-- [Complete Profile & Rebuilt System Theses](https://fachrynuzuli.com/llms-full.txt): Full structured biography, career arc (then and now), teaching curriculum, nine enterprise system theses, verified impact figures, philosophy, and canonical index.
+- [Complete Profile & Dossier](https://fachrynuzuli.com/llms-full.txt): Full structured biography, chronological career arc (then and now), works and prototypes, writings, daily stack, verified impact figures, principles, and canonical index.
 
 ## Core Pages & Live Publication
 
