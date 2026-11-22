@@ -1,18 +1,24 @@
 # fachrynuzuli.com
 
-Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**, a product builder teaching non-technical people how to build in this economy.
+Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**: product builder teaching non-technical people how to build in this economy.
+
+- **Primary site (Cloudflare Pages):** https://fachrynuzuli.com/
+- **GitHub Pages mirror:** https://fachrynuzuli.github.io/ (canonicalized to `https://fachrynuzuli.com/`)
+- **AI context endpoints:** https://fachrynuzuli.com/llms.txt and https://fachrynuzuli.com/llms-full.txt
 
 ## Structure
 
-- `index.html` — Full-viewport interactive retro Macintosh hero stage + semantic scrollable dossier (`About`, `Journey`, `Proof`, `Writings`, `Resources`, `Connect`) with JSON-LD `Person` / `ProfilePage` schema.
-- `llms.txt` & `llms-full.txt` — Machine-readable context files for AI agents and LLM crawlers.
-- `notes/` & `content/notes/` — Markdown-compiled essays built via `npm run build:notes`.
-- `prompts/` & `content/prompts/` — Copy-paste prompt library built via `npm run build:prompts`.
-- `CNAME`, `robots.txt`, `sitemap.xml` — Custom domain and crawler discovery configuration for `fachrynuzuli.com`.
+- `index.html`: Single-viewport interactive 1984 Macintosh meadow hero stage + fixed-size CRT reader popup (`About`, `Journey`, `Works`, `Writings`, `Resources`, `Connect`) with static crawlable semantic HTML and JSON-LD `Person` / `ProfilePage` schema.
+- `llms.txt` & `llms-full.txt`: Machine-readable context files for AI agents and LLM crawlers.
+- `notes/` & `content/notes/`: Markdown-compiled essays built via `npm run build:notes`.
+- `prompts/` & `content/prompts/`: Copy-paste prompt library built via `npm run build:prompts`.
+- `scripts/build-dist.js` & `_headers`: Whitelisted Cloudflare Pages static build (`npm run build:cf`) with security and caching headers.
+- `robots.txt` & `sitemap.xml`: Search engine and AI crawler discovery files.
 
 ## Local Build
 
 ```bash
 npm install
 npm run build
+npm run build:cf
 ```
