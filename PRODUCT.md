@@ -4,7 +4,7 @@ register: brand
 
 ## Purpose
 
-Personal home and machine-readable dossier for **Fachry Nuzuli Kamal** ("A non-technical product manager who teaches non-technical people how to break into tech").
+Personal home and machine-readable dossier for **Fachry Nuzuli Kamal** ("Product builder teaching non-technical people how to build in this economy").
 
 The site serves two simultaneous readers:
 1. **Humans**: Peer builders, hiring leaders, readers from X, LinkedIn, Substack, Bearblog, and *In This Economy* who want a tactile, memorable sense of who Fachry is, what he has built, and where to read next.

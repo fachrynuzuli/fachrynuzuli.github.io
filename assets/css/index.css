@@ -1164,6 +1164,11 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
   gap: clamp(1.4rem, 3vw, 2.4rem);
   align-items: start;
+  margin-bottom: var(--space-3);
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .fact-sheet {
@@ -1173,7 +1178,7 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
 }
 
 .fact-row {
-  padding-block: 0.55rem;
+  padding-block: 0.46rem;
   border-bottom: 1px solid var(--rule);
   display: grid;
   gap: 0.12rem;

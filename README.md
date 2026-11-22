@@ -1,6 +1,6 @@
 # fachrynuzuli.com
 
-Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**, a non-technical product manager who teaches non-technical people how to break into tech.
+Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**, a product builder teaching non-technical people how to build in this economy.
 
 ## Structure
 
