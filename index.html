@@ -539,7 +539,7 @@
       <div class="works-filter-bar" role="group" aria-label="Filter projects">
         <button type="button" class="filter-pill" data-work-filter="all" aria-pressed="true">All (11)</button>
         <button type="button" class="filter-pill" data-work-filter="logistics" aria-pressed="false">Logistics &amp; Ops (2)</button>
-        <button type="button" class="filter-pill" data-work-filter="apps" aria-pressed="false">AI Apps (6)</button>
+        <button type="button" class="filter-pill" data-work-filter="apps" aria-pressed="false">Web &amp; AI Apps (6)</button>
         <button type="button" class="filter-pill" data-work-filter="skills" aria-pressed="false">Agent Skills (3)</button>
       </div>
 
@@ -559,17 +559,17 @@
 
         <li class="work-card" data-work-cat="logistics">
           <div class="work-card-head">
-            <h3 class="work-name">Dispatch System (FDS)</h3>
-            <span class="work-badge work-badge-live">Static Demo</span>
+            <h3 class="work-name">Haulyard</h3>
+            <span class="work-badge work-badge-live">Playable Sim</span>
           </div>
-          <p class="work-desc">AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini.</p>
+          <p class="work-desc">First-mile logistics dispatch simulation game for practicing timely fleet assignment, routing trade-offs, and live operational pressure.</p>
           <div class="work-links">
-            <button type="button" class="work-launch-btn" data-work-slug="dispatch-system">Open ↗</button>
-            <a href="https://github.com/fachrynuzuli/dispatch-system" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Dispatch System">GitHub ↗</a>
+            <button type="button" class="work-launch-btn" data-work-slug="haulyard">Open ↗</button>
+            <a href="https://haulyard-games.lovable.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Haulyard in new tab">New tab ↗</a>
           </div>
         </li>
 
-        <!-- AI Apps (6) -->
+        <!-- Web & AI Apps (6) -->
         <li class="work-card" data-work-cat="apps">
           <div class="work-card-head">
             <h3 class="work-name">Profilemu</h3>
@@ -591,18 +591,6 @@
           <div class="work-links">
             <button type="button" class="work-launch-btn" data-work-slug="guru-nyanyi">Open ↗</button>
             <a href="https://github.com/fachrynuzuli/guru-nyanyi" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Guru Nyanyi">GitHub ↗</a>
-          </div>
-        </li>
-
-        <li class="work-card" data-work-cat="apps">
-          <div class="work-card-head">
-            <h3 class="work-name">Knock-Knock</h3>
-            <span class="work-badge work-badge-live">Static Demo</span>
-          </div>
-          <p class="work-desc">Gamified team management and weekly task reporting app that turns dry status updates into an interactive neighborhood experience.</p>
-          <div class="work-links">
-            <button type="button" class="work-launch-btn" data-work-slug="knock-knock">Open ↗</button>
-            <a href="https://github.com/fachrynuzuli/knock-knock" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Knock-Knock">GitHub ↗</a>
           </div>
         </li>
 
@@ -639,6 +627,18 @@
           <div class="work-links">
             <button type="button" class="work-launch-btn" data-work-slug="find-n-keep">Open ↗</button>
             <a href="https://findandkeep.lovable.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Find 'N Keep in new tab">New tab ↗</a>
+          </div>
+        </li>
+
+        <li class="work-card" data-work-cat="apps">
+          <div class="work-card-head">
+            <h3 class="work-name">Kejar Lailatul Qadar</h3>
+            <span class="work-badge work-badge-live">Live App</span>
+          </div>
+          <p class="work-desc">Last-10-nights Ramadan worship tracker for logging nightly deeds, dhikr counts, and personal reflection without sign-up friction.</p>
+          <div class="work-links">
+            <button type="button" class="work-launch-btn" data-work-slug="kejar-lailatul-qadar">Open ↗</button>
+            <a href="https://amalramadan.lovable.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Kejar Lailatul Qadar in new tab">New tab ↗</a>
           </div>
         </li>
 
@@ -1777,12 +1777,11 @@
           github: 'https://github.com/fachrynuzuli/fls-dashboard',
           category: 'Logistics & Ops',
         },
-        'dispatch-system': {
-          title: 'Dispatch System (FDS)',
+        'haulyard': {
+          title: 'Haulyard',
           kind: 'iframe',
-          url: 'demos/dispatch-system/index.html',
-          displayUrl: 'fachrynuzuli.com/demos/dispatch-system',
-          github: 'https://github.com/fachrynuzuli/dispatch-system',
+          url: 'https://haulyard-games.lovable.app/',
+          displayUrl: 'haulyard-games.lovable.app',
           category: 'Logistics & Ops',
         },
         'profilemu': {
@@ -1791,7 +1790,7 @@
           url: 'https://profile.fachrynuzuli.com/p/fachry',
           displayUrl: 'profile.fachrynuzuli.com/p/fachry',
           github: 'https://github.com/fachrynuzuli/profilemu',
-          category: 'AI App',
+          category: 'Web & AI App',
         },
         'guru-nyanyi': {
           title: 'Guru Nyanyi (Vocalist)',
@@ -1799,36 +1798,35 @@
           url: 'https://sing.fachrynuzuli.com/',
           displayUrl: 'sing.fachrynuzuli.com',
           github: 'https://github.com/fachrynuzuli/guru-nyanyi',
-          category: 'AI App',
-        },
-        'knock-knock': {
-          title: 'Knock-Knock',
-          kind: 'iframe',
-          url: 'demos/knock-knock/index.html',
-          displayUrl: 'fachrynuzuli.com/demos/knock-knock',
-          github: 'https://github.com/fachrynuzuli/knock-knock',
-          category: 'AI App',
+          category: 'Web & AI App',
         },
         'household': {
           title: 'Household',
           kind: 'iframe',
           url: 'https://house.fachrynuzuli.com/',
           displayUrl: 'house.fachrynuzuli.com',
-          category: 'AI App',
+          category: 'Web & AI App',
         },
         'scaler': {
           title: 'Scaler',
           kind: 'iframe',
           url: 'https://scaler.fachrynuzuli.com/',
           displayUrl: 'scaler.fachrynuzuli.com',
-          category: 'AI App',
+          category: 'Web & AI App',
         },
         'find-n-keep': {
           title: "Find 'N Keep",
           kind: 'iframe',
           url: 'https://findandkeep.lovable.app/',
           displayUrl: 'findandkeep.lovable.app',
-          category: 'AI App',
+          category: 'Web & AI App',
+        },
+        'kejar-lailatul-qadar': {
+          title: 'Kejar Lailatul Qadar',
+          kind: 'iframe',
+          url: 'https://amalramadan.lovable.app/',
+          displayUrl: 'amalramadan.lovable.app',
+          category: 'Web & AI App',
         },
         'brd-builder': {
           title: 'BRD Builder',
