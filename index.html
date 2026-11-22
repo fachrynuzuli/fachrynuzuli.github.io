@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/index.css?v=9">
+  <link rel="stylesheet" href="assets/css/index.css?v=10">
 
   <!-- Structured Data for Search Engines & AI Knowledge Graphs -->
   <script type="application/ld+json">
@@ -660,15 +660,15 @@
           </div>
 
           <div class="book-readout" aria-live="polite">
-            <p class="book-readout-panel" data-thesis-panel="0">
+            <p class="book-readout-panel" data-thesis-panel="0" data-active="true" aria-hidden="false">
               <span class="book-readout-tag" aria-hidden="true">01 /</span>
               Short-term macro headwinds are real, yet AI, content, and marketing unlock rare asymmetric upside.
             </p>
-            <p class="book-readout-panel" data-thesis-panel="1" hidden>
+            <p class="book-readout-panel" data-thesis-panel="1" data-active="false" aria-hidden="true">
               <span class="book-readout-tag" aria-hidden="true">02 /</span>
               Own a piece of a business, either by building one yourself or investing in one with discipline.
             </p>
-            <p class="book-readout-panel" data-thesis-panel="2" hidden>
+            <p class="book-readout-panel" data-thesis-panel="2" data-active="false" aria-hidden="true">
               <span class="book-readout-tag" aria-hidden="true">03 /</span>
               Concrete frameworks for earning cash flow today while steadily acquiring equity and optionality.
             </p>
@@ -1518,7 +1518,9 @@
             btn.setAttribute('aria-pressed', String(i === idx));
           });
           panels.forEach((panel, i) => {
-            panel.hidden = i !== idx;
+            const isCurrent = i === idx;
+            panel.dataset.active = String(isCurrent);
+            panel.setAttribute('aria-hidden', String(!isCurrent));
           });
           if (shouldFocus && keys[idx]) {
             keys[idx].focus();

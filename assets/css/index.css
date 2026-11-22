@@ -1825,32 +1825,34 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   border: 1px solid oklch(0.94 0.016 80 / 0.16);
   border-radius: 3px;
   padding: 0.7rem 0.88rem;
-  min-block-size: 3.1rem;
-  display: flex;
+  display: grid;
   align-items: center;
 }
 
 .book-readout-panel {
+  grid-area: 1 / 1;
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--dusk-ink);
+  transition: opacity 140ms ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .book-readout-panel:not([hidden]) {
-    animation: thesis-readout-in 140ms ease-out;
-  }
+.book-readout-panel[data-active="false"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 
-@keyframes thesis-readout-in {
-  from {
-    opacity: 0.45;
-    transform: translateY(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.book-readout-panel[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-readout-panel {
+    transition: none;
   }
 }
 
