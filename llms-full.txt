@@ -110,9 +110,10 @@ These nine systems represent the operational problem spaces Fachry has owned and
 - **build/**: Claude Code (terminal agent), Antigravity (agentic IDE), Codex (coding agent), Lovable (AI app builder)
 - **workspace/**: Obsidian (knowledge vault), Bearblog (essays), Substack (newsletter)
 
-### Live Apps, Prototypes & Agent Skills (Works: 13 Projects)
+### Live Apps, Prototypes & Agent Skills (Works: 14 Projects)
 - **FLS Dashboard** (Mac Popup: https://fachrynuzuli.com/#works/fls-dashboard | Live: https://fachrynuzuli.github.io/fls-dashboard/ | Repo: https://github.com/fachrynuzuli/fls-dashboard): Real-time performance monitoring dashboard for port cargo loading operations.
 - **Device Movement Tracker** (Mac Popup: https://fachrynuzuli.com/#works/device-tracker | Sanitized Demo: https://fachrynuzuli.com/demos/device-tracker/): Fleet hardware custody register tracking tablets, fatigue wearables, and handhelds across haul trucks and bays with timeline playback.
+- **Analytik Command Centre** (Mac Popup: https://fachrynuzuli.com/#works/analytik | Sanitized Demo: https://fachrynuzuli.com/demos/analytik/): Internal operations dashboard suite combining crane service quality heatmaps and daily operator Fit-To-Work fatigue assessments.
 - **Haulyard** (Mac Popup: https://fachrynuzuli.com/#works/haulyard | Live: https://haulyard-games.lovable.app/): First-mile logistics dispatch simulation game for practicing timely fleet assignment and routing trade-offs.
 - **Profilemu** (Mac Popup: https://fachrynuzuli.com/#works/profilemu | Live: https://profile.fachrynuzuli.com/p/fachry | Repo: https://github.com/fachrynuzuli/profilemu): AI digital twin web app letting visitors converse directly with a professional's background and expertise.
 - **Guru Nyanyi (Vocalist)** (Mac Popup: https://fachrynuzuli.com/#works/guru-nyanyi | Live: https://sing.fachrynuzuli.com/ | Repo: https://github.com/fachrynuzuli/guru-nyanyi): Beginner-friendly vocal practice web app built for shy learners.
