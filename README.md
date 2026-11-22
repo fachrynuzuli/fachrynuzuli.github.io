@@ -3,7 +3,7 @@
 Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**: product builder teaching non-technical people how to build in this economy.
 
 - **Primary site (Cloudflare Pages):** https://fachrynuzuli.com/
-- **GitHub Pages mirror:** https://fachrynuzuli.github.io/ (canonicalized to `https://fachrynuzuli.com/`)
+- **Legacy GitHub Pages URL:** https://fachrynuzuli.github.io/ (automatically redirects all paths and hashes to `https://fachrynuzuli.com/` while keeping project sites like `/fls-dashboard` live)
 - **AI context endpoints:** https://fachrynuzuli.com/llms.txt and https://fachrynuzuli.com/llms-full.txt
 
 ## Structure
