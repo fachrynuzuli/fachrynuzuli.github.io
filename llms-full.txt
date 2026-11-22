@@ -43,9 +43,9 @@ He has trained 200+ non-technical professionals in practical AI workflows.
 In This Economy is a live static website structured as a book using the "The Art and Business of [X]" framework (English at https://in.thisecono.my/, Bahasa Indonesia at https://in.thisecono.my/id, AI summary at https://in.thisecono.my/llms.txt).
 
 Three core parts:
-1. **Part I: What is In This Economy** (https://in.thisecono.my/#part-one): The economy is hard in the short term (political and macro headwinds), yet holds high long-term hopes through AI, content, marketing, a permanent upper class, and the singularity.
-2. **Part II: The Art of In This Economy** (https://in.thisecono.my/#part-two): Own a piece of a business, either by building one or by investing in one.
-3. **Part III: The Business of In This Economy** (https://in.thisecono.my/#part-three): How to own a piece of a business and earn money while doing it.
+1. **Part I: The Economies** (https://in.thisecono.my/#part-one): The economy is hard in the short term (political and macro headwinds), yet holds high long-term hopes through AI, content, marketing, a permanent upper class, and the singularity.
+2. **Part II: Own a piece of a business** (https://in.thisecono.my/#part-two): Own a piece of a business, leaning heavily on building your own business and assets first, with open-market investing as the last resort.
+3. **Part III: Get good, get paid, & compound** (https://in.thisecono.my/#part-three): How to own a piece of a business and earn money while building toward it.
 
 ## Chronological Journey (2020 to Now)
 
@@ -101,7 +101,7 @@ These nine systems represent the operational problem spaces Fachry has owned and
 ## Writings, Skills & Public Resources
 
 ### Publications & Channels
-- **In This Economy**: https://in.thisecono.my/
+- **In This Economy**: https://in.thisecono.my/ (live web book structured in three parts: Part I *The Economies*, Part II *Own a piece of a business*, and Part III *Get good, get paid, & compound*)
 - **Mini-essay** (Bearblog): https://fachry.bearblog.dev/ (minimal, fast essays on career strategy, product work, and mental models)
 - **Newsletter** (Substack): https://fachry.substack.com/ (long-form newsletter archive on AI building, influence, and personal leverage)
 
