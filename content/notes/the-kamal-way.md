@@ -16,7 +16,7 @@ status:
 ---
 “The Kamal Way” lebih mengedepankan personal development daripada menjadi filthy rich (adaptasi “The Lasso Way” dari serial Ted Lasso).
 
-![](/assets/images/notes/1ecae012b6.png)
+![Diagram comparing Specialized narrow linear career path versus Polymath multidisciplinary skill matrix](/assets/images/notes/1ecae012b6.png)
 
 Dari awal gabung *corporate*, hobi gue adalah mengobservasi lingkungan sekitar.
 
@@ -74,7 +74,7 @@ Itulah yang gue lakukan selama ini. Gue mengamati orang-orang, lalu menimbulkan 
 
 Karena itu, gue bisa berkali-kali lolos dari klaster 1. Padahal, setiap jadwalnya *payroll*, justru *screen time* LinkedIn gue mengalami peningkatan.
 
-![](/assets/images/notes/27fa6b968c.png)
+![Chart showing LinkedIn screen time spiking sharply around payroll time](/assets/images/notes/27fa6b968c.png)
 
 Yang terbaru, akhir Januari kemarin gue mengalami perasaan itu lagi. [Perasaan *stuck* akan karier gue](https://www.fachrynuzuli.com/karier-terancam-stuck-ini-cara-gue-agar-tetap-survive/).
 
@@ -84,7 +84,7 @@ Bahkan kalau diingat-ingat, fase terbaik dari hidup gue selalu datang setelah ke
 
 Salah satu alasannya adalah gue mempunyai **The KAMAL Way** sebagai *approach* dalam menghadapi hampir semua masalah.
 
-![](/assets/images/notes/0d2acf31d2.png)
+![KAMAL acronym framework: Know Yourself, Acquire Skills, Make It Your Passion, Adjust Perspective, Lifelong Project](/assets/images/notes/0d2acf31d2.png)
 
 *K -Know yourself  
 A -Acquire skills  
@@ -125,7 +125,7 @@ Gue percaya bahwa kita ada karena suatu alasan, karena itu gue mau ngebantu lo m
 
 Salah satu *tool* yang gue pakai untuk menemukan panggilan tersebut adalah diagram ikigai.
 
-![](/assets/images/notes/5d0f091958.png)
+![Ikigai Venn diagram intersecting what you love, what you are good at, what the world needs, and what you can be paid for](/assets/images/notes/5d0f091958.png)
 
 ## Ikigai adalah …
 
@@ -249,7 +249,7 @@ Gue nggak setuju. Menurut gue, kita bebas memilih progresi karier dan disiplin i
 
 Memutuskan untuk menguasai hanya satu bidang adalah cara tercepat untuk digantikan oleh AI.
 
-![](/assets/images/notes/8ef940bc27.png)
+![Specialized versus Polymath skill matrix showing multidisciplinary career resilience against AI](/assets/images/notes/8ef940bc27.png)
 
 - Digital literacy
 - Financial analysis

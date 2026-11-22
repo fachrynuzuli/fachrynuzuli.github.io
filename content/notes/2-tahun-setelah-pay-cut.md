@@ -14,7 +14,7 @@ description: More
 status:
   - '[[Published]]'
 ---
-![](/assets/images/notes/5d6f6559cc.jpg)
+![Monochrome close-up of hands typing on a vintage mechanical typewriter](/assets/images/notes/5d6f6559cc.jpg)
 
 Di tahun 2022, gue pernah sepakat untuk pindah ke departemen digitalisasi. Gue sangat suka dengan prospek dari pekerjaan ini.
 

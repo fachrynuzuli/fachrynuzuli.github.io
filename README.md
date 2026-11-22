@@ -1,28 +1,18 @@
-# fachrynuzuli.github.io
+# fachrynuzuli.com
 
-Personal directory, writings, and active operations for **Fachry Nuzuli**.
+Personal website and AI-readable context dossier for **Fachry Nuzuli Kamal**, a non-technical product manager who teaches non-technical people how to break into tech.
 
-- **[Main Directory](https://fachrynuzuli.github.io/)** — Writings, enterprise case studies, and resources.
-- **[freebuilder.co](https://fachrynuzuli.github.io/freebuilder.html)** — AI workflows and education playbooks.
-- **[freeware.lab](https://fachrynuzuli.github.io/freeware.html)** — Rapid MVP sprints and AI-first development.
-- **[freewriter.lab](https://fachrynuzuli.github.io/freewriter.html)** — Strategic communications and ghostwriting.
+## Structure
 
-## 🛠 Tech Stack
-- **Vanilla HTML / CSS / JS** (No frameworks, no build step)
-- **GitHub Pages** for hosting
+- `index.html` — Full-viewport interactive retro Macintosh hero stage + semantic scrollable dossier (`About`, `Journey`, `Proof`, `Writings`, `Resources`, `Connect`) with JSON-LD `Person` / `ProfilePage` schema.
+- `llms.txt` & `llms-full.txt` — Machine-readable context files for AI agents and LLM crawlers.
+- `notes/` & `content/notes/` — Markdown-compiled essays built via `npm run build:notes`.
+- `prompts/` & `content/prompts/` — Copy-paste prompt library built via `npm run build:prompts`.
+- `CNAME`, `robots.txt`, `sitemap.xml` — Custom domain and crawler discovery configuration for `fachrynuzuli.com`.
 
-## 📁 Content Structure
-The main hub (`index.html`) acts as a terminal-style directory:
+## Local Build
 
-```text
-📁 main/
-├── notes/                  # Writings on product management and AI
-├── works/                  # Enterprise case studies and portfolio
-├── ventures/               # Active indie operations (freeware, freebuilder, freewriter)
-├── resources/              # Free prompts, workflows, and the tools I use daily
-│   ├── prompts/            # My free prompt collection
-│   └── tools/              # The stack I use daily
-└── repository/             # Check on all files we have
+```bash
+npm install
+npm run build
 ```
-
-© 2026 Fachry Nuzuli. All rights reserved.

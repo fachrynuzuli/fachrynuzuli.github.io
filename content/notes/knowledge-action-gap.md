@@ -13,7 +13,7 @@ description: lo udah tau semua yang kamu butuhkan untuk sukses
 status:
   - '[[Published]]'
 ---
-![](/assets/images/notes/31c9137da8.png)
+![Sculpture quote by Alexis Carrel: Man cannot remake himself without suffering for he is both the marble and the sculptor](/assets/images/notes/31c9137da8.png)
 
 mau tau satu hal menyedihkan? lo udah tau semua yang lo butuhkan untuk sukses.
 

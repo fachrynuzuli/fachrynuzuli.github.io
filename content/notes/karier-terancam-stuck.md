@@ -14,7 +14,7 @@ description: null
 status:
   - '[[Published]]'
 ---
-![](/assets/images/notes/844b528d5a.jpg)
+![Career timeline showing 7 roles across 5 years from 2019 to 2024: Research Analyst, Event Organizer, Blogger, Equity Analyst, Transport Dispatcher, Digital Transformation, and Investor](/assets/images/notes/844b528d5a.jpg)
 
 “Jenjang Karier” Gue dalam 5 tahun dan 7 role
 

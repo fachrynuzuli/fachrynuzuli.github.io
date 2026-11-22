@@ -1,0 +1,148 @@
+# Fachry Nuzuli Kamal: Complete Public Context
+
+Canonical URL: https://fachrynuzuli.com/
+Summary Index: https://fachrynuzuli.com/llms.txt
+
+## One-Line Positioning
+
+A non-technical product manager who teaches non-technical people how to break into tech.
+
+## Identity & Background
+
+- Full name: Fachry Nuzuli Kamal
+- Born: 1997
+- Location: Pekanbaru, Riau, Indonesia
+- Current role: Senior Product Manager (Fleet Management System Product Suite Owner) and Digital Transformation Lead at APRIL Group
+- Education: Bachelor of Economics (Accounting), Universitas Sumatera Utara (graduated 2020)
+- Languages: Bahasa Indonesia (native), English (fluent)
+- Personal ethos: Husband and father; family time shapes strategic and career choices. Long-term goal: make employment optional, then choose whether to stay.
+
+## What He Does (Now)
+
+### 1. Enterprise Product Leadership (APRIL Group, May 2022 onward)
+- Owns product direction and approves all change requests for the Fleet Management System (FMS) product suite, integrating Driver Management, Fuel Management, and Workshop Management alongside core dispatch and fleet operations.
+- Leads digital transformation initiatives across fleet, tyre, and woodhandling operations.
+- Drives organization-wide AI enablement, growing adoption from an initial team of 5 people to up to 900 people across operational shifts.
+
+### 2. Teaching Non-Technical People to Break Into Tech
+Fachry teaches the practical skills and mental quirks non-technical professionals need to ship real products and operate inside tech:
+
+- **AI-assisted development & product thinking**: Vibe-coding with AI tools (Lovable, Bolt, Gemini, Claude), backed by 1,000+ hours of hands-on building since late 2024. Covers PRDs, user stories, prioritization, and roadmaps. Created the `lovable-framework` skill to systematize prompt-to-product execution.
+- **Philosophy and mindset**: Schools of thought, first-principles reasoning, and durable mental models.
+- **Economics, finance, and business literacy**: Enough finance and unit economics to read how money moves through a company, backed by prior buy-side/research experience as a Senior Equity Research Analyst.
+- **Influence without authority**: Persuasion, managing up, stakeholder alignment, and leading without formal title. Created the `Sharemaxxing` skill to teach AI how to sharpen the clarity and influence of public writing.
+- **The Kamal Way (five-step personal development framework)**:
+  1. Know Yourself
+  2. Acquire Skill
+  3. Make It Your Passion
+  4. Adjust Perspective
+  5. Lifelong Project
+
+He has trained 200+ non-technical professionals in practical AI workflows.
+
+### 3. Live Publication: In This Economy (https://in.thisecono.my/)
+In This Economy is a live static website designed as a book. It guides readers, especially Indonesians navigating political and macroeconomic turbulence, through clear analysis and actionable positioning.
+
+Three core theses:
+1. The economy is difficult in the short term (political and macro headwinds), while simultaneously offering rare long-term upside through AI, content, marketing, and asymmetric leverage.
+2. Own a piece of a business, either by building one or by investing in one.
+3. Practical methods to acquire ownership and earn income while building toward it.
+
+## What He Did (Then): Career Arc
+
+### Apr 2021 to Sep 2021 | Senior Analyst (Mining, Tech, Consumer, FMCG) | INVESTABOOK
+- Covered Indonesian public equities across Mining, Technology, Consumer, and FMCG sectors for a financial research startup with an audience of 80,000+ retail investors.
+- Contributed to 4x revenue growth reaching approximately US$50K MRR.
+- Helped improve 30-day subscriber retention from 15% to 25%.
+- Launched two educational cohorts and published an archive of ~17 Indonesian equity research essays grounded in margin of safety, business quality, and capital allocation.
+
+### Sep 2021 to May 2022 | Operations Analyst | APRIL Group
+- Built SQL and SAP analytical workflows covering 150+ daily operational transactions.
+- Identified operational bottlenecks contributing to a 15% reduction in downtime.
+
+### May 2022 onward | Senior Product Manager & Digital Transformation Lead | APRIL Group
+- Progressed from delivering individual digital projects to owning full product direction for the Fleet Management System suite and leading cross-site transformation across fleet, tyre, and woodhandling operations.
+
+## Verified Proof & Impact Numbers
+
+- **Fleet scale**: Fleet Management System covers 400+ vehicles across 3 operational sites.
+- **Portfolio value**: Wider digital product portfolio valued at approximately US$1.3M across 9 operational systems.
+- **Trip utilization**: 37 minutes of utilization gained per trip (~US$301K annual impact).
+- **Asset longevity**: RFID tyre tracking extended tyre asset life by 5% (~US$207K annual savings).
+- **Digital adoption**: 1,000+ users transitioned from paper workflows to digital systems (100% migration).
+- **AI enablement**: Trained 200+ non-technical professionals; scaled internal AI enablement from 5 team members to up to 900 people across operational shifts.
+- **Hands-on AI building**: 1,000+ hours building with AI tools since late 2024.
+
+## Rebuilt System Theses (Portfolio Architecture Without Confidential Detail)
+
+These nine systems represent the operational problem spaces Fachry has owned and shipped in industrial logistics and workforce operations, presented as public product theses without proprietary company internals:
+
+1. **Fleet Management System (FMS)**: End-to-end dispatch orders, truck allocation, dynamic rerouting, and trip-cycle tracking to eliminate idle bottlenecks across multi-site heavy-hauling fleets.
+2. **Tyre Management System**: Complete tyre registries, historical wear and retread logs, and RFID identification to turn consumable maintenance into measurable asset-life extension.
+3. **Driver Management System**: Structured driver recruitment pipelines, certification tracking, chronological performance histories, and workforce readiness management.
+4. **Driver Behavior & Fatigue Control**: Real-time behavioral telemetry and fatigue intervention workflows designed to improve field safety outcomes.
+5. **Workshop Management System**: Preventive and corrective repair scheduling, service-bay queue coordination, and turnaround visibility for heavy fleet assets.
+6. **Fuel Management System**: Automated fuel dispensing integrated with RFID identification to close reconciliation gaps and prevent leakage.
+7. **Futong Loading System**: Port-side cargo loading coordination, queue synchronization, and throughput visibility.
+8. **Digital Woodyard System**: Digitized yard receiving, cargo unloading orchestration, and inventory movement tracking.
+9. **E-Learning, Face ID Attendance & Control Tower**: Replacing live classroom instruction with scalable digital e-learning, deploying biometric Face ID shift attendance, and unifying field telemetry into an operational Control Tower dashboard.
+
+## Principles: What He Stands For
+
+- **Ship fast**: Target one product, skill, or experiment every one to two weeks.
+- **AI with human judgment**: Use AI aggressively as a build tool while inspecting, testing, and owning every line and decision.
+- **Influence without a title**: Persuasion, clarity, and practical communication matter more than org-chart rank.
+- **Contrarian and free of hype**: Take clear positions backed by operational data or firsthand experience.
+- **Frameworks and first principles**: Clarify the mental model first, then execute decisively.
+- **Investing discipline**: Margin of safety, business quality, and long-term capital allocation.
+
+## Writings, Skills & Public Resources
+
+### Publications & Blogs
+- In This Economy (live web book): https://in.thisecono.my/
+- Bearblog: https://fachry.bearblog.dev/
+- Substack: https://fachry.substack.com/
+
+### Live App Prototypes & Open Skills (Works)
+- **FLS Dashboard** (Live Prototype: https://fachrynuzuli.github.io/fls-dashboard | Repo: https://github.com/fachrynuzuli/fls-dashboard): Real-time performance monitoring dashboard prototype for port cargo loading operations.
+- **Dispatch System** (https://github.com/fachrynuzuli/dispatch-system): AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini.
+- **3D Logistics** (https://github.com/fachrynuzuli/3d-logistics): Interactive 3D operational visualization experiment in the browser.
+- **Profilemu** (https://github.com/fachrynuzuli/profilemu): Lovable-built AI digital twin app letting visitors converse directly with a professional's background and expertise.
+- **Knock-Knock** (https://github.com/fachrynuzuli/knock-knock): Gamified team management and weekly task reporting app styled as an interactive neighborhood.
+- **BRD Builder** (https://github.com/fachrynuzuli/brd-builder): Coding-agent skill that interviews stakeholders and generates styled Business Requirement Documents.
+- **Sharemaxxing** (https://github.com/fachrynuzuli/sharemaxxing): Claude skill encoding persuasion and clarity patterns to improve written content influence.
+- **Guru Nyanyi** (https://github.com/fachrynuzuli/guru-nyanyi): Beginner-friendly vocal practice web app prototype.
+- **lovable-framework**: Structured prompt-to-product system for building web applications cleanly with AI tools.
+
+### Curated Notes Archive (fachrynuzuli.com/notes/)
+1. The Kamal Way: Restart Karier Dalam 6 Bulan (https://fachrynuzuli.com/notes/the-kamal-way-restart-karier-dalam-6-bulan.html)
+2. The Intelligent Investor Akan Selalu Relevan (https://fachrynuzuli.com/notes/the-intelligent-investor-akan-selalu-relevan.html)
+3. Karier Terancam Stuck: Cara Survive (https://fachrynuzuli.com/notes/karier-terancam-stuck-cara-survive.html)
+4. 5 Pertanyaan (https://fachrynuzuli.com/notes/5-pertanyaan.html)
+5. The Knowledge Action Gap (https://fachrynuzuli.com/notes/the-knowledge-action-gap.html)
+6. 2 Tahun Setelah Pay Cut 57% (https://fachrynuzuli.com/notes/2-tahun-setelah-pay-cut-57.html)
+7. Procrastination is a Superpower (https://fachrynuzuli.com/notes/procrastination-is-a-superpower.html)
+8. Life Lesson from 59 Hours Bed Rest (https://fachrynuzuli.com/notes/life-lesson-from-59-hours-bed-rest.html)
+9. "Niche Down" Is Terrible Advice (For Smart People) (https://fachrynuzuli.com/notes/niche-down-is-terrible-advice-for-smart-people-dan-koe.html)
+10. Supernova and Entropy (From a Fiction Book) (https://fachrynuzuli.com/notes/supernova-and-entropy-from-a-fiction-book.html)
+
+### Copy-Paste Prompt Collection (fachrynuzuli.com/prompts/)
+- AI Automation Builder (https://fachrynuzuli.com/prompts/ai-automation-builder.html)
+- Break Down Goals Into Actionable Plan (https://fachrynuzuli.com/prompts/break-down-goals-into-actionable-plan.html)
+- Customer Avatar Generator (https://fachrynuzuli.com/prompts/customer-avatar-generator.html)
+- Expert Content Summarizer (https://fachrynuzuli.com/prompts/expert-content-summarizer.html)
+- Instagram Reel Script Super Prompt (https://fachrynuzuli.com/prompts/instagram-reel-script-super-prompt.html)
+- Landing Page Copywriting Super Prompt (https://fachrynuzuli.com/prompts/landing-page-copywriting-super-prompt.html)
+- Metaprompt (https://fachrynuzuli.com/prompts/metaprompt.html)
+- Perfect LinkedIn Post Super Prompt (https://fachrynuzuli.com/prompts/perfect-linkedin-post-super-prompt.html)
+- The Life Reset Map (https://fachrynuzuli.com/prompts/the-life-reset-map.html)
+- Ultimate Content Waterfall OS (https://fachrynuzuli.com/prompts/ultimate-content-waterfall-os.html)
+
+## Official Links & Contact
+
+- Website: https://fachrynuzuli.com/
+- Email: fachrynuzuli@gmail.com
+- X: https://x.com/fachrynuzuli
+- GitHub: https://github.com/fachrynuzuli
+- LinkedIn: https://www.linkedin.com/in/fachrynuzuli/
+- Instagram: https://instagram.com/fachrynuzuli

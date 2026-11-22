@@ -1,0 +1,33 @@
+# fachrynuzuli.com — Search engines and AI crawlers are welcome.
+# Machine-readable personal dossier:
+#   https://fachrynuzuli.com/llms.txt
+#   https://fachrynuzuli.com/llms-full.txt
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://fachrynuzuli.com/sitemap.xml

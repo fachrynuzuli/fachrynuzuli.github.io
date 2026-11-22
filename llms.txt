@@ -1,0 +1,61 @@
+# Fachry Nuzuli Kamal
+
+> A non-technical product manager who teaches non-technical people how to break into tech.
+
+Based in Pekanbaru, Riau, Indonesia (born 1997). Senior Product Manager owning the Fleet Management System (FMS) product suite and Digital Transformation Lead at APRIL Group. Bachelor of Economics (Accounting), Universitas Sumatera Utara (2020). Native in Bahasa Indonesia; fluent in English.
+
+## Complete Dossier (Single-File Context)
+
+- [Complete Profile & Rebuilt System Theses](https://fachrynuzuli.com/llms-full.txt): Full structured biography, career arc (then and now), teaching curriculum, nine enterprise system theses, verified impact figures, philosophy, and canonical index.
+
+## Core Pages & Live Publication
+
+- [Home (fachrynuzuli.com)](https://fachrynuzuli.com/): Interactive personal website with full semantic dossier covering About, Journey, Works, Writings, Resources, and Connect.
+- [In This Economy](https://in.thisecono.my/): Live static web book on navigating economic turbulence, building asymmetric leverage with AI, and owning a piece of a business.
+- [Bearblog Essays](https://fachry.bearblog.dev/): Independent essays and notes.
+- [Substack](https://fachry.substack.com/): Newsletter and long-form writing.
+
+## Live Prototypes & Open Skills
+
+- [FLS Dashboard (Live Prototype)](https://fachrynuzuli.github.io/fls-dashboard): Real-time performance monitoring dashboard prototype for port cargo loading operations ([Repo](https://github.com/fachrynuzuli/fls-dashboard)).
+- [Dispatch System](https://github.com/fachrynuzuli/dispatch-system): AI-first logistics supply chain intelligence and fleet dispatch optimization prototype powered by Gemini.
+- [3D Logistics](https://github.com/fachrynuzuli/3d-logistics): Interactive 3D operational visualization experiment.
+- [Profilemu](https://github.com/fachrynuzuli/profilemu): Lovable-built AI digital twin app letting visitors converse directly with a professional's expertise.
+- [Knock-Knock](https://github.com/fachrynuzuli/knock-knock): Gamified team management and weekly task reporting app framed as a neighborhood.
+- [BRD Builder](https://github.com/fachrynuzuli/brd-builder): Coding-agent skill that interviews stakeholders and generates styled Business Requirement Documents.
+- [Sharemaxxing](https://github.com/fachrynuzuli/sharemaxxing): Claude skill rewriting drafts into high-influence, shareable writing.
+- [Guru Nyanyi](https://github.com/fachrynuzuli/guru-nyanyi): Beginner-friendly vocal practice web app prototype.
+
+## Curated Notes Archive
+
+- [The Kamal Way: Restart Karier Dalam 6 Bulan](https://fachrynuzuli.com/notes/the-kamal-way-restart-karier-dalam-6-bulan.html)
+- [The Intelligent Investor Akan Selalu Relevan](https://fachrynuzuli.com/notes/the-intelligent-investor-akan-selalu-relevan.html)
+- [Karier Terancam Stuck: Cara Survive](https://fachrynuzuli.com/notes/karier-terancam-stuck-cara-survive.html)
+- [5 Pertanyaan](https://fachrynuzuli.com/notes/5-pertanyaan.html)
+- [The Knowledge Action Gap](https://fachrynuzuli.com/notes/the-knowledge-action-gap.html)
+- [2 Tahun Setelah Pay Cut 57%](https://fachrynuzuli.com/notes/2-tahun-setelah-pay-cut-57.html)
+- [Procrastination is a Superpower](https://fachrynuzuli.com/notes/procrastination-is-a-superpower.html)
+- [Life Lesson from 59 Hours Bed Rest](https://fachrynuzuli.com/notes/life-lesson-from-59-hours-bed-rest.html)
+- ["Niche Down" Is Terrible Advice (For Smart People)](https://fachrynuzuli.com/notes/niche-down-is-terrible-advice-for-smart-people-dan-koe.html)
+- [Supernova and Entropy (From a Fiction Book)](https://fachrynuzuli.com/notes/supernova-and-entropy-from-a-fiction-book.html)
+
+## Open Prompt Library
+
+- [AI Automation Builder](https://fachrynuzuli.com/prompts/ai-automation-builder.html)
+- [Break Down Goals Into Actionable Plan](https://fachrynuzuli.com/prompts/break-down-goals-into-actionable-plan.html)
+- [Customer Avatar Generator](https://fachrynuzuli.com/prompts/customer-avatar-generator.html)
+- [Expert Content Summarizer](https://fachrynuzuli.com/prompts/expert-content-summarizer.html)
+- [Instagram Reel Script Super Prompt](https://fachrynuzuli.com/prompts/instagram-reel-script-super-prompt.html)
+- [Landing Page Copywriting Super Prompt](https://fachrynuzuli.com/prompts/landing-page-copywriting-super-prompt.html)
+- [Metaprompt](https://fachrynuzuli.com/prompts/metaprompt.html)
+- [Perfect LinkedIn Post Super Prompt](https://fachrynuzuli.com/prompts/perfect-linkedin-post-super-prompt.html)
+- [The Life Reset Map](https://fachrynuzuli.com/prompts/the-life-reset-map.html)
+- [Ultimate Content Waterfall OS](https://fachrynuzuli.com/prompts/ultimate-content-waterfall-os.html)
+
+## Official Profiles
+
+- [GitHub](https://github.com/fachrynuzuli): Open-source repositories, AI skills (`lovable-framework`, `Sharemaxxing`), and prototypes.
+- [LinkedIn](https://www.linkedin.com/in/fachrynuzuli/): Professional history and product leadership.
+- [X (@fachrynuzuli)](https://x.com/fachrynuzuli): Short-form takes, building in public, and frameworks.
+- [Instagram (@fachrynuzuli)](https://instagram.com/fachrynuzuli): Visual essays and AI builder breakdowns.
+- Email: fachrynuzuli@gmail.com
