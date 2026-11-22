@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/index.css?v=6">
+  <link rel="stylesheet" href="assets/css/index.css?v=8">
 
   <!-- Structured Data for Search Engines & AI Knowledge Graphs -->
   <script type="application/ld+json">
@@ -634,43 +634,75 @@
         <h2 class="section-heading">Writings</h2>
       </div>
 
-      <article class="book-feature">
-        <div>
-          <h3 class="book-title">In This Economy</h3>
-          <p class="book-desc">
-            A live static website structured as a book. Written to guide people, especially Indonesians navigating economic and political turbulence, through clear-eyed analysis of what is breaking and practical moves for what to do next.
-          </p>
-          <a href="https://in.thisecono.my/" target="_blank" rel="noopener noreferrer" class="book-cta">
-            Read in.thisecono.my ↗
-          </a>
-        </div>
+      <div class="writings-channels">
+        <article class="book-feature">
+          <div class="book-feature-top">
+            <h3 class="book-title">In This Economy</h3>
+            <a href="https://in.thisecono.my/" target="_blank" rel="noopener noreferrer" class="book-cta" aria-label="Read In This Economy at in.thisecono.my">
+              Read <span aria-hidden="true">↗</span>
+            </a>
+          </div>
 
-        <ol class="book-theses">
-          <li>
-            <span class="thesis-num">01</span>
-            <span>The economy is genuinely hard in the short term (political and macro headwinds), yet holds extraordinary long-term leverage through AI, content, marketing, and asymmetric ownership.</span>
-          </li>
-          <li>
-            <span class="thesis-num">02</span>
-            <span>Own a piece of a business, either by building one yourself or by investing in one with discipline.</span>
-          </li>
-          <li>
-            <span class="thesis-num">03</span>
-            <span>Concrete frameworks for earning cash flow today while steadily acquiring equity and optionality.</span>
-          </li>
-        </ol>
-      </article>
+          <div class="book-keydeck" role="group" aria-label="In This Economy core theses">
+            <button type="button" class="book-keycap" data-thesis-idx="0" aria-pressed="true">
+              <span class="book-keycap-top">
+                <span class="book-keycap-num">01</span>
+                <span class="book-keycap-led" aria-hidden="true"></span>
+              </span>
+              <span class="book-keycap-label">Hard now, asymmetric later</span>
+            </button>
+            <button type="button" class="book-keycap" data-thesis-idx="1" aria-pressed="false">
+              <span class="book-keycap-top">
+                <span class="book-keycap-num">02</span>
+                <span class="book-keycap-led" aria-hidden="true"></span>
+              </span>
+              <span class="book-keycap-label">Own a piece of a business</span>
+            </button>
+            <button type="button" class="book-keycap" data-thesis-idx="2" aria-pressed="false">
+              <span class="book-keycap-top">
+                <span class="book-keycap-num">03</span>
+                <span class="book-keycap-led" aria-hidden="true"></span>
+              </span>
+              <span class="book-keycap-label">Earn cash, buy equity</span>
+            </button>
+          </div>
 
-      <div class="publication-row">
-        <a href="https://fachry.bearblog.dev/" target="_blank" rel="noopener noreferrer" class="pub-link-block">
-          <span class="pub-domain">fachry.bearblog.dev</span>
-          <span class="pub-name">Bearblog</span>
-          <span class="pub-desc">Minimal, fast essays on career strategy, product work, and mental models.</span>
+          <div class="book-readout" aria-live="polite">
+            <p class="book-readout-panel" data-thesis-panel="0">
+              <span class="book-readout-tag" aria-hidden="true">01 /</span>
+              Short-term macro headwinds are real, yet AI, content, and marketing unlock rare asymmetric upside.
+            </p>
+            <p class="book-readout-panel" data-thesis-panel="1" hidden>
+              <span class="book-readout-tag" aria-hidden="true">02 /</span>
+              Own a piece of a business, either by building one yourself or investing in one with discipline.
+            </p>
+            <p class="book-readout-panel" data-thesis-panel="2" hidden>
+              <span class="book-readout-tag" aria-hidden="true">03 /</span>
+              Concrete frameworks for earning cash flow today while steadily acquiring equity and optionality.
+            </p>
+          </div>
+        </article>
+
+        <a href="https://fachry.bearblog.dev/" target="_blank" rel="noopener noreferrer" class="pub-strip">
+          <span class="pub-strip-body">
+            <span class="pub-strip-head">
+              <span class="pub-name">Mini-essay</span>
+              <span class="pub-domain">fachry.bearblog.dev</span>
+            </span>
+            <span class="pub-desc">Minimal, fast essays on career strategy, product work, and mental models.</span>
+          </span>
+          <span class="pub-strip-arrow" aria-hidden="true">↗</span>
         </a>
-        <a href="https://fachry.substack.com/" target="_blank" rel="noopener noreferrer" class="pub-link-block">
-          <span class="pub-domain">fachry.substack.com</span>
-          <span class="pub-name">Substack</span>
-          <span class="pub-desc">Long-form newsletter archive on AI building, influence, and personal leverage.</span>
+
+        <a href="https://fachry.substack.com/" target="_blank" rel="noopener noreferrer" class="pub-strip">
+          <span class="pub-strip-body">
+            <span class="pub-strip-head">
+              <span class="pub-name">Newsletter</span>
+              <span class="pub-domain">fachry.substack.com</span>
+            </span>
+            <span class="pub-desc">Long-form newsletter archive on AI building, influence, and personal leverage.</span>
+          </span>
+          <span class="pub-strip-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
 
@@ -1488,6 +1520,38 @@
         });
       }
 
+      // 4b. Hydrate In This Economy 1-2-3 keycap thesis switcher inside `iv. writings`
+      function hydrateBookTheses(root) {
+        const keys = Array.from(root.querySelectorAll('[data-thesis-idx]'));
+        const panels = Array.from(root.querySelectorAll('[data-thesis-panel]'));
+        if (!keys.length || !panels.length) return;
+
+        function activateThesis(idx, shouldFocus = false) {
+          keys.forEach((btn, i) => {
+            btn.setAttribute('aria-pressed', String(i === idx));
+          });
+          panels.forEach((panel, i) => {
+            panel.hidden = i !== idx;
+          });
+          if (shouldFocus && keys[idx]) {
+            keys[idx].focus();
+          }
+        }
+
+        keys.forEach((btn, idx) => {
+          btn.addEventListener('click', () => activateThesis(idx));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+              e.preventDefault();
+              activateThesis((idx + 1) % keys.length, true);
+            } else if (e.key === 'ArrowLeft') {
+              e.preventDefault();
+              activateThesis((idx - 1 + keys.length) % keys.length, true);
+            }
+          });
+        });
+      }
+
       // 5. Render canonical first-level section into the fixed-size CRT popup
       function setTabStates(sectionId) {
         document.querySelectorAll('.mac-tab').forEach((tab) => {
@@ -1537,6 +1601,8 @@
           hydrateAboutVisuals(stage);
         } else if (resolvedId === 'works') {
           hydrateWorksFilter(stage);
+        } else if (resolvedId === 'writings') {
+          hydrateBookTheses(stage);
         }
       }
 

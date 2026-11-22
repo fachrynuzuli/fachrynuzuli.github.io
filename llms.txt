@@ -12,8 +12,8 @@ Based in Pekanbaru, Riau, Indonesia (born 1997). Sr Product Manager (Digital Tra
 
 - [Home (fachrynuzuli.com)](https://fachrynuzuli.com/): Interactive personal website with full semantic dossier covering About, Journey, Works, Writings, Resources, and Connect.
 - [In This Economy](https://in.thisecono.my/): Live static web book on navigating economic turbulence, building asymmetric leverage with AI, and owning a piece of a business.
-- [Bearblog Essays](https://fachry.bearblog.dev/): Independent essays and notes.
-- [Substack](https://fachry.substack.com/): Newsletter and long-form writing.
+- [Mini-essay (fachry.bearblog.dev)](https://fachry.bearblog.dev/): Minimal, fast essays on career strategy, product work, and mental models.
+- [Newsletter (fachry.substack.com)](https://fachry.substack.com/): Long-form newsletter archive on AI building, influence, and personal leverage.
 
 ## Live Prototypes & Open Skills
 
