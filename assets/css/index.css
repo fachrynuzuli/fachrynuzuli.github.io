@@ -928,6 +928,7 @@ dialog.mac-window {
     0 34px 80px oklch(0.10 0.032 256 / 0.68),
     0 6px 18px oklch(0.14 0.025 50 / 0.35);
   overflow: hidden;
+  overflow: clip;
 
   opacity: 0;
   transition-property: opacity, transform, display, overlay;
@@ -1001,6 +1002,7 @@ dialog.mac-window[open]:where(:not([data-closing]))::backdrop {
   border-radius: 20px / 17px;
   border: 2px solid var(--bezel-cavity);
   overflow: hidden;
+  overflow: clip;
   box-shadow:
     inset 0 0 22px oklch(0.18 0.025 50 / 0.20),
     inset 0 3px 8px oklch(0.18 0.025 50 / 0.22),
@@ -3094,6 +3096,7 @@ body.reader-standalone {
   border: 1.5px solid var(--rule-strong);
   border-radius: 6px;
   overflow: hidden;
+  overflow: clip;
   background: var(--paper-raised);
   box-shadow: inset 0 1px 4px oklch(0.2 0.02 50 / 0.08);
 }
